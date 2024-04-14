@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Weight extends StatelessWidget {
+class Height extends StatelessWidget {
   final String title;
-  const Weight({Key? key, required this.title}) : super(key: key);
+  const Height({Key? key, required this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -69,11 +69,11 @@ class Weight extends StatelessWidget {
               right: 0,
               child: Center(
                 child: Container(
-                  width: 160,
+                  width: 140,
                   height: 160,
                   decoration: const BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage('assets/weight.jpg'),
+                      image: AssetImage('assets/height.jpg'),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -87,7 +87,7 @@ class Weight extends StatelessWidget {
               right: 0,
               child: Center(
                 child: Text(
-                  'Body Weight',
+                  'Body height',
                   style: GoogleFonts.fredoka(
                     textStyle: const TextStyle(
                       fontSize: 24,
@@ -120,7 +120,7 @@ class Weight extends StatelessWidget {
                       padding: EdgeInsets.symmetric(horizontal: 12),
                       child: TextField(
                         decoration: InputDecoration(
-                          hintText: 'Weight', // Texto por defecto del TextField
+                          hintText: 'Height', // Texto por defecto del TextField
                           border: InputBorder.none, // Oculta el borde por defecto
                           contentPadding: EdgeInsets.zero, // Elimina el espacio interno por defecto
                         ),
@@ -138,19 +138,19 @@ class Weight extends StatelessWidget {
                       padding: EdgeInsets.symmetric(horizontal: 12),
                       child: DropdownButton<String>(
                         value:
-                            'Kg', // Valor seleccionado (puedes cambiar esto según tus necesidades)
+                            'Cm', // Valor seleccionado (puedes cambiar esto según tus necesidades)
                         onChanged: (value) {
                           // Implementa la lógica cuando se selecciona un valor
                         },
                         underline:
                             Container(), // Para ocultar la línea por defecto del DropdownButton
                         items: [
-                          'Kg',
-                          'Lb'
-                        ].map((weight) {
+                          'Cm',
+                          'In'
+                        ].map((height) {
                           return DropdownMenuItem(
-                            value: weight,
-                            child: Text(weight),
+                            value: height,
+                            child: Text(height),
                           );
                         }).toList(),
                       ),
