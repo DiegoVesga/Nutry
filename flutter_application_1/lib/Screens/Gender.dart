@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Birthday extends StatelessWidget {
+class Gender extends StatelessWidget {
   final String title;
-  const Birthday({Key? key, required this.title}) : super(key: key);
+  const Gender({Key? key, required this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +73,7 @@ class Birthday extends StatelessWidget {
                   height: 160,
                   decoration: const BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage('assets/cake.jpeg'),
+                      image: AssetImage('assets/gender.jpg'),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -87,7 +87,7 @@ class Birthday extends StatelessWidget {
               right: 0,
               child: Center(
                 child: Text(
-                  'Birth’s date',
+                  'Gender',
                   style: GoogleFonts.fredoka(
                     textStyle: const TextStyle(
                       fontSize: 24,
@@ -107,32 +107,6 @@ class Birthday extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // ComboBox para el día
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all(
-                          color: Color(0xFF492D25), // Color del borde
-                        ),
-                        color: Color(0xFFE8DED6), // Color de relleno
-                      ),
-                      padding: EdgeInsets.symmetric(horizontal: 12),
-                      child: DropdownButton<String>(
-                        value:
-                            '1', // Valor seleccionado (puedes cambiar esto según tus necesidades)
-                        onChanged: (value) {
-                          // Implementa la lógica cuando se selecciona un valor
-                        },
-                        items: List.generate(
-                          31,
-                          (index) => DropdownMenuItem(
-                            value: (index + 1).toString(),
-                            child: Text((index + 1).toString()),
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(width: 20), // Espacio entre ComboBox
                     // ComboBox para el mes
                     Container(
                       decoration: BoxDecoration(
@@ -145,60 +119,28 @@ class Birthday extends StatelessWidget {
                       padding: EdgeInsets.symmetric(horizontal: 12),
                       child: DropdownButton<String>(
                         value:
-                            'January', // Valor seleccionado (puedes cambiar esto según tus necesidades)
+                            'male', // Valor seleccionado (puedes cambiar esto según tus necesidades)
                         onChanged: (value) {
                           // Implementa la lógica cuando se selecciona un valor
                         },
                         underline:
                             Container(), // Para ocultar la línea por defecto del DropdownButton
                         items: [
-                          'January',
-                          'February',
-                          'March',
-                          'April',
-                          'May',
-                          'June',
-                          'July',
-                          'August',
-                          'September',
-                          'October',
-                          'November',
-                          'December'
-                        ].map((month) {
+                          'male',
+                          'female',
+                          'transgender',
+                          'gender neutral',
+                          'non-binary',
+                          'agender',
+                          'pangender',
+                          'genderqueer',
+                          'other'
+                        ].map((gender) {
                           return DropdownMenuItem(
-                            value: month,
-                            child: Text(month),
+                            value: gender,
+                            child: Text(gender),
                           );
                         }).toList(),
-                      ),
-                    ),
-                    SizedBox(width: 20), // Espacio entre ComboBox
-                    // ComboBox para el año
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all(
-                          color: Color(0xFF492D25), // Color del borde
-                        ),
-                        color: Color(0xFFE8DED6), // Color de relleno
-                      ),
-                      padding: EdgeInsets.symmetric(horizontal: 12),
-                      child: DropdownButton<String>(
-                        value:
-                            '2024', // Valor seleccionado (puedes cambiar esto según tus necesidades)
-                        onChanged: (value) {
-                          // Implementa la lógica cuando se selecciona un valor
-                        },
-                        underline:
-                            Container(), // Para ocultar la línea por defecto del DropdownButton
-                        items: List.generate(
-                          100,
-                          (index) => DropdownMenuItem(
-                            value: (2024 - index)
-                                .toString(), // Años desde 2024 hacia atrás
-                            child: Text((2024 - index).toString()),
-                          ),
-                        ),
                       ),
                     ),
                   ],

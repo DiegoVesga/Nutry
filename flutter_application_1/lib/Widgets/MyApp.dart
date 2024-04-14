@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import '../Screens/Login.dart';
+import '../Screens/Gender.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       // A widget which will be started on application startup
-      home: Login(title: 'Login'),
+      home: Gender(title: 'Login'),
     );
   }
 }
