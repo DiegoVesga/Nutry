@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import '../Screens/Gender.dart';
+import '../Screens/Weight.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       // A widget which will be started on application startup
-      home: Gender(title: 'Login'),
+      home: Weight(title: 'Login'),
     );
   }
 }
