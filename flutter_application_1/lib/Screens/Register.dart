@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Screens/Register.dart';
+import 'package:flutter_application_1/Screens/Birthday.dart';
+import 'package:flutter_application_1/Screens/Login.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class Login extends StatelessWidget {
+class Register extends StatelessWidget {
   final String title;
-  const Login({super.key, required this.title});
+  const Register({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -20,33 +22,26 @@ class Login extends StatelessWidget {
               height: double.infinity,
             ),
             Positioned(
-              top: MediaQuery.of(context).size.height * 0.15,
+              top: MediaQuery.of(context).size.height * 0.17,
               right: MediaQuery.of(context).size.height * 0.08,
               left: MediaQuery.of(context).size.height * 0.08,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'HELLO!',
+                    'CREATE ACCOUNT',
                     style: GoogleFonts.fredoka(
                         textStyle: TextStyle(
-                            fontSize: 50,
+                            fontSize: 25,
                             fontWeight: FontWeight.bold,
                             color: Color.fromRGBO(73, 45, 37, 1.0))),
                   ),
-                  Text(
-                    'lOG IN TO YOUR ACCOUNT',
-                    style: GoogleFonts.fredoka(
-                        textStyle: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w400,
-                            color: Color.fromRGBO(138, 107, 87, 1.0))),
-                  ),
-                  SizedBox(height: 50),
+
+                  SizedBox(height: 70),
                   Container(
                     color: Colors.white,
                     width: MediaQuery.of(context).size.width * 0.8,
-                    height: MediaQuery.of(context).size.width * 0.14,
+                    height: MediaQuery.of(context).size.height * 0.06,
                     child: TextField(
                       textAlign: TextAlign.start,
                       style: TextStyle(color: Color.fromRGBO(73, 45, 37, 1.0)),
@@ -75,11 +70,46 @@ class Login extends StatelessWidget {
                   ),
 
                   Padding(
-                    padding: const EdgeInsets.only(top: 20),
+                    padding: const EdgeInsets.only(top: 15),
                     child: Container(
                       color: Colors.white,
                       width: MediaQuery.of(context).size.width * 0.8,
-                      height: MediaQuery.of(context).size.width * 0.14,
+                      height: MediaQuery.of(context).size.height * 0.06,
+                      child: TextField(
+                        textAlign: TextAlign.start,
+                        style:
+                            TextStyle(color: Color.fromRGBO(73, 45, 37, 1.0)),
+                        obscureText: true,
+                        decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.email_outlined,
+                                color: Color.fromRGBO(73, 45, 37, 1)),
+                            hintText: 'E-mail',
+                            hintStyle: TextStyle(
+                                fontFamily: 'fredoka',
+                                color: Color.fromRGBO(205, 188, 174, 1)),
+                            contentPadding: EdgeInsets.all(20),
+                            //para darle forma a simple vista
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(50)),
+                                borderSide: BorderSide(
+                                    color: Color.fromRGBO(73, 45, 37, 1))),
+                            //es para darle forma cuando le das click
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(50)),
+                                borderSide: BorderSide(
+                                    color: Color.fromRGBO(73, 45, 37, 1)))),
+                      ),
+                    ),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15),
+                    child: Container(
+                      color: Colors.white,
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      height: MediaQuery.of(context).size.height * 0.06,
                       child: TextField(
                         textAlign: TextAlign.start,
                         style:
@@ -108,27 +138,52 @@ class Login extends StatelessWidget {
                       ),
                     ),
                   ),
-
-                  Container(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 10),
-                      child: Text('Forgot your password?',
-                          style: GoogleFonts.fredoka(
-                              textStyle: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w500,
-                                  color: Color.fromRGBO(205, 188, 174, 1.0),
-                                  decoration: TextDecoration.underline,
-                                  decorationColor:
-                                      Color.fromRGBO(205, 188, 174, 1.0)))),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15),
+                    child: Container(
+                      color: Colors.white,
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      height: MediaQuery.of(context).size.height * 0.06,
+                      child: TextField(
+                        textAlign: TextAlign.start,
+                        style:
+                            TextStyle(color: Color.fromRGBO(73, 45, 37, 1.0)),
+                        obscureText: true,
+                        decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.lock_outline_rounded,
+                                color: Color.fromRGBO(73, 45, 37, 1)),
+                            hintText: 'Repeat Password',
+                            hintStyle: TextStyle(
+                                fontFamily: 'fredoka',
+                                color: Color.fromRGBO(205, 188, 174, 1)),
+                            contentPadding: EdgeInsets.all(20),
+                            //para darle forma a simple vista
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(50)),
+                                borderSide: BorderSide(
+                                    color: Color.fromRGBO(73, 45, 37, 1))),
+                            //es para darle forma cuando le das click
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(50)),
+                                borderSide: BorderSide(
+                                    color: Color.fromRGBO(73, 45, 37, 1)))),
+                      ),
                     ),
                   ),
+
                   SizedBox(
                       height:
-                          20), // Añade un espacio entre el TextField y el botón
+                          35), // Añade un espacio entre el TextField y el botón
                   ElevatedButton(
                     onPressed: () {
                       
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Birthday(title: "Birthday")),
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xFF492D25),
@@ -137,7 +192,7 @@ class Login extends StatelessWidget {
                           vertical: 5), // Ajusta el ancho del botón
                     ),
                     child: Text(
-                      'Log In',
+                      'Sign In',
                       style: GoogleFonts.fredoka(
                           textStyle: TextStyle(
                         fontSize: 18,
@@ -152,25 +207,24 @@ class Login extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text('Don’t have an account? ',
+                        Text('Already have an account?',
                             style: GoogleFonts.fredoka(
                                 textStyle: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
                               color: Color.fromRGBO(138, 107, 87, 1.0),
                             ))),
-                        SizedBox(width: 3),
+                        SizedBox(width: 5,),
                         GestureDetector(
                           onTap: () {
                             // Aquí puedes agregar la navegación a la pantalla de login
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>
-                                      Register(title: "Register")),
+                                  builder: (context) => Login(title: "Login")),
                             );
                           },
-                          child: Text('Create',
+                          child: Text('Log In',
                               style: GoogleFonts.fredoka(
                                   textStyle: TextStyle(
                                 fontSize: 14,
@@ -193,13 +247,13 @@ class Login extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(right: 2, left: 2),
+                          padding: const EdgeInsets.only(right: 3, left: 3),
                           child: Container(
                             child: Text('OR',
                                 style: GoogleFonts.fredoka(
                                     textStyle: TextStyle(
                                   fontSize: 16,
-                                  fontWeight: FontWeight.w500,
+                                  fontWeight: FontWeight.w900,
                                   color: Color.fromRGBO(205, 188, 174, 1.0),
                                 ))),
                           ),
