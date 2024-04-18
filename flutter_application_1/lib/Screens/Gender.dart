@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'Weight.dart';
 
 class Gender extends StatelessWidget {
   final String title;
@@ -161,7 +162,11 @@ class Gender extends StatelessWidget {
                   ),
                   child: TextButton(
                     onPressed: () {
-                      // Acción a realizar al presionar el botón
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Weight(title: "Weight")),
+                      );
                     },
                     child: Text(
                       'Next',

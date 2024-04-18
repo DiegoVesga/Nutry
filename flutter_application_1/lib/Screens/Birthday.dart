@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'Gender.dart';
 
 class Birthday extends StatelessWidget {
   final String title;
@@ -219,7 +220,11 @@ class Birthday extends StatelessWidget {
                   ),
                   child: TextButton(
                     onPressed: () {
-                      // Acción a realizar al presionar el botón
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Gender(title: "Gender")),
+                      );
                     },
                     child: Text(
                       'Next',

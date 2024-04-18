@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'Height.dart';
 
 class Weight extends StatelessWidget {
   final String title;
@@ -121,8 +122,10 @@ class Weight extends StatelessWidget {
                       child: TextField(
                         decoration: InputDecoration(
                           hintText: 'Weight', // Texto por defecto del TextField
-                          border: InputBorder.none, // Oculta el borde por defecto
-                          contentPadding: EdgeInsets.zero, // Elimina el espacio interno por defecto
+                          border:
+                              InputBorder.none, // Oculta el borde por defecto
+                          contentPadding: EdgeInsets
+                              .zero, // Elimina el espacio interno por defecto
                         ),
                       ),
                     ),
@@ -144,10 +147,7 @@ class Weight extends StatelessWidget {
                         },
                         underline:
                             Container(), // Para ocultar la línea por defecto del DropdownButton
-                        items: [
-                          'Kg',
-                          'Lb'
-                        ].map((weight) {
+                        items: ['Kg', 'Lb'].map((weight) {
                           return DropdownMenuItem(
                             value: weight,
                             child: Text(weight),
@@ -173,7 +173,11 @@ class Weight extends StatelessWidget {
                   ),
                   child: TextButton(
                     onPressed: () {
-                      // Acción a realizar al presionar el botón
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Height(title: "Height")),
+                      );
                     },
                     child: Text(
                       'Next',
