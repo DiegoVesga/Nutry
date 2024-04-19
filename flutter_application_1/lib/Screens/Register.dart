@@ -39,7 +39,10 @@ class Register extends StatelessWidget {
 
                   SizedBox(height: 70),
                   Container(
-                    color: Colors.white,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
+                      color: Colors.white,
+                    ),
                     width: MediaQuery.of(context).size.width * 0.8,
                     height: MediaQuery.of(context).size.height * 0.06,
                     child: TextField(
@@ -72,14 +75,17 @@ class Register extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 15),
                     child: Container(
+                      
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
                       color: Colors.white,
+                    ),
                       width: MediaQuery.of(context).size.width * 0.8,
                       height: MediaQuery.of(context).size.height * 0.06,
                       child: TextField(
                         textAlign: TextAlign.start,
                         style:
                             TextStyle(color: Color.fromRGBO(73, 45, 37, 1.0)),
-                        obscureText: true,
                         decoration: InputDecoration(
                             prefixIcon: Icon(Icons.email_outlined,
                                 color: Color.fromRGBO(73, 45, 37, 1)),
@@ -107,7 +113,10 @@ class Register extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 15),
                     child: Container(
+                      decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
                       color: Colors.white,
+                    ),
                       width: MediaQuery.of(context).size.width * 0.8,
                       height: MediaQuery.of(context).size.height * 0.06,
                       child: TextField(
@@ -141,7 +150,10 @@ class Register extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 15),
                     child: Container(
+                      decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
                       color: Colors.white,
+                    ),
                       width: MediaQuery.of(context).size.width * 0.8,
                       height: MediaQuery.of(context).size.height * 0.06,
                       child: TextField(
@@ -178,7 +190,6 @@ class Register extends StatelessWidget {
                           35), // Añade un espacio entre el TextField y el botón
                   ElevatedButton(
                     onPressed: () {
-                      
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -214,7 +225,9 @@ class Register extends StatelessWidget {
                               fontWeight: FontWeight.w500,
                               color: Color.fromRGBO(138, 107, 87, 1.0),
                             ))),
-                        SizedBox(width: 5,),
+                        SizedBox(
+                          width: 5,
+                        ),
                         GestureDetector(
                           onTap: () {
                             // Aquí puedes agregar la navegación a la pantalla de login

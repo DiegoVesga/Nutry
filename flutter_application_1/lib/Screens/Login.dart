@@ -44,9 +44,12 @@ class Login extends StatelessWidget {
                   ),
                   SizedBox(height: 50),
                   Container(
-                    color: Colors.white,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
+                      color: Colors.white,
+                    ),
                     width: MediaQuery.of(context).size.width * 0.8,
-                    height: MediaQuery.of(context).size.width * 0.14,
+                    height: MediaQuery.of(context).size.width * 0.10,
                     child: TextField(
                       textAlign: TextAlign.start,
                       style: TextStyle(color: Color.fromRGBO(73, 45, 37, 1.0)),
@@ -77,9 +80,12 @@ class Login extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 20),
                     child: Container(
+                      decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
                       color: Colors.white,
+                    ),
                       width: MediaQuery.of(context).size.width * 0.8,
-                      height: MediaQuery.of(context).size.width * 0.14,
+                      height: MediaQuery.of(context).size.width * 0.10,
                       child: TextField(
                         textAlign: TextAlign.start,
                         style:
