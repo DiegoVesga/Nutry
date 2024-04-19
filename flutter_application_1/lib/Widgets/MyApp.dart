@@ -1,7 +1,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Screens/Login.dart';
-import 'package:flutter_application_1/Screens/Register.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

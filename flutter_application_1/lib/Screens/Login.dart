@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Screens/Home.dart';
 import 'package:flutter_application_1/Screens/Register.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -134,7 +135,11 @@ class Login extends StatelessWidget {
                           20), // Añade un espacio entre el TextField y el botón
                   ElevatedButton(
                     onPressed: () {
-                      
+                      Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Home(title: "Home")),
+                            );
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xFF492D25),
