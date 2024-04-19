@@ -39,24 +39,33 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xFFFAF6F5),
-        actions: [
-          Builder(
-            builder: (context) => IconButton(
+      appBar: PreferredSize(
+    preferredSize: Size.fromHeight(kToolbarHeight + 20.0), // Ajusta la altura del AppBar
+    child: AppBar(
+      backgroundColor: Color(0xFFFAF6F5),
+      automaticallyImplyLeading: false, // Deshabilita el botón de retroceso
+      actions: [
+        Builder(
+          builder: (context) => Padding(
+            padding: const EdgeInsets.only(top: 15.0, right: 20.0), // Ajusta el espacio hacia abajo y a la derecha
+            child: IconButton(
               icon: Icon(
                 Icons.menu,
                 size: 45,
+                color: Color(0xFF492D25),
               ),
               onPressed: () {
                 Scaffold.of(context).openEndDrawer(); // Abre el Drawer
               },
             ),
           ),
-        ],
-      ),
-      endDrawer: Container(
+        ),
+      ],
+    ),
+  ),
+      endDrawer: Container( 
         width: 250,
         child: Drawer(
           backgroundColor: Color(0xFFcec1b8),
@@ -73,7 +82,7 @@ class _HomeState extends State<Home> {
                         color: Color.fromRGBO(73, 45, 37, 1),
                       ),
                       Text(
-                        'William Insignares',
+                        'Cristiano Ronaldo',
                         style: GoogleFonts.fredoka(
                           textStyle: TextStyle(
                             fontSize: 20,
@@ -89,7 +98,8 @@ class _HomeState extends State<Home> {
                           width: 150,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),
-                            color: Color(0xFF492D25), // Color de fondo del botón
+                            color:
+                                Color(0xFF492D25), // Color de fondo del botón
                           ),
                           child: TextButton(
                             onPressed: () {
@@ -121,7 +131,8 @@ class _HomeState extends State<Home> {
                           width: 150,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),
-                            color: Color(0xFF492D25), // Color de fondo del botón
+                            color:
+                                Color(0xFF492D25), // Color de fondo del botón
                           ),
                           child: TextButton(
                             onPressed: () {
@@ -153,7 +164,41 @@ class _HomeState extends State<Home> {
                           color: Color(0xFF492D25), // Color de la línea
                         ),
                       ),
-                      Image.asset("assets/Nutry.jpeg"),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 25, bottom: 20),
+                        child: Image.asset(
+                          "assets/Nutry.png",
+                          height: 130,
+                          width: 130,
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          // Aquí puedes agregar la navegación a la pantalla de login
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Login(title: "T&C")),
+                          );
+                        },
+                        child: Text('T&C',
+                            style: GoogleFonts.fredoka(
+                                textStyle: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                              color: Color.fromRGBO(139, 133, 128, 1.0),
+                            ))),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 20),
+                        child: Text('Version 1',
+                              style: GoogleFonts.fredoka(
+                                  textStyle: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                                color: Color.fromRGBO(139, 133, 128, 1.0),
+                              ))),
+                      ),
                     ],
                   ),
                 ),
@@ -178,58 +223,57 @@ class _HomeState extends State<Home> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Primer Columna
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Icono de persona con línea de división
-                Container(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: Icon(
+            Container(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 40, left: 20),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Icono de persona con línea de división
+                    Icon(
                       Icons.person_outline,
-                      size: 120.0,
+                      size: 100,
                       color: Color(0xFF492d25),
                     ),
-                  ),
-                ),
-                SizedBox(width: 16.0), // Espacio entre el icono y los textos
-
-                // Columna de textos
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 20.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Hello',
-                        style: GoogleFonts.fredoka(
-                          textStyle: TextStyle(
-                            fontSize: 40,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xFF492D25),
+                    SizedBox(width: 16.0), // Espacio entre el icono y los textos
+                    Expanded(
+                      // Columna de textos
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Hello',
+                            style: GoogleFonts.fredoka(
+                              textStyle: TextStyle(
+                                fontSize: 40,
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xFF492D25),
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                      Text(
-                        'User Name',
-                        style: GoogleFonts.fredoka(
-                          textStyle: TextStyle(
-                            fontSize: 18,
-                            color: Color(0xFF492D25),
+                                        
+                          Text(
+                            'Cristiano Ronaldo',
+                            style: GoogleFonts.fredoka(
+                              textStyle: TextStyle(
+                                fontSize: 20,
+                                color: Color(0xFF492D25),
+                              ),
+                            ),
                           ),
-                        ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
             // Segunda Columna (Divider)
             Container(
               margin: EdgeInsets.only(
                   left: 20, bottom: 20), // Espacio entre el texto y la línea
               height: 1, // Grosor de la línea
-              width: 350, // Longitud de la línea
+              width: MediaQuery.of(context).size.width * 0.9, // Longitud de la línea
               color: Colors.black, // Color de la línea
             ),
 
@@ -238,9 +282,9 @@ class _HomeState extends State<Home> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 _buildButton('Details'),
-                SizedBox(width: 20),
+                SizedBox(width: 65),
                 _buildButton('Daily Goals'),
-                SizedBox(width: 20),
+                SizedBox(width: 65),
                 _buildButton('Options'),
               ],
             ),
@@ -318,7 +362,7 @@ class _HomeState extends State<Home> {
       child: Center(
         // Utilizamos Center para centrar todo el contenido verticalmente
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
               padding: const EdgeInsets.all(16.0),
