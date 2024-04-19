@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'Home.dart';
 
 class Height extends StatelessWidget {
   final String title;
@@ -173,7 +174,11 @@ class Height extends StatelessWidget {
                   ),
                   child: TextButton(
                     onPressed: () {
-                      // Acción a realizar al presionar el botón
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Home(title: "Gender")),
+                      );
                     },
                     child: Text(
                       'Next',
