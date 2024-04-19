@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Screens/Login.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class Home extends StatefulWidget {
   final String title;
@@ -15,6 +16,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   String selectedButton = ''; // Estado para rastrear el botón seleccionado
   int _currentIndex = 0; // Índice de la página actual en el CarouselSlider
+  final PanelController _panelController = PanelController();
 
   // Listas de elementos para cada tipo de contenido en el CarouselSlider
   List<Widget> _detailsCarouselItems = [
@@ -31,7 +33,7 @@ class _HomeState extends State<Home> {
 
   List<Widget> _optionsCarouselItems = [
     _buildCarouselItem('Option 1', Icons.settings),
-    _buildCarouselItem('              Food \n Preferences', Icons.favorite),
+    _buildCarouselItem('Food\nPreferences', Icons.favorite),
     _buildCarouselItem('Option 3', Icons.lightbulb),
   ];
 
@@ -57,7 +59,7 @@ class _HomeState extends State<Home> {
       endDrawer: Container(
         width: 250,
         child: Drawer(
-          backgroundColor: Color.fromRGBO(206, 193, 184, 1),
+          backgroundColor: Color(0xFFcec1b8),
           child: Column(
             children: [
               Padding(
@@ -87,16 +89,16 @@ class _HomeState extends State<Home> {
                           width: 150,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),
-                            color:
-                                Color(0xFF492D25), // Color de fondo del botón
+                            color: Color(0xFF492D25), // Color de fondo del botón
                           ),
                           child: TextButton(
                             onPressed: () {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) =>
-                                        Login(title: "Aqui va settings")),
+                                  builder: (context) =>
+                                      Login(title: "Aqui va settings"),
+                                ),
                               );
                             },
                             child: Text(
@@ -119,16 +121,15 @@ class _HomeState extends State<Home> {
                           width: 150,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),
-                            color:
-                                Color(0xFF492D25), // Color de fondo del botón
+                            color: Color(0xFF492D25), // Color de fondo del botón
                           ),
                           child: TextButton(
                             onPressed: () {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) =>
-                                        Login(title: "Login")),
+                                  builder: (context) => Login(title: "Login"),
+                                ),
                               );
                             },
                             child: Text(
@@ -152,10 +153,7 @@ class _HomeState extends State<Home> {
                           color: Color(0xFF492D25), // Color de la línea
                         ),
                       ),
-
-                      Image.asset(
-                        "assets/Nutry.jpeg"
-                      ),
+                      Image.asset("assets/Nutry.jpeg"),
                     ],
                   ),
                 ),
@@ -166,101 +164,112 @@ class _HomeState extends State<Home> {
         ),
       ),
       backgroundColor: Color(0xFFFAF6F5),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Primer Columna
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Icono de persona con línea de división
-              Container(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: Icon(
-                    Icons.person_outline,
-                    size: 120.0,
-                    color: Color(0xFF492d25),
+      body: SlidingUpPanel(
+        controller: _panelController,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(24.0),
+          topRight: Radius.circular(24.0),
+        ),
+        color: Color(0xFFcdbcae), // Fondo hexa cdbcae
+        minHeight: 100.0, // Altura mínima del panel
+        maxHeight: 400.0, // Altura máxima del panel
+        panelBuilder: (scrollController) => _buildPanel(scrollController),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Primer Columna
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Icono de persona con línea de división
+                Container(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: Icon(
+                      Icons.person_outline,
+                      size: 120.0,
+                      color: Color(0xFF492d25),
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(width: 16.0), // Espacio entre el icono y los textos
+                SizedBox(width: 16.0), // Espacio entre el icono y los textos
 
-              // Columna de textos
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Hello',
-                      style: GoogleFonts.fredoka(
-                        textStyle: TextStyle(
-                          fontSize: 40,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF492D25),
+                // Columna de textos
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 20.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Hello',
+                        style: GoogleFonts.fredoka(
+                          textStyle: TextStyle(
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF492D25),
+                          ),
                         ),
                       ),
-                    ),
-                    Text(
-                      'User Name',
-                      style: GoogleFonts.fredoka(
-                        textStyle: TextStyle(
-                          fontSize: 18,
-                          color: Color(0xFF492D25),
+                      Text(
+                        'User Name',
+                        style: GoogleFonts.fredoka(
+                          textStyle: TextStyle(
+                            fontSize: 18,
+                            color: Color(0xFF492D25),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          ),
-          // Segunda Columna (Divider)
-          Container(
-            margin: EdgeInsets.only(
-                left: 20, bottom: 20), // Espacio entre el texto y la línea
-            height: 1, // Grosor de la línea
-            width: 350, // Longitud de la línea
-            color: Colors.black, // Color de la línea
-          ),
-
-          // Tercer Columna (Row con botones)
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _buildButton('Details'),
-              SizedBox(width: 20),
-              _buildButton('Daily Goals'),
-              SizedBox(width: 20),
-              _buildButton('Options'),
-            ],
-          ),
-
-          SizedBox(height: 30), // Espacio adicional hacia abajo
-
-          // Cuarta Columna (Carousel Slider)
-          CarouselSlider(
-            options: CarouselOptions(
-              height: 200.0,
-              enlargeCenterPage: true,
-              enableInfiniteScroll:
-                  false, // Deshabilitar desplazamiento infinito
-              autoPlay: false, // Desactivar la reproducción automática
-              aspectRatio: 16 / 9,
-              viewportFraction:
-                  0.6, // Porcentaje de la pantalla que ocupa cada elemento
-              initialPage: _currentIndex,
-              onPageChanged: (index, reason) {
-                setState(() {
-                  _currentIndex =
-                      index; // Actualizar el índice de la página actual
-                });
-              },
+              ],
             ),
-            items: _getCarouselItems(),
-          ),
-        ],
+            // Segunda Columna (Divider)
+            Container(
+              margin: EdgeInsets.only(
+                  left: 20, bottom: 20), // Espacio entre el texto y la línea
+              height: 1, // Grosor de la línea
+              width: 350, // Longitud de la línea
+              color: Colors.black, // Color de la línea
+            ),
+
+            // Tercer Columna (Row con botones)
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                _buildButton('Details'),
+                SizedBox(width: 20),
+                _buildButton('Daily Goals'),
+                SizedBox(width: 20),
+                _buildButton('Options'),
+              ],
+            ),
+
+            SizedBox(height: 30), // Espacio adicional hacia abajo
+
+            // Cuarta Columna (Carousel Slider)
+            CarouselSlider(
+              options: CarouselOptions(
+                height: 200.0,
+                enlargeCenterPage: true,
+                enableInfiniteScroll:
+                    false, // Deshabilitar desplazamiento infinito
+                autoPlay: false, // Desactivar la reproducción automática
+                aspectRatio: 16 / 9,
+                viewportFraction:
+                    0.6, // Porcentaje de la pantalla que ocupa cada elemento
+                initialPage: _currentIndex,
+                onPageChanged: (index, reason) {
+                  setState(() {
+                    _currentIndex =
+                        index; // Actualizar el índice de la página actual
+                  });
+                },
+              ),
+              items: _getCarouselItems(),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -298,6 +307,168 @@ class _HomeState extends State<Home> {
             decoration:
                 isSelected ? TextDecoration.underline : TextDecoration.none,
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildPanel(ScrollController scrollController) {
+    return SingleChildScrollView(
+      controller: scrollController,
+      child: Center(
+        // Utilizamos Center para centrar todo el contenido verticalmente
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                'FOOD PREFERENCES',
+                style: GoogleFonts.fredoka(
+                  textStyle: TextStyle(
+                    fontSize: 24,
+                    color: Color(0xFF492D25),
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment
+                    .center, // Centramos los elementos horizontalmente
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Like:',
+                          style: GoogleFonts.fredoka(
+                            textStyle: TextStyle(
+                              fontSize: 18,
+                              color: Color(0xFF492D25),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 8.0),
+                        Text(
+                          'Food 1\nFood 2\nFood 3',
+                          style: GoogleFonts.fredoka(
+                            textStyle: TextStyle(
+                              fontSize: 18,
+                              color: Color(0xFF492D25),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Dislike:',
+                          style: GoogleFonts.fredoka(
+                            textStyle: TextStyle(
+                              fontSize: 18,
+                              color: Color(0xFF492D25),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 8.0),
+                        Text(
+                          'Food 4\nFood 5\nFood 6',
+                          style: GoogleFonts.fredoka(
+                            textStyle: TextStyle(
+                              fontSize: 18,
+                              color: Color(0xFF492D25),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                'RECIPES PREFERENCES',
+                style: GoogleFonts.fredoka(
+                  textStyle: TextStyle(
+                    fontSize: 24,
+                    color: Color(0xFF492D25),
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment
+                    .center, // Centramos los elementos horizontalmente
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Like:',
+                          style: GoogleFonts.fredoka(
+                            textStyle: TextStyle(
+                              fontSize: 18,
+                              color: Color(0xFF492D25),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 8.0),
+                        Text(
+                          'Recipe 1\nRecipe 2\nRecipe 3',
+                          style: GoogleFonts.fredoka(
+                            textStyle: TextStyle(
+                              fontSize: 18,
+                              color: Color(0xFF492D25),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Dislike:',
+                          style: GoogleFonts.fredoka(
+                            textStyle: TextStyle(
+                              fontSize: 18,
+                              color: Color(0xFF492D25),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 8.0),
+                        Text(
+                          'Recipe 4\nRecipe 5\nRecipe 6',
+                          style: GoogleFonts.fredoka(
+                            textStyle: TextStyle(
+                              fontSize: 18,
+                              color: Color(0xFF492D25),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
