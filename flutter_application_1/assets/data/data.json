@@ -1,0 +1,225 @@
+{
+  "usuarios" : [
+  {
+    "user_id" : 1,
+    "nombre" : "Max Power",
+    "correo" : "max@correo.com",
+    "password"  : "12345",
+    "birthdate" : "2004/07/03",
+    "gender" : "Male",
+    "weight" : 70,
+    "height" : 170,
+    "medical_condition" : [
+      {
+        "id" : 1,
+        "type" : "Physic",
+        "affected_area" : "Arm",
+        "effort_level" : "Low" 
+      }
+    ],
+    "food_preferences" : [
+      {
+        "id" : 1,
+        "food_like" : [
+          "Pizza",
+          "Sushi",
+          "Ensalada César"
+        ],
+        "food_dislike" : [
+          "Hígado",
+          "Durian",
+          "Ostras"
+        ],
+        "recipe_like" : [
+          "Paella Valenciana",
+          "Tacos al Pastor",
+          "Ramen"
+        ],
+        "recipe_dislike" : [
+          "Haggis",
+          "Surströmming",
+          "Balut"
+        ]
+      }
+    ]
+  },
+  {
+    "user_id" : 2,
+    "nombre" : "Hector Ruiz",
+    "correo" : "hectorruiz@gmail.com",
+    "password"  : "hector12345",
+    "birthdate" : "1995/02/18",
+    "gender" : "Male",
+    "weight" : 80,
+    "height" : 180,
+    "medical_condition" : [
+      {
+        "id" : 1,
+        "type" : "Physic",
+        "affected_area" : "Arm",
+        "effort_level" : "Low" 
+      },
+      {
+        "id" : 2,
+        "type" : "Mental",
+        "affected_area" : "Head",
+        "effort_level" : "High" 
+      }
+    ],
+    "food_preferences" : [
+      {
+        "id" : 1,
+        "food_like" : [
+          "Pasta Carbonara",
+          "Empanadas",
+          "Ceviche"
+        ],
+        "food_dislike" : [
+          "Tripas",
+          "Pulpo",
+          "Acelgas"
+        ],
+        "recipe_like" : [
+          "Lasagna Bolognese",
+          "Cochinita Pibil",
+          "Causa Limeña"
+        ],
+        "recipe_dislike" : [
+          "Casu Marzu",
+          "Hakarl",
+          "Century Egg"
+        ]
+      }
+    ]
+  },
+  {
+    "user_id" : 3,
+    "nombre" : "Maria Lopez",
+    "correo" : "marialopez@gmail.com",
+    "password"  : "maria12345",
+    "birthdate" : "1990/05/25",
+    "gender" : "Female",
+    "weight" : 65,
+    "height" : 165,
+    "medical_condition" : [
+      {
+        "id" : 1,
+        "type" : "Physic",
+        "affected_area" : "Leg",
+        "effort_level" : "Medium" 
+      }
+    ],
+    "food_preferences" : [
+      {
+        "id" : 1,
+        "food_like" : [
+          "Tacos",
+          "Paella",
+          "Salmon"
+        ],
+        "food_dislike" : [
+          "Brocoli",
+          "Espinacas",
+          "Higado"
+        ],
+        "recipe_like" : [
+          "Tacos al Pastor",
+          "Paella Valenciana",
+          "Salmon a la Plancha"
+        ],
+        "recipe_dislike" : [
+          "Haggis",
+          "Surströmming",
+          "Balut"
+        ]
+      }
+    ]
+  },
+  {
+    "user_id" : 4,
+    "nombre" : "Juan Perez",
+    "correo" : "juanperez@gmail.com",
+    "password"  : "juan12345",
+    "birthdate" : "1985/11/12",
+    "gender" : "Male",
+    "weight" : 75,
+    "height" : 175,
+    "medical_condition" : [
+      {
+        "id" : 1,
+        "type" : "Mental",
+        "affected_area" : "Head",
+        "effort_level" : "High" 
+      }
+    ],
+    "food_preferences" : [
+      {
+        "id" : 1,
+        "food_like" : [
+          "Hamburguesa",
+          "Papas Fritas",
+          "Helado"
+        ],
+        "food_dislike" : [
+          "Zanahoria",
+          "Apio",
+          "Remolacha"
+        ],
+        "recipe_like" : [
+          "Hamburguesa con Queso",
+          "Papas Fritas Caseras",
+          "Helado de Vainilla"
+        ],
+        "recipe_dislike" : [
+          "Haggis",
+          "Surströmming",
+          "Balut"
+        ]
+      }
+    ]
+  },
+  {
+    "user_id" : 5,
+    "nombre" : "Ana Torres",
+    "correo" : "anatorres@gmail.com",
+    "password"  : "ana12345",
+    "birthdate" : "1992/04/30",
+    "gender" : "Female",
+    "weight" : 60,
+    "height" : 160,
+    "medical_condition" : [
+      {
+        "id" : 1,
+        "type" : "Physic",
+        "affected_area" : "Back",
+        "effort_level" : "Low" 
+      }
+    ],
+    "food_preferences" : [
+      {
+        "id" : 1,
+        "food_like" : [
+          "Ensalada",
+          "Frutas",
+          "Yogurt"
+        ],
+        "food_dislike" : [
+          "Carne Roja",
+          "Pollo",
+          "Pescado"
+        ],
+        "recipe_like" : [
+          "Ensalada Cesar",
+          "Frutas Frescas",
+          "Yogurt Natural"
+        ],
+        "recipe_dislike" : [
+          "Haggis",
+          "Surströmming",
+          "Balut"
+        ]
+      }
+    ]
+  }
+]
+}

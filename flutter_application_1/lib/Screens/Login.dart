@@ -10,8 +10,10 @@ class Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         body: Stack(
           children: [
             Image.asset(
@@ -62,7 +64,7 @@ class Login extends StatelessWidget {
                           hintStyle: TextStyle(
                               fontFamily: 'fredoka',
                               color: Color.fromRGBO(205, 188, 174, 1)),
-                          contentPadding: EdgeInsets.all(20),
+                          contentPadding: EdgeInsets.all(0),
                           //para darle forma a simple vista
                           enabledBorder: OutlineInputBorder(
                               borderRadius:
@@ -79,12 +81,12 @@ class Login extends StatelessWidget {
                   ),
 
                   Padding(
-                    padding: const EdgeInsets.only(top: 20),
+                    padding: EdgeInsets.only(top: size.height * 0.02),
                     child: Container(
                       decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                      color: Colors.white,
-                    ),
+                        borderRadius: BorderRadius.circular(50),
+                        color: Colors.white,
+                      ),
                       width: MediaQuery.of(context).size.width * 0.8,
                       height: MediaQuery.of(context).size.width * 0.10,
                       child: TextField(
@@ -99,7 +101,7 @@ class Login extends StatelessWidget {
                             hintStyle: TextStyle(
                                 fontFamily: 'fredoka',
                                 color: Color.fromRGBO(205, 188, 174, 1)),
-                            contentPadding: EdgeInsets.all(20),
+                            contentPadding: EdgeInsets.all(0),
                             //para darle forma a simple vista
                             enabledBorder: OutlineInputBorder(
                                 borderRadius:
@@ -118,11 +120,11 @@ class Login extends StatelessWidget {
 
                   Container(
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 10),
+                      padding: EdgeInsets.only(top: size.height * 0.015),
                       child: Text('Forgot your password?',
                           style: GoogleFonts.fredoka(
                               textStyle: TextStyle(
-                                  fontSize: 14,
+                                  fontSize: size.height * 0.015,
                                   fontWeight: FontWeight.w500,
                                   color: Color.fromRGBO(205, 188, 174, 1.0),
                                   decoration: TextDecoration.underline,
@@ -132,14 +134,14 @@ class Login extends StatelessWidget {
                   ),
                   SizedBox(
                       height:
-                          20), // Añade un espacio entre el TextField y el botón
+                          size.height * 0.03), // Añade un espacio entre el TextField y el botón
                   ElevatedButton(
                     onPressed: () {
                       Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Home(title: "Home")),
-                            );
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Home(title: "Home")),
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xFF492D25),
@@ -159,7 +161,7 @@ class Login extends StatelessWidget {
                   ),
 
                   Padding(
-                    padding: const EdgeInsets.only(top: 20),
+                    padding: EdgeInsets.only(top: size.height * 0.02),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -209,7 +211,7 @@ class Login extends StatelessWidget {
                             child: Text('OR',
                                 style: GoogleFonts.fredoka(
                                     textStyle: TextStyle(
-                                  fontSize: 16,
+                                  fontSize: 13,
                                   fontWeight: FontWeight.w500,
                                   color: Color.fromRGBO(205, 188, 174, 1.0),
                                 ))),
