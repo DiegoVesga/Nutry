@@ -1,10 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Screens/Login.dart';
+import 'package:flutter_application_1/main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'Home.dart';
 
 class Height extends StatelessWidget {
+  int id;
   final String title;
-  const Height({Key? key, required this.title}) : super(key: key);
+  Height({required this.id, Key? key, required this.title}) : super(key: key);
+  TextEditingController heightController = TextEditingController();
+
+  Future<void> addHeight() async {
+    for (int i = 0; i < usersList.length; i++) {
+      if (id == usersList[i]['user_id']) {
+        //deben colocar una comprobacion al textfield para solo colocar numeros y que el teclado sea numerico
+        int height = int.parse(heightController.text);
+        usersList[i]['height'] = height;
+        print('todo el usuario: ${usersList[i]}');
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -122,8 +137,10 @@ class Height extends StatelessWidget {
                       child: TextField(
                         decoration: InputDecoration(
                           hintText: 'Height', // Texto por defecto del TextField
-                          border: InputBorder.none, // Oculta el borde por defecto
-                          contentPadding: EdgeInsets.zero, // Elimina el espacio interno por defecto
+                          border:
+                              InputBorder.none, // Oculta el borde por defecto
+                          contentPadding: EdgeInsets
+                              .zero, // Elimina el espacio interno por defecto
                         ),
                       ),
                     ),
@@ -145,10 +162,7 @@ class Height extends StatelessWidget {
                         },
                         underline:
                             Container(), // Para ocultar la línea por defecto del DropdownButton
-                        items: [
-                          'Cm',
-                          'In'
-                        ].map((height) {
+                        items: ['Cm', 'In'].map((height) {
                           return DropdownMenuItem(
                             value: height,
                             child: Text(height),
@@ -174,14 +188,15 @@ class Height extends StatelessWidget {
                   ),
                   child: TextButton(
                     onPressed: () {
+                      addHeight();
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => Home(title: "Gender")),
+                            builder: (context) => Login(title: "Login")),
                       );
                     },
                     child: Text(
-                      'Next',
+                      'Finish',
                       style: GoogleFonts.fredoka(
                         textStyle: const TextStyle(
                           fontSize: 18,

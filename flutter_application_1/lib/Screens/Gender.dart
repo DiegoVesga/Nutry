@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'Weight.dart';
 
 class Gender extends StatelessWidget {
+  int id;
   final String title;
-  const Gender({Key? key, required this.title}) : super(key: key);
+  Gender({required this.id, Key? key, required this.title}) : super(key: key);
+
+  Future<void> addGender() async {
+    for (int i = 0; i < usersList.length; i++) {
+      if (id == usersList[i]['user_id']) {
+        //aca se cambia lo que se iguala cuando arreglen los dropdowns
+        usersList[i]['gender'] = 'male';
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -162,10 +173,14 @@ class Gender extends StatelessWidget {
                   ),
                   child: TextButton(
                     onPressed: () {
+                      addGender();
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => Weight(title: "Weight")),
+                            builder: (context) => Weight(
+                                  title: "Weight",
+                                  id: id,
+                                )),
                       );
                     },
                     child: Text(

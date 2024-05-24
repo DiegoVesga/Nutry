@@ -1,13 +1,53 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Screens/Birthday.dart';
 import 'package:flutter_application_1/Screens/Login.dart';
+import 'package:flutter_application_1/Services/shared_prefs.dart';
+import 'package:flutter_application_1/main.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class Register extends StatelessWidget {
+class Register extends StatefulWidget {
   final String title;
   const Register({super.key, required this.title});
+
+  @override
+  State<Register> createState() => _RegisterState();
+}
+
+class _RegisterState extends State<Register> {
+  final prefs = UserPrefs();
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController repeatpasswordController = TextEditingController();
+
+  Future<void> register() async {
+    if (usernameController.text != '' &&
+        emailController.text != '' &&
+        passwordController.text != '' &&
+        repeatpasswordController.text == passwordController.text) {
+      Map<String, dynamic> newUser = {
+        "user_id": usersList.length + 1,
+        "nombre": usernameController.text,
+        "correo": emailController.text,
+        "password": passwordController.text,
+        "birthdate": "0000/00/00",
+        "gender": "gender",
+        "weight": 0,
+        "height": 0,
+        "medical_condition": [],
+        "food_preferences": []
+      };
+      usersList.addAll([newUser]);
+      print(usersList.reversed);
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => Birthday(id: 1, title: 'title')),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +86,7 @@ class Register extends StatelessWidget {
                     width: MediaQuery.of(context).size.width * 0.8,
                     height: MediaQuery.of(context).size.height * 0.06,
                     child: TextField(
+                      controller: usernameController,
                       textAlign: TextAlign.start,
                       style: TextStyle(color: Color.fromRGBO(73, 45, 37, 1.0)),
                       //obscureText: true, para el registro
@@ -75,14 +116,14 @@ class Register extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 15),
                     child: Container(
-                      
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                      color: Colors.white,
-                    ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: Colors.white,
+                      ),
                       width: MediaQuery.of(context).size.width * 0.8,
                       height: MediaQuery.of(context).size.height * 0.06,
                       child: TextField(
+                        controller: emailController,
                         textAlign: TextAlign.start,
                         style:
                             TextStyle(color: Color.fromRGBO(73, 45, 37, 1.0)),
@@ -114,12 +155,13 @@ class Register extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 15),
                     child: Container(
                       decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                      color: Colors.white,
-                    ),
+                        borderRadius: BorderRadius.circular(50),
+                        color: Colors.white,
+                      ),
                       width: MediaQuery.of(context).size.width * 0.8,
                       height: MediaQuery.of(context).size.height * 0.06,
                       child: TextField(
+                        controller: passwordController,
                         textAlign: TextAlign.start,
                         style:
                             TextStyle(color: Color.fromRGBO(73, 45, 37, 1.0)),
@@ -151,12 +193,13 @@ class Register extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 15),
                     child: Container(
                       decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                      color: Colors.white,
-                    ),
+                        borderRadius: BorderRadius.circular(50),
+                        color: Colors.white,
+                      ),
                       width: MediaQuery.of(context).size.width * 0.8,
                       height: MediaQuery.of(context).size.height * 0.06,
                       child: TextField(
+                        controller: repeatpasswordController,
                         textAlign: TextAlign.start,
                         style:
                             TextStyle(color: Color.fromRGBO(73, 45, 37, 1.0)),
@@ -190,11 +233,7 @@ class Register extends StatelessWidget {
                           35), // Añade un espacio entre el TextField y el botón
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => Birthday(title: "Birthday")),
-                      );
+                      register();
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xFF492D25),

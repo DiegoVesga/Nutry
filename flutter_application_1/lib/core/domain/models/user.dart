@@ -2,14 +2,14 @@ import 'package:flutter_application_1/core/domain/models/food_preference.dart';
 import 'package:flutter_application_1/core/domain/models/medical_condition.dart';
 
 class User {
-  final String user_id;
+  final int user_id;
   final String nombre;
   final String correo;
   final String password;
   final String birthdate;
   final String gender;
-  final String weight;
-  final String height;
+  final int weight;
+  final int height;
   final List<MedicalCondition> medical_condition;
   final List<FoodPreferences> food_preferences;
 

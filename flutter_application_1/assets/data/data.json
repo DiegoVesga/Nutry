@@ -3,8 +3,8 @@
   {
     "user_id" : 1,
     "nombre" : "Max Power",
-    "correo" : "max@correo.com",
-    "password"  : "12345",
+    "correo" : "1",
+    "password"  : "1",
     "birthdate" : "2004/07/03",
     "gender" : "Male",
     "weight" : 70,

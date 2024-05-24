@@ -1,12 +1,66 @@
+import 'dart:convert';
+import 'package:flutter_application_1/Services/shared_prefs.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_application_1/Screens/Home.dart';
 import 'package:flutter_application_1/Screens/Register.dart';
+import 'package:flutter_application_1/Services/shared_prefs.dart';
+import 'package:flutter_application_1/core/domain/models/user.dart';
+import 'package:flutter_application_1/main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class Login extends StatelessWidget {
+
+class Login extends StatefulWidget {
   final String title;
   const Login({super.key, required this.title});
+
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  final prefs = UserPrefs();
+  
+  late User _user;
+
+  String email = '';
+  String password = '';
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  //metodo login
+  Future<void> login() async {
+    
+
+    email = emailController.text;
+    password = passwordController.text;
+
+    for (int i = 0; i < usersList.length; i++) {
+      if (usersList[i]['correo'] == email &&
+          usersList[i]['password'] == password) {
+        _user = User.fromJson(usersList[i]);
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute<void>(builder: (BuildContext context) {
+          return Home(title: 'Home',id: usersList[i]['user_id'],);
+        }), (Route<dynamic> route) => false);
+
+        print('encontrado');
+        prefs.email = email;
+        prefs.password = password;
+        prefs.username = usersList[i]['nombre'];
+        print(usersList[i]);
+        break;
+      } else {
+        print('no encontrado');
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,13 +108,14 @@ class Login extends StatelessWidget {
                     width: MediaQuery.of(context).size.width * 0.8,
                     height: MediaQuery.of(context).size.width * 0.10,
                     child: TextField(
+                      controller: emailController,
                       textAlign: TextAlign.start,
                       style: TextStyle(color: Color.fromRGBO(73, 45, 37, 1.0)),
                       //obscureText: true, para el registro
                       decoration: InputDecoration(
                           prefixIcon: Icon(Icons.account_circle,
                               color: Color.fromRGBO(73, 45, 37, 1)),
-                          hintText: 'Username',
+                          hintText: 'Email',
                           hintStyle: TextStyle(
                               fontFamily: 'fredoka',
                               color: Color.fromRGBO(205, 188, 174, 1)),
@@ -90,6 +145,7 @@ class Login extends StatelessWidget {
                       width: MediaQuery.of(context).size.width * 0.8,
                       height: MediaQuery.of(context).size.width * 0.10,
                       child: TextField(
+                        controller: passwordController,
                         textAlign: TextAlign.start,
                         style:
                             TextStyle(color: Color.fromRGBO(73, 45, 37, 1.0)),
@@ -133,15 +189,11 @@ class Login extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                      height:
-                          size.height * 0.03), // Añade un espacio entre el TextField y el botón
+                      height: size.height *
+                          0.03), // Añade un espacio entre el TextField y el botón
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => Home(title: "Home")),
-                      );
+                      login();
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xFF492D25),

@@ -1,22 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Screens/Login.dart';
+import 'package:flutter_application_1/Services/shared_prefs.dart';
+import 'package:flutter_application_1/main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class Home extends StatefulWidget {
   final String title;
-
-  const Home({Key? key, required this.title}) : super(key: key);
+  int id;
+  Home({required this.id, Key? key, required this.title}) : super(key: key);
 
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
+  final prefs = UserPrefs();
   String selectedButton = ''; // Estado para rastrear el botón seleccionado
   int _currentIndex = 0; // Índice de la página actual en el CarouselSlider
   final PanelController _panelController = PanelController();
+  List food_like = [];
+  List food_dislike = [];
+  List recipe_like = [];
+  List recipe_dislike = [];
+  List food_preferences = [];
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+  Future<void> getData() async {
+    for (int i = 0; i < usersList.length; i++) {
+      if (widget.id == usersList[i]['user_id']) {
+        food_preferences = usersList[i]['food_preferences'];
+      }
+    }
+  }
 
   // Listas de elementos para cada tipo de contenido en el CarouselSlider
   List<Widget> _detailsCarouselItems = [
@@ -42,30 +64,34 @@ class _HomeState extends State<Home> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: PreferredSize(
-    preferredSize: Size.fromHeight(kToolbarHeight + 20.0), // Ajusta la altura del AppBar
-    child: AppBar(
-      backgroundColor: Color(0xFFFAF6F5),
-      automaticallyImplyLeading: false, // Deshabilita el botón de retroceso
-      actions: [
-        Builder(
-          builder: (context) => Padding(
-            padding: const EdgeInsets.only(top: 15.0, right: 20.0), // Ajusta el espacio hacia abajo y a la derecha
-            child: IconButton(
-              icon: Icon(
-                Icons.menu,
-                size: 45,
-                color: Color(0xFF492D25),
+        preferredSize: Size.fromHeight(
+            kToolbarHeight + 20.0), // Ajusta la altura del AppBar
+        child: AppBar(
+          backgroundColor: Color(0xFFFAF6F5),
+          automaticallyImplyLeading: false, // Deshabilita el botón de retroceso
+          actions: [
+            Builder(
+              builder: (context) => Padding(
+                padding: const EdgeInsets.only(
+                    top: 15.0,
+                    right:
+                        20.0), // Ajusta el espacio hacia abajo y a la derecha
+                child: IconButton(
+                  icon: Icon(
+                    Icons.menu,
+                    size: 45,
+                    color: Color(0xFF492D25),
+                  ),
+                  onPressed: () {
+                    Scaffold.of(context).openEndDrawer(); // Abre el Drawer
+                  },
+                ),
               ),
-              onPressed: () {
-                Scaffold.of(context).openEndDrawer(); // Abre el Drawer
-              },
             ),
-          ),
+          ],
         ),
-      ],
-    ),
-  ),
-      endDrawer: Container( 
+      ),
+      endDrawer: Container(
         width: 250,
         child: Drawer(
           backgroundColor: Color(0xFFcec1b8),
@@ -82,7 +108,7 @@ class _HomeState extends State<Home> {
                         color: Color.fromRGBO(73, 45, 37, 1),
                       ),
                       Text(
-                        'Cristiano Ronaldo',
+                        prefs.username,
                         style: GoogleFonts.fredoka(
                           textStyle: TextStyle(
                             fontSize: 20,
@@ -136,11 +162,16 @@ class _HomeState extends State<Home> {
                           ),
                           child: TextButton(
                             onPressed: () {
-                              Navigator.push(
+                              prefs.email = '';
+                              prefs.password = '';
+                              prefs.username = '';
+                              Navigator.pushAndRemoveUntil(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Login(title: "Login"),
-                                ),
+                                    builder: (context) => const Login(
+                                          title: 'Login',
+                                        )),
+                                (Route<dynamic> route) => false,
                               );
                             },
                             child: Text(
@@ -192,12 +223,12 @@ class _HomeState extends State<Home> {
                       Padding(
                         padding: const EdgeInsets.only(top: 20),
                         child: Text('Version 1',
-                              style: GoogleFonts.fredoka(
-                                  textStyle: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                                color: Color.fromRGBO(139, 133, 128, 1.0),
-                              ))),
+                            style: GoogleFonts.fredoka(
+                                textStyle: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                              color: Color.fromRGBO(139, 133, 128, 1.0),
+                            ))),
                       ),
                     ],
                   ),
@@ -235,7 +266,8 @@ class _HomeState extends State<Home> {
                       size: 100,
                       color: Color(0xFF492d25),
                     ),
-                    SizedBox(width: 16.0), // Espacio entre el icono y los textos
+                    SizedBox(
+                        width: 16.0), // Espacio entre el icono y los textos
                     Expanded(
                       // Columna de textos
                       child: Column(
@@ -251,9 +283,8 @@ class _HomeState extends State<Home> {
                               ),
                             ),
                           ),
-                                        
                           Text(
-                            'Cristiano Ronaldo',
+                            prefs.username,
                             style: GoogleFonts.fredoka(
                               textStyle: TextStyle(
                                 fontSize: 20,
@@ -273,7 +304,8 @@ class _HomeState extends State<Home> {
               margin: EdgeInsets.only(
                   left: 20, bottom: 20), // Espacio entre el texto y la línea
               height: 1, // Grosor de la línea
-              width: MediaQuery.of(context).size.width * 0.9, // Longitud de la línea
+              width: MediaQuery.of(context).size.width *
+                  0.9, // Longitud de la línea
               color: Colors.black, // Color de la línea
             ),
 
@@ -398,7 +430,7 @@ class _HomeState extends State<Home> {
                         ),
                         SizedBox(height: 8.0),
                         Text(
-                          'Food 1\nFood 2\nFood 3',
+                          food_preferences.isNotEmpty ? '${food_preferences[0]['food_like'][0]}\n${food_preferences[0]['food_like'][1]}\n${food_preferences[0]['food_like'][2]}' : 'No registrado\nNo registrado\nNo registrado',
                           style: GoogleFonts.fredoka(
                             textStyle: TextStyle(
                               fontSize: 18,
@@ -424,7 +456,7 @@ class _HomeState extends State<Home> {
                         ),
                         SizedBox(height: 8.0),
                         Text(
-                          'Food 4\nFood 5\nFood 6',
+                          food_preferences.isNotEmpty ? '${food_preferences[0]['food_dislike'][0]}\n${food_preferences[0]['food_dislike'][1]}\n${food_preferences[0]['food_dislike'][2]}' : 'No registrado\nNo registrado\nNo registrado',
                           style: GoogleFonts.fredoka(
                             textStyle: TextStyle(
                               fontSize: 18,
@@ -472,7 +504,7 @@ class _HomeState extends State<Home> {
                         ),
                         SizedBox(height: 8.0),
                         Text(
-                          'Recipe 1\nRecipe 2\nRecipe 3',
+                          food_preferences.isNotEmpty ? '${food_preferences[0]['recipe_like'][0]}\n${food_preferences[0]['recipe_like'][1]}\n${food_preferences[0]['recipe_like'][2]}'  : 'No registrado\nNo registrado\nNo registrado',
                           style: GoogleFonts.fredoka(
                             textStyle: TextStyle(
                               fontSize: 18,
@@ -498,7 +530,7 @@ class _HomeState extends State<Home> {
                         ),
                         SizedBox(height: 8.0),
                         Text(
-                          'Recipe 4\nRecipe 5\nRecipe 6',
+                          food_preferences.isNotEmpty ? '${food_preferences[0]['recipe_dislike'][0]}\n${food_preferences[0]['recipe_dislike'][1]}\n${food_preferences[0]['recipe_dislike'][2]}' : 'No registrado\nNo registrado\nNo registrado',
                           style: GoogleFonts.fredoka(
                             textStyle: TextStyle(
                               fontSize: 18,

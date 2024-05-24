@@ -1,10 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'Gender.dart';
 
 class Birthday extends StatelessWidget {
+  int id;
   final String title;
-  const Birthday({Key? key, required this.title}) : super(key: key);
+  Birthday({required this.id, Key? key, required this.title}) : super(key: key);
+
+  Future<void> addBirthDay() async {
+    for (int i = 0; i < usersList.length; i++) {
+      if (id == usersList[i]['user_id']) {
+        //aca se cambia lo que se iguala cuando arreglen los dropdowns
+        usersList[i]['birthdate'] = '2024/01/01';
+        print('aca se cambio supuestamente: ${usersList[i]['birthdate']}');
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -220,10 +232,14 @@ class Birthday extends StatelessWidget {
                   ),
                   child: TextButton(
                     onPressed: () {
+                      addBirthDay();
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => Gender(title: "Gender")),
+                            builder: (context) => Gender(
+                                  title: "Gender",
+                                  id: id,
+                                )),
                       );
                     },
                     child: Text(

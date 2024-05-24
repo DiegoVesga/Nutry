@@ -1,5 +1,5 @@
 class MedicalCondition {
-  late final int id;
+  final int id;
   final String type;
   final String affectedArea;
   final String effortLevel;

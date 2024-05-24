@@ -1,10 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'Height.dart';
 
 class Weight extends StatelessWidget {
+  int id;
   final String title;
-  const Weight({Key? key, required this.title}) : super(key: key);
+  Weight({required this.id, Key? key, required this.title}) : super(key: key);
+  TextEditingController weightController = TextEditingController();
+
+  Future<void> addWeight() async {
+    for (int i = 0; i < usersList.length; i++) {
+      if (id == usersList[i]['user_id']) {
+        //deben colocar una comprobacion al textfield para solo colocar numeros y que el teclado sea numerico
+        int weight = int.parse(weightController.text);
+        usersList[i]['weight'] = weight;
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -120,6 +133,7 @@ class Weight extends StatelessWidget {
                       ),
                       padding: EdgeInsets.symmetric(horizontal: 12),
                       child: TextField(
+                        controller: weightController,
                         decoration: InputDecoration(
                           hintText: 'Weight', // Texto por defecto del TextField
                           border:
@@ -173,10 +187,14 @@ class Weight extends StatelessWidget {
                   ),
                   child: TextButton(
                     onPressed: () {
+                      addWeight();
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => Height(title: "Height")),
+                            builder: (context) => Height(
+                                  title: "Height",
+                                  id: id,
+                                )),
                       );
                     },
                     child: Text(
