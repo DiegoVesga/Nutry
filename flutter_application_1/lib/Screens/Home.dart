@@ -146,8 +146,10 @@ class _HomeState extends State<Home> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) =>
-                                      Settings(title: "Aqui va settings", id: 1,),
+                                  builder: (context) => Settings(
+                                    title: "Aqui va settings",
+                                    id: 1,
+                                  ),
                                 ),
                               );
                             },
@@ -224,8 +226,7 @@ class _HomeState extends State<Home> {
                           // Aquí puedes agregar la navegación a la pantalla de login
                           Navigator.push(
                             context,
-                            MaterialPageRoute(
-                                builder: (context) => Terminos()),
+                            MaterialPageRoute(builder: (context) => Terminos()),
                           );
                         },
                         child: Text('T&C',
@@ -376,93 +377,53 @@ class _HomeState extends State<Home> {
 
             SizedBox(height: size.height * 0.04),
 
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Food()),
-                );
-              },
-              child: Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(left: size.width * 0.04),
-                      child: Container(
-                        width: MediaQuery.of(context).size.width * 0.4,
-                        height: MediaQuery.of(context).size.height * 0.2,
-                        child: AspectRatio(
-                          aspectRatio: 16 / 9,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
-                            child: Image.asset(
-                              "assets/PolloEsparragos.jpg",
-                              fit: BoxFit.cover,
+            ListView.builder(
+              itemCount: 1,
+              itemBuilder: (BuildContext context, int index) {
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Food()),
+                    );
+                  },
+                  child: Container(
+                    margin: EdgeInsets.symmetric(vertical: 10.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(left: size.width * 0.04),
+                          child: Container(
+                            width: MediaQuery.of(context).size.width * 0.4,
+                            height: MediaQuery.of(context).size.height * 0.2,
+                            child: AspectRatio(
+                              aspectRatio: 16 / 9,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(20),
+                                child: Image.asset(
+                                  "assets/PolloEsparragos.jpg", // Puedes cambiar la imagen según el índice si tienes una lista de imágenes
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ),
-                    SizedBox(width: size.width * 0.02),
-                    Text(
-                      'Pollo a la parrilla \n con espárragos y \n champiñones',
-                      style: GoogleFonts.fredoka(
-                        fontSize: size.width * 0.05,
-                        fontWeight: FontWeight.w400,
-                        color: Color(0xFF8A6B57),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-
-            SizedBox(height: size.height * 0.02),
-
-
-             GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Food()),
-                );
-              },
-              child: Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(left: size.width * 0.04),
-                      child: Container(
-                        width: MediaQuery.of(context).size.width * 0.4,
-                        height: MediaQuery.of(context).size.height * 0.2,
-                        child: AspectRatio(
-                          aspectRatio: 16 / 9,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
-                            child: Image.asset(
-                              "assets/SalmonQuinoa.jpg",
-                              fit: BoxFit.cover,
-                            ),
+                        SizedBox(width: size.width * 0.02),
+                        Text(
+                          'Pollo a la parrilla \n con espárragos y \n champiñones',
+                          style: GoogleFonts.fredoka(
+                            fontSize: size.width * 0.05,
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xFF8A6B57),
                           ),
                         ),
-                      ),
+                      ],
                     ),
-                    SizedBox(width: size.width * 0.02),
-                    Text(
-                      'Salmón al Horno \n con Espárragos y \n Quinoa',
-                      style: GoogleFonts.fredoka(
-                        fontSize: size.width * 0.05,
-                        fontWeight: FontWeight.w400,
-                        color: Color(0xFF8A6B57),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            
+                  ),
+                );
+              },
+            )
           ],
         ),
       ),
