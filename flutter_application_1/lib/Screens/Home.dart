@@ -377,53 +377,59 @@ class _HomeState extends State<Home> {
 
             SizedBox(height: size.height * 0.04),
 
-            ListView.builder(
-              itemCount: 1,
-              itemBuilder: (BuildContext context, int index) {
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Food()),
-                    );
-                  },
-                  child: Container(
-                    margin: EdgeInsets.symmetric(vertical: 10.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(left: size.width * 0.04),
-                          child: Container(
-                            width: MediaQuery.of(context).size.width * 0.4,
-                            height: MediaQuery.of(context).size.height * 0.2,
-                            child: AspectRatio(
-                              aspectRatio: 16 / 9,
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(20),
-                                child: Image.asset(
-                                  "assets/PolloEsparragos.jpg", // Puedes cambiar la imagen según el índice si tienes una lista de imágenes
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: size.width * 0.02),
-                        Text(
-                          'Pollo a la parrilla \n con espárragos y \n champiñones',
-                          style: GoogleFonts.fredoka(
-                            fontSize: size.width * 0.05,
-                            fontWeight: FontWeight.w400,
-                            color: Color(0xFF8A6B57),
-                          ),
-                        ),
-                      ],
+            Container(
+  height: MediaQuery.of(context).size.height * 0.6, // Tamaño específico para el ListView.builder
+  child: ListView.builder(
+    itemCount: 1, // Reemplaza 'itemCount' con la cantidad de elementos en tu lista
+    itemBuilder: (BuildContext context, int index) {
+      return GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Food()),
+          );
+        },
+        child: Container(
+          margin: EdgeInsets.symmetric(vertical: 10.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(left: size.width * 0.04),
+                child: Container(
+                  width: MediaQuery.of(context).size.width * 0.4,
+                  height: MediaQuery.of(context).size.height * 0.2,
+                  child: AspectRatio(
+                    aspectRatio: 16 / 9,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: Image.asset(
+                        "assets/PolloEsparragos.jpg",
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
-                );
-              },
-            )
+                ),
+              ),
+              SizedBox(width: size.width * 0.02),
+              Text(
+                'Pollo a la parrilla \n con espárragos y \n champiñones',
+                style: GoogleFonts.fredoka(
+                  fontSize: size.width * 0.05,
+                  fontWeight: FontWeight.w400,
+                  color: Color(0xFF8A6B57),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    },
+  ),
+),
+
+
+            SizedBox(height: size.height * 0.02),
           ],
         ),
       ),
