@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Screens/Selection.dart';
+import 'package:flutter_application_1/main.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 String dropdownValue = 'Diabetes';
@@ -10,6 +11,26 @@ class Userinfo extends StatefulWidget {
 }
 
 class _UserinfoState extends State<Userinfo> {
+  //metodo para annadir la condicion medica al usuario logueado
+
+  Future<void> addCondition() async {
+    if (_yesChecked) {
+      for (int i = 0; i < usersList.length; i++) {
+        if (usersList[i]['user_id'] == 1) {
+          if (dropdownValue == 'Diabetes') {
+            usersList[i]['medical_condition'] = "Diabetes";
+            print(usersList[i]['medical_condition']);
+          } else {
+            usersList[i]['medical_condition'] = "Obesidad";
+            print(usersList[i]['medical_condition']);
+          }
+        }
+      }
+    } else {
+      print('no hay condicion');
+    }
+  }
+
   // Variables para mantener el estado de los checkboxes
   bool _yesChecked = false;
   bool _noChecked = false;
@@ -201,7 +222,6 @@ class _UserinfoState extends State<Userinfo> {
                               color: Color.fromRGBO(73, 45, 37, 1),
                             ),
                           ),
-                          
                           Padding(
                             padding: const EdgeInsets.only(top: 10),
                             child: Text(
@@ -250,14 +270,9 @@ class _UserinfoState extends State<Userinfo> {
                             ),
                           ),
                           SizedBox(height: 40),
-
                           ElevatedButton(
                             onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Selection()),
-                              );
+                              addCondition();
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Color(0xFF492D25),
