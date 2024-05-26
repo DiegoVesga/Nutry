@@ -1,45 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Screens/Home.dart';
 import 'package:flutter_application_1/Screens/Login.dart';
-import 'package:flutter_application_1/Screens/Food.dart';
-import 'package:flutter_application_1/Screens/Routines.dart';
 import 'package:flutter_application_1/Screens/Selection.dart';
 import 'package:flutter_application_1/Screens/Settings.dart';
 import 'package:flutter_application_1/Screens/T&C.dart';
 import 'package:flutter_application_1/Services/shared_prefs.dart';
 import 'package:flutter_application_1/main.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
-class Home extends StatefulWidget {
-  final String title;
-  int id;
-
-  Home({required this.id, Key? key, required this.title}) : super(key: key);
-
-  @override
-  _HomeState createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
-  final prefs = UserPrefs();
-  String selectedButton = ''; // Estado para rastrear el botón seleccionado
-
-  Map<String, dynamic> food_like = {};
-
-  @override
-  void initState() {
-    super.initState();
-    getData();
-  }
-
-  Future<void> getData() async {
-    for (int i = 0; i < usersList.length; i++) {
-      if (widget.id == usersList[i]['user_id']) {
-        food_like = usersList[i]['food_preferences']['food_like'];
-      }
-    }
-  }
-
+class Food extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -47,26 +18,71 @@ class _HomeState extends State<Home> {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(
             kToolbarHeight + 20.0), // Ajusta la altura del AppBar
-        child: AppBar(
-          backgroundColor: Color(0xFFFAF6F5),
-          automaticallyImplyLeading: false, // Deshabilita el botón de retroceso
-          actions: [
-            Builder(
-              builder: (context) => Padding(
-                padding: const EdgeInsets.only(
-                    top: 15.0,
-                    right:
-                        20.0), // Ajusta el espacio hacia abajo y a la derecha
-                child: IconButton(
-                  icon: Icon(
-                    Icons.menu,
-                    size: size.width * 0.08,
-                    color: Color(0xFF492D25),
-                  ),
-                  onPressed: () {
-                    Scaffold.of(context).openEndDrawer(); // Abre el Drawer
+        child: Column(
+          children: [
+            AppBar(
+              backgroundColor: Color(0xffFAF6F5),
+              automaticallyImplyLeading:
+                  false, // Deshabilita el botón de retroceso
+              title: Padding(
+                padding: EdgeInsets.only(top: size.height * 0.03),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Home(
+                                id: 1,
+                                title: '',
+                              )),
+                    );
                   },
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.person_outline,
+                        size: size.width * 0.08,
+                        color: Color(0xFF492D25),
+                      ),
+                      SizedBox(width: 10.0),
+                      Text(
+                        'Nombre de usuario', // Aquí puedes poner el nombre del usuario dinámicamente
+                        style: TextStyle(
+                          color: Color(0xff8A6B57),
+                          fontSize: size.width * 0.05,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
+              ),
+              actions: [
+                Builder(
+                  builder: (context) => Padding(
+                    padding: const EdgeInsets.only(
+                      top: 10.0,
+                      right: 20.0,
+                    ), // Ajusta el espacio hacia abajo y a la derecha
+                    child: IconButton(
+                      icon: Icon(
+                        Icons.menu,
+                        size: size.width * 0.08,
+                        color: Color(0xFF492D25),
+                      ),
+                      onPressed: () {
+                        Scaffold.of(context).openEndDrawer(); // Abre el Drawer
+                      },
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: size.width * 0.03),
+              child: Container(
+                height: 1,
+                color: Color(0xFF492D25),
+                margin: EdgeInsets.only(top: 10.0),
               ),
             ),
           ],
@@ -89,7 +105,8 @@ class _HomeState extends State<Home> {
                         color: Color.fromRGBO(73, 45, 37, 1),
                       ),
                       Text(
-                        prefs.username,
+                        //prefs.username,
+                        'Nombre de la persona',
                         style: GoogleFonts.fredoka(
                           textStyle: TextStyle(
                             fontSize: size.width * 0.05,
@@ -185,9 +202,9 @@ class _HomeState extends State<Home> {
                           ),
                           child: TextButton(
                             onPressed: () {
-                              prefs.email = '';
-                              prefs.password = '';
-                              prefs.username = '';
+                              //prefs.email = '';
+                              //prefs.password = '';
+                              //prefs.username = '';
                               Navigator.pushAndRemoveUntil(
                                 context,
                                 MaterialPageRoute(
@@ -254,172 +271,123 @@ class _HomeState extends State<Home> {
           ),
         ),
       ),
-      backgroundColor: Color(0xFFFAF6F5),
-      body: SingleChildScrollView(
+      body: Container(
+        color: Color(0xffFAF6F5),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              child: Padding(
-                padding: EdgeInsets.only(
-                    top: size.height * 0.04, left: size.width * 0.05),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Icon(
-                      Icons.person_outline,
-                      size: size.width * 0.25,
-                      color: Color(0xFF492d25),
-                    ),
-                    SizedBox(width: size.width * 0.04),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Hello',
-                            style: GoogleFonts.fredoka(
-                              textStyle: TextStyle(
-                                fontSize: size.width * 0.09,
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xFF492D25),
-                              ),
-                            ),
-                          ),
-                          Text(
-                            prefs.username,
-                            style: GoogleFonts.fredoka(
-                              textStyle: TextStyle(
-                                fontSize: size.width * 0.06,
-                                color: Color(0xFF492D25),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+            SizedBox(
+              height: size.height * 0.05,
             ),
-            // Segunda Columna (Divider)
-            Container(
-              margin: EdgeInsets.only(
-                  left: size.width * 0.05, bottom: size.height * 0.02),
-              height: 1,
-              width: size.width * 0.9,
-              color: Colors.black,
-            ),
-
-            SizedBox(height: size.height * 0.04),
-
-            Container(
-              margin: EdgeInsets.symmetric(
-                  vertical: size.height * 0.002, horizontal: size.width * 0.15),
-              child: SizedBox(
-                width: size.width * 0.7,
-                child: Container(
-                  height: size.height * 0.1,
-                  decoration: BoxDecoration(
-                    color: Color(0xffCDBCAE),
-                    borderRadius: BorderRadius.circular(size.width * 0.05),
-                  ),
-                  child: InkWell(
-                    borderRadius: BorderRadius.circular(size.width * 0.05),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Routines()),
-                      );
-                    },
-                    child: Padding(
-                      padding: EdgeInsets.all(size.width * 0.03),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.fitness_center,
-                            size: size.width * 0.09,
-                            color: Color(0xFF3B0000),
-                          ),
-                          SizedBox(width: size.width * 0.03),
-                          Text(
-                            'SEE ROUTINES',
-                            style: GoogleFonts.fredoka(
-                              fontSize: size.width * 0.04,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xFF3B0000),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-
-            SizedBox(height: size.height * 0.03),
-
-            Container(
-              margin: EdgeInsets.symmetric(
-                  vertical: size.height * 0.010, horizontal: size.width * 0.22),
-              child: Text(
-                'RECIPES PREFERENCES',
-                style: GoogleFonts.fredoka(
-                  fontSize: size.width * 0.05,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF3B0000),
-                ),
-              ),
-            ),
-
-            SizedBox(height: size.height * 0.04),
-
-            /*ListView.builder(
-              itemCount: food_like.length,
-              itemBuilder: (context, index) {
-                return GestureDetector(
-                  onTap: () {
-                    print('xd q mrda de codigo');
-                  },
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(left: size.width * 0.01),
                   child: Container(
-                    height: 30,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(left: size.width * 0.04),
-                          child: Container(
-                            width: MediaQuery.of(context).size.width * 0.4,
-                            height: MediaQuery.of(context).size.height * 0.2,
-                            child: AspectRatio(
-                              aspectRatio: 16 / 9,
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(20),
-                                child: Image.asset(
-                                  "assets/PolloEsparragos.jpg",
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-                          ),
+                    width: MediaQuery.of(context).size.width * 0.4,
+                    height: MediaQuery.of(context).size.height * 0.2,
+                    child: AspectRatio(
+                      aspectRatio: 16 / 9,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Image.asset(
+                          "assets/PolloEsparragos.jpg",
+                          fit: BoxFit.cover,
                         ),
-                        SizedBox(width: size.width * 0.02),
-                        Text(
-                          food_like[index]['Recetas'][0],
-                          style: GoogleFonts.fredoka(
-                            fontSize: size.width * 0.05,
-                            fontWeight: FontWeight.w400,
-                            color: Color(0xFF8A6B57),
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
                   ),
-                );
-              },
-            )*/
+                ),
+                SizedBox(width: size.width * 0.02),
+                Text(
+                  'Pollo a la parrilla \n con espárragos y \n champiñones',
+                  style: GoogleFonts.fredoka(
+                    fontSize: size.width * 0.05,
+                    fontWeight: FontWeight.w400,
+                    color: Color(0xFF8A6B57),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: size.height * 0.01),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: MediaQuery.of(context).size.width *
+                    0.1, // 10% del ancho de la pantalla
+                vertical: MediaQuery.of(context).size.height *
+                    0.03, // 3% de la altura de la pantalla
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Proteina: ',
+                        style: GoogleFonts.fredoka(
+                          fontSize: size.width * 0.05,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFf492D25),
+                        ),
+                      ),
+                      Text(
+                        'Pollo',
+                        style: GoogleFonts.fredoka(
+                          fontSize: size.width * 0.04,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFf8A6B57),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: size.height * 0.01),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Ingredientes: ',
+                        style: GoogleFonts.fredoka(
+                          fontSize: size.width * 0.05,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFf492D25),
+                        ),
+                      ),
+                      Text(
+                        'Pechuga de pollo, espárragos,champiñones, aceite de oliva, ajo, sal, pimienta',
+                        style: GoogleFonts.fredoka(
+                          fontSize: size.width * 0.04,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFf8A6B57),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: size.height * 0.01),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Preparacion: ',
+                        style: GoogleFonts.fredoka(
+                          fontSize: size.width * 0.05,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFf492D25),
+                        ),
+                      ),
+                      Text(
+                        '1. Sazona la pechuga de pollo con sal y pimienta. \n 2.Cocina a la parrilla hasta que esté bien cocida. \n 3.En una sartén, saltea los espárragos y los champiñones con un poco de aceite de oliva y ajo picado. \n 4.Sirve el pollo acompañado de los espárragos y champiñones. ',
+                        style: GoogleFonts.fredoka(
+                          fontSize: size.width * 0.04,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFf8A6B57),
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            )
           ],
         ),
       ),

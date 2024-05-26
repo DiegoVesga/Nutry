@@ -272,7 +272,12 @@ class _UserinfoState extends State<Userinfo> {
                           SizedBox(height: 40),
                           ElevatedButton(
                             onPressed: () {
-                              addCondition();
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Selection(),
+                                ),
+                              );
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Color(0xFF492D25),
