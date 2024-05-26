@@ -164,7 +164,7 @@ class _HomeState extends State<Settings> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => const Login(
-                                          title: 'Login',
+                                          title: 'Login', id: 1,
                                         )),
                                 (Route<dynamic> route) => false,
                               );
@@ -411,7 +411,7 @@ class _HomeState extends State<Settings> {
                   context,
                   MaterialPageRoute(
                       builder: (context) => Login(
-                            title: 'Home',
+                            title: 'Home', id: 1,
                           )),
                 );
               },
