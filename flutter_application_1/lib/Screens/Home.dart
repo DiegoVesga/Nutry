@@ -20,10 +20,7 @@ class _HomeState extends State<Home> {
   String selectedButton = ''; // Estado para rastrear el botón seleccionado
   int _currentIndex = 0; // Índice de la página actual en el CarouselSlider
   final PanelController _panelController = PanelController();
-  List food_like = [];
-  List food_dislike = [];
-  List recipe_like = [];
-  List recipe_dislike = [];
+
   List food_preferences = [];
 
   @override

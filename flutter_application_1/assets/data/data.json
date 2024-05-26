@@ -1,225 +1,504 @@
 {
-  "usuarios" : [
-  {
-    "user_id" : 1,
-    "nombre" : "Max Power",
-    "correo" : "1",
-    "password"  : "1",
-    "birthdate" : "2004/07/03",
-    "gender" : "Male",
-    "weight" : 70,
-    "height" : 170,
-    "medical_condition" : [
-      {
-        "id" : 1,
-        "type" : "Physic",
-        "affected_area" : "Arm",
-        "effort_level" : "Low" 
+  "usuarios": [
+    {
+      "user_id": 1,
+      "nombre": "Max Power",
+      "correo": "1",
+      "password": "1",
+      "birthdate": "2004/07/03",
+      "gender": "Male",
+      "weight": 70,
+      "height": 170,
+      "medical_condition": "Diabetes",
+      "food_preferences": {
+        "Diabeticos": {
+          "food_like": {
+            "Pollo": {
+              "Recetas": {
+                "Pollo a la parrilla con espárragos y champiñones": {
+                  "Proteina": "Pollo",
+                  "Ingredientes": "Pechuga de pollo, espárragos, champiñones, aceite de oliva, ajo, sal, pimienta",
+                  "Preparación": "Sazona la pechuga de pollo con sal y pimienta\nCocina a la parrilla hasta que esté bien cocida\nEn una sartén, saltea los espárragos y los champiñones con un poco de aceite de oliva y ajo picado\nSirve el pollo acompañado de los espárragos y champiñones"
+                },
+                "Sopa de vegetales y pollo": {
+                  "Proteina": "Pollo",
+                  "Ingredientes": "Pechuga de pollo desmenuzada, zanahorias, apio, cebolla, calabacín, espinacas, caldo de pollo bajo en sodio, ajo, perejil",
+                  "Preparación": "Cocina las verduras picadas en el caldo de pollo junto con el ajo hasta que estén tiernas\nAñade el pollo desmenuzado y las espinacas\nCocina unos minutos más, ajusta de sal y espolvorea con perejil antes de servir"
+                }
+              }
+            },
+            "Salmon": {
+              "Recetas": {
+                "Salmon al horno con vegetales": {
+                  "Proteina": "Salmon",
+                  "Ingredientes": "Filete de salmón, brócoli, zanahorias, calabacín, aceite de oliva, limón, eneldo, sal",
+                  "Preparación": "Precalienta el horno a 180°C\nColoca el salmón en una bandeja para hornear, sazona con sal, eneldo y jugo de limón\nAñade los vegetales alrededor del salmón, rocía con un poco de aceite de oliva\nHornea durante 20-25 minutos hasta que el salmón esté cocido y los vegetales tiernos"
+                }
+              }
+            },
+            "Lentejas": {
+              "Recetas": {
+                "Ensalada de lentejas con aguacate y tomate": {
+                  "Proteina": "Lentejas",
+                  "Ingredientes": "Lentejas cocidas, aguacate, tomate, cebolla roja, perejil, aceite de oliva, vinagre balsámico, sal",
+                  "Preparación": "Mezcla las lentejas cocidas con aguacate en cubos, tomate picado y cebolla roja en rodajas\nAliña con aceite de oliva, vinagre balsámico y sal\nEspolvorea perejil picado antes de servir"
+                }
+              }
+            },
+            "Champiñones": {
+              "Recetas": {
+                "Tofu Salteado con Vegetales y Arroz Integral": {
+                  "Proteina": "Tofu",
+                  "Ingredientes": "Tofu firme, brócoli, zanahorias, champiñones, cebolla, ajo, salsa de soja baja en sodio, aceite de sésamo, jengibre fresco, arroz integral cocido",
+                  "Preparación": "Saltea el tofu cortado en cubos con vegetales y aromáticos en una sartén con aceite de sésamo y salsa de soja\nSirve sobre arroz integral cocido"
+                }
+              }
+            },
+            "Garbanzos": {
+              "Recetas": {
+                "Tiras de Pollo a la Parrilla con Ensalada de Garbanzos": {
+                  "Proteina": "Pollo",
+                  "Ingredientes": "Pechuga de pollo en tiras, garbanzos cocidos, tomate cherry, pepino, cebolla roja, vinagre balsámico, aceite de oliva, perejil, sal, pimienta",
+                  "Preparación": "Marinar las tiras de pollo con aceite de oliva, ajo picado, jugo de limón, sal y pimienta\nAsar a la parrilla y servir con una ensalada de garbanzos y vegetales frescos"
+                }
+              }
+            },
+            "Aguacate": {
+              "Recetas": {
+                "Ensalada de Lentejas con Aguacate y Tomate": {
+                  "Proteina": "Lentejas",
+                  "Ingredientes": "Lentejas cocidas, aguacate, tomate, cebolla roja, cilantro fresco, aceite de oliva, jugo de limón, sal, pimienta",
+                  "Preparación": "Mezcla las lentejas cocidas con aguacate, tomate, cebolla roja y cilantro fresco\nAliña con aceite de oliva, jugo de limón, sal y pimienta"
+                }
+              }
+            },
+            "Zanahoria": {
+              "Recetas": {
+                "Tofu Salteado con Vegetales y Arroz Integral": {
+                  "Proteina": "Tofu",
+                  "Ingredientes": "Tofu firme, brócoli, zanahorias, champiñones, cebolla, ajo, salsa de soja baja en sodio, aceite de sésamo, jengibre fresco, arroz integral cocido",
+                  "Preparación": "Saltea el tofu cortado en cubos con vegetales y aromáticos en una sartén con aceite de sésamo y salsa de soja\nSirve sobre arroz integral cocido"
+                }
+              }
+            },
+            "Tofu": {
+              "Recetas": {
+                "Tofu Salteado con Vegetales y Arroz Integral": {
+                  "Proteina": "Tofu",
+                  "Ingredientes": "Tofu firme, brócoli, zanahorias, champiñones, cebolla, ajo, salsa de soja baja en sodio, aceite de sésamo, jengibre fresco, arroz integral cocido",
+                  "Preparación": "Saltea el tofu cortado en cubos con vegetales y aromáticos en una sartén con aceite de sésamo y salsa de soja\nSirve sobre arroz integral cocido"
+                }
+              }
+            },
+            "Pavo": {
+              "Recetas": {
+                "Hamburguesas de Pavo con Ensalada de Espinacas y Fresas": {
+                  "Proteina": "Pavo",
+                  "Ingredientes": "Carne molida de pavo, espinacas frescas, fresas, cebolla roja, vinagre balsámico, aceite de oliva, sal, pimienta",
+                  "Preparación": "Prepara hamburguesas de pavo sazonadas con ajo picado, cebolla picada, sal y pimienta\nAsa a la parrilla y sirve sobre una cama de espinacas frescas y fresas, aliñadas con vinagreta balsámica"
+                }
+              }
+            }
+          }
+        }
       }
-    ],
-    "food_preferences" : [
-      {
-        "id" : 1,
-        "food_like" : [
-          "Pizza",
-          "Sushi",
-          "Ensalada César"
-        ],
-        "food_dislike" : [
-          "Hígado",
-          "Durian",
-          "Ostras"
-        ],
-        "recipe_like" : [
-          "Paella Valenciana",
-          "Tacos al Pastor",
-          "Ramen"
-        ],
-        "recipe_dislike" : [
-          "Haggis",
-          "Surströmming",
-          "Balut"
-        ]
+    },
+    {
+      "user_id": 2,
+      "nombre": "Hector Ruiz",
+      "correo": "hectorruiz@gmail.com",
+      "password": "hector12345",
+      "birthdate": "1995/02/18",
+      "gender": "Male",
+      "weight": 80,
+      "height": 180,
+      "medical_condition": "Obesidad",
+      "food_preferences": {
+        "Obesos": {
+          "food_like": {
+            "Pollo": {
+              "Recetas": {
+                "Pollo al Horno con Espárragos y Quinoa": {
+                  "Proteina": "Pollo",
+                  "Ingredientes": "Pechuga de pollo, espárragos, quinoa cocida, aceite de oliva, ajo, limón, sal, pimienta",
+                  "Preparación": "Sazona la pechuga de pollo con sal y pimienta\nCocina a la parrilla hasta que esté bien cocida\nEn una sartén, saltea los espárragos y los champiñones con un poco de aceite de oliva y ajo picado\nSirve el pollo acompañado de los espárragos y champiñones, agrega quinoa cocida como guarnición"
+                }
+              }
+            },
+            "Salmon": {
+              "Recetas": {
+                "Salmón al Horno con Espárragos y Quinoa": {
+                  "Proteina": "Salmon",
+                  "Ingredientes": "Filete de salmón, espárragos, quinoa cocida, aceite de oliva, ajo, limón, sal, pimienta",
+                  "Preparación": "Precalienta el horno a 180°C\nColoca el salmón en una bandeja para hornear, sazona con sal, eneldo y jugo de limón\nAñade los vegetales alrededor del salmón, rocía con un poco de aceite de oliva\nHornea durante 20-25 minutos hasta que el salmón esté cocido y los vegetales tiernos, agrega quinoa cocida como guarnición"
+                }
+              }
+            },
+            "Pavo": {
+              "Recetas": {
+                "Hamburguesas de Pavo con Ensalada de Espinacas y Fresas": {
+                  "Proteina": "Pavo",
+                  "Ingredientes": "Carne molida de pavo, espinacas frescas, fresas, cebolla roja, vinagre balsámico, aceite de oliva, sal, pimienta",
+                  "Preparación": "Prepara hamburguesas de pavo sazonadas con ajo picado, cebolla picada, sal y pimienta\nAsa a la parrilla y sirve sobre una cama de espinacas frescas y fresas, aliñadas con vinagreta balsámica"
+                }
+              }
+            },
+            "Tofu": {
+              "Recetas": {
+                "Tofu Salteado con Vegetales y Arroz Integral": {
+                  "Proteina": "Tofu",
+                  "Ingredientes": "Tofu firme, brócoli, zanahorias, champiñones, cebolla, ajo, salsa de soja baja en sodio, aceite de sésamo, jengibre fresco, arroz integral cocido",
+                  "Preparación": "Saltea el tofu cortado en cubos con vegetales y aromáticos en una sartén con aceite de sésamo y salsa de soja\nSirve sobre arroz integral cocido"
+                }
+              }
+            },
+            "Garbanzos": {
+              "Recetas": {
+                "Ensalada de Garbanzos con Aguacate y Tomate": {
+                  "Proteina": "Garbanzos",
+                  "Ingredientes": "Garbanzos cocidos, aguacate, tomate, cebolla roja, cilantro fresco, aceite de oliva, jugo de limón, sal, pimienta",
+                  "Preparación": "Mezcla los garbanzos cocidos con aguacate en cubos, tomate picado y cebolla roja en rodajas\nAliña con aceite de oliva, vinagre balsámico y sal\nEspolvorea perejil picado antes de servir"
+                }
+              }
+            },
+            "Aguacate": {
+              "Recetas": {
+                "Ensalada de Garbanzos con Aguacate y Tomate": {
+                  "Proteina": "Garbanzos",
+                  "Ingredientes": "Garbanzos cocidos, aguacate, tomate, cebolla roja, cilantro fresco, aceite de oliva, jugo de limón, sal, pimienta",
+                  "Preparación": "Mezcla los garbanzos cocidos con aguacate en cubos, tomate picado y cebolla roja en rodajas\nAliña con aceite de oliva, vinagre balsámico y sal\nEspolvorea perejil picado antes de servir"
+                }
+              }
+            },
+            "Champiñones": {
+              "Recetas": {
+                "Tofu Salteado con Vegetales y Arroz Integral": {
+                  "Proteina": "Tofu",
+                  "Ingredientes": "Tofu firme, brócoli, zanahorias, champiñones, cebolla, ajo, salsa de soja baja en sodio, aceite de sésamo, jengibre fresco, arroz integral cocido",
+                  "Preparación": "Saltea el tofu cortado en cubos con vegetales y aromáticos en una sartén con aceite de sésamo y salsa de soja\nSirve sobre arroz integral cocido"
+                }
+              }
+            },
+            "Zanahoria": {
+              "Recetas": {
+                "Tofu Salteado con Vegetales y Arroz Integral": {
+                  "Proteina": "Tofu",
+                  "Ingredientes": "Tofu firme, brócoli, zanahorias, champiñones, cebolla, ajo, salsa de soja baja en sodio, aceite de sésamo, jengibre fresco, arroz integral cocido",
+                  "Preparación": "Saltea el tofu cortado en cubos con vegetales y aromáticos en una sartén con aceite de sésamo y salsa de soja\nSirve sobre arroz integral cocido"
+                }
+              }
+            },
+            "Lentejas": {
+              "Recetas": {
+                "Ensalada de Garbanzos con Aguacate y Tomate": {
+                  "Proteina": "Garbanzos",
+                  "Ingredientes": "Garbanzos cocidos, Aguacate, Tomate, Cebolla roja, Cilantro fresco,Aceite de oliva, Jugo de limón, Sal, Pimienta",
+                  "Preparación": "Sigue las instrucciones para la ensalada de lentejas con aguacate y tomate, utilizando garbanzos cocidos en lugar de lentejas."
+                }
+              }
+            }
+          }
+        }
       }
-    ]
-  },
-  {
-    "user_id" : 2,
-    "nombre" : "Hector Ruiz",
-    "correo" : "hectorruiz@gmail.com",
-    "password"  : "hector12345",
-    "birthdate" : "1995/02/18",
-    "gender" : "Male",
-    "weight" : 80,
-    "height" : 180,
-    "medical_condition" : [
-      {
-        "id" : 1,
-        "type" : "Physic",
-        "affected_area" : "Arm",
-        "effort_level" : "Low" 
-      },
-      {
-        "id" : 2,
-        "type" : "Mental",
-        "affected_area" : "Head",
-        "effort_level" : "High" 
+    },
+    {
+      "user_id": 3,
+      "nombre": "Maria Lopez",
+      "correo": "marialopez@gmail.com",
+      "password": "maria12345",
+      "birthdate": "1990/05/25",
+      "gender": "Female",
+      "weight": 65,
+      "height": 165,
+      "medical_condition": "Obesidad",
+      "food_preferences": {
+        "Obesos": {
+          "food_like": {
+            "Pollo": {
+              "Recetas": {
+                "Pollo al Horno con Espárragos y Quinoa": {
+                  "Proteina": "Pollo",
+                  "Ingredientes": "Pechuga de pollo, espárragos, quinoa cocida, aceite de oliva, ajo, limón, sal, pimienta",
+                  "Preparación": "Sazona la pechuga de pollo con sal y pimienta\nCocina a la parrilla hasta que esté bien cocida\nEn una sartén, saltea los espárragos y los champiñones con un poco de aceite de oliva y ajo picado\nSirve el pollo acompañado de los espárragos y champiñones, agrega quinoa cocida como guarnición"
+                }
+              }
+            },
+            "Salmon": {
+              "Recetas": {
+                "Salmón al Horno con Espárragos y Quinoa": {
+                  "Proteina": "Salmon",
+                  "Ingredientes": "Filete de salmón, espárragos, quinoa cocida, aceite de oliva, ajo, limón, sal, pimienta",
+                  "Preparación": "Precalienta el horno a 180°C\nColoca el salmón en una bandeja para hornear, sazona con sal, eneldo y jugo de limón\nAñade los vegetales alrededor del salmón, rocía con un poco de aceite de oliva\nHornea durante 20-25 minutos hasta que el salmón esté cocido y los vegetales tiernos, agrega quinoa cocida como guarnición"
+                }
+              }
+            },
+            "Pavo": {
+              "Recetas": {
+                "Hamburguesas de Pavo con Ensalada de Espinacas y Fresas": {
+                  "Proteina": "Pavo",
+                  "Ingredientes": "Carne molida de pavo, espinacas frescas, fresas, cebolla roja, vinagre balsámico, aceite de oliva, sal, pimienta",
+                  "Preparación": "Prepara hamburguesas de pavo sazonadas con ajo picado, cebolla picada, sal y pimienta\nAsa a la parrilla y sirve sobre una cama de espinacas frescas y fresas, aliñadas con vinagreta balsámica"
+                }
+              }
+            },
+            "Tofu": {
+              "Recetas": {
+                "Tofu Salteado con Vegetales y Arroz Integral": {
+                  "Proteina": "Tofu",
+                  "Ingredientes": "Tofu firme, brócoli, zanahorias, champiñones, cebolla, ajo, salsa de soja baja en sodio, aceite de sésamo, jengibre fresco, arroz integral cocido",
+                  "Preparación": "Saltea el tofu cortado en cubos con vegetales y aromáticos en una sartén con aceite de sésamo y salsa de soja\nSirve sobre arroz integral cocido"
+                }
+              }
+            },
+            "Garbanzos": {
+              "Recetas": {
+                "Ensalada de Garbanzos con Aguacate y Tomate": {
+                  "Proteina": "Garbanzos",
+                  "Ingredientes": "Garbanzos cocidos, aguacate, tomate, cebolla roja, cilantro fresco, aceite de oliva, jugo de limón, sal, pimienta",
+                  "Preparación": "Mezcla los garbanzos cocidos con aguacate en cubos, tomate picado y cebolla roja en rodajas\nAliña con aceite de oliva, vinagre balsámico y sal\nEspolvorea perejil picado antes de servir"
+                }
+              }
+            },
+            "Aguacate": {
+              "Recetas": {
+                "Ensalada de Garbanzos con Aguacate y Tomate": {
+                  "Proteina": "Garbanzos",
+                  "Ingredientes": "Garbanzos cocidos, aguacate, tomate, cebolla roja, cilantro fresco, aceite de oliva, jugo de limón, sal, pimienta",
+                  "Preparación": "Mezcla los garbanzos cocidos con aguacate en cubos, tomate picado y cebolla roja en rodajas\nAliña con aceite de oliva, vinagre balsámico y sal\nEspolvorea perejil picado antes de servir"
+                }
+              }
+            },
+            "Champiñones": {
+              "Recetas": {
+                "Tofu Salteado con Vegetales y Arroz Integral": {
+                  "Proteina": "Tofu",
+                  "Ingredientes": "Tofu firme, brócoli, zanahorias, champiñones, cebolla, ajo, salsa de soja baja en sodio, aceite de sésamo, jengibre fresco, arroz integral cocido",
+                  "Preparación": "Saltea el tofu cortado en cubos con vegetales y aromáticos en una sartén con aceite de sésamo y salsa de soja\nSirve sobre arroz integral cocido"
+                }
+              }
+            },
+            "Zanahoria": {
+              "Recetas": {
+                "Tofu Salteado con Vegetales y Arroz Integral": {
+                  "Proteina": "Tofu",
+                  "Ingredientes": "Tofu firme, brócoli, zanahorias, champiñones, cebolla, ajo, salsa de soja baja en sodio, aceite de sésamo, jengibre fresco, arroz integral cocido",
+                  "Preparación": "Saltea el tofu cortado en cubos con vegetales y aromáticos en una sartén con aceite de sésamo y salsa de soja\nSirve sobre arroz integral cocido"
+                }
+              }
+            },
+            "Lentejas": {
+              "Recetas": {
+                "Ensalada de Garbanzos con Aguacate y Tomate": {
+                  "Proteina": "Garbanzos",
+                  "Ingredientes": "Garbanzos cocidos, Aguacate, Tomate, Cebolla roja, Cilantro fresco,Aceite de oliva, Jugo de limón, Sal, Pimienta",
+                  "Preparación": "Sigue las instrucciones para la ensalada de lentejas con aguacate y tomate, utilizando garbanzos cocidos en lugar de lentejas."
+                }
+              }
+            }
+          }
+        }
       }
-    ],
-    "food_preferences" : [
-      {
-        "id" : 1,
-        "food_like" : [
-          "Pasta Carbonara",
-          "Empanadas",
-          "Ceviche"
-        ],
-        "food_dislike" : [
-          "Tripas",
-          "Pulpo",
-          "Acelgas"
-        ],
-        "recipe_like" : [
-          "Lasagna Bolognese",
-          "Cochinita Pibil",
-          "Causa Limeña"
-        ],
-        "recipe_dislike" : [
-          "Casu Marzu",
-          "Hakarl",
-          "Century Egg"
-        ]
+    },
+    {
+      "user_id": 4,
+      "nombre": "Juan Perez",
+      "correo": "juanperez@gmail.com",
+      "password": "juan12345",
+      "birthdate": "1985/11/12",
+      "gender": "Male",
+      "weight": 75,
+      "height": 175,
+      "medical_condition": "Diabetes",
+      "food_preferences": {
+        "Diabeticos": {
+          "food_like": {
+            "Pollo": {
+              "Recetas": {
+                "Pollo a la parrilla con espárragos y champiñones": {
+                  "Proteina": "Pollo",
+                  "Ingredientes": "Pechuga de pollo, espárragos, champiñones, aceite de oliva, ajo, sal, pimienta",
+                  "Preparación": "Sazona la pechuga de pollo con sal y pimienta\nCocina a la parrilla hasta que esté bien cocida\nEn una sartén, saltea los espárragos y los champiñones con un poco de aceite de oliva y ajo picado\nSirve el pollo acompañado de los espárragos y champiñones"
+                },
+                "Sopa de vegetales y pollo": {
+                  "Proteina": "Pollo",
+                  "Ingredientes": "Pechuga de pollo desmenuzada, zanahorias, apio, cebolla, calabacín, espinacas, caldo de pollo bajo en sodio, ajo, perejil",
+                  "Preparación": "Cocina las verduras picadas en el caldo de pollo junto con el ajo hasta que estén tiernas\nAñade el pollo desmenuzado y las espinacas\nCocina unos minutos más, ajusta de sal y espolvorea con perejil antes de servir"
+                }
+              }
+            },
+            "Salmon": {
+              "Recetas": {
+                "Salmon al horno con vegetales": {
+                  "Proteina": "Salmon",
+                  "Ingredientes": "Filete de salmón, brócoli, zanahorias, calabacín, aceite de oliva, limón, eneldo, sal",
+                  "Preparación": "Precalienta el horno a 180°C\nColoca el salmón en una bandeja para hornear, sazona con sal, eneldo y jugo de limón\nAñade los vegetales alrededor del salmón, rocía con un poco de aceite de oliva\nHornea durante 20-25 minutos hasta que el salmón esté cocido y los vegetales tiernos"
+                }
+              }
+            },
+            "Lentejas": {
+              "Recetas": {
+                "Ensalada de lentejas con aguacate y tomate": {
+                  "Proteina": "Lentejas",
+                  "Ingredientes": "Lentejas cocidas, aguacate, tomate, cebolla roja, perejil, aceite de oliva, vinagre balsámico, sal",
+                  "Preparación": "Mezcla las lentejas cocidas con aguacate en cubos, tomate picado y cebolla roja en rodajas\nAliña con aceite de oliva, vinagre balsámico y sal\nEspolvorea perejil picado antes de servir"
+                }
+              }
+            },
+            "Champiñones": {
+              "Recetas": {
+                "Tofu Salteado con Vegetales y Arroz Integral": {
+                  "Proteina": "Tofu",
+                  "Ingredientes": "Tofu firme, brócoli, zanahorias, champiñones, cebolla, ajo, salsa de soja baja en sodio, aceite de sésamo, jengibre fresco, arroz integral cocido",
+                  "Preparación": "Saltea el tofu cortado en cubos con vegetales y aromáticos en una sartén con aceite de sésamo y salsa de soja\nSirve sobre arroz integral cocido"
+                }
+              }
+            },
+            "Garbanzos": {
+              "Recetas": {
+                "Tiras de Pollo a la Parrilla con Ensalada de Garbanzos": {
+                  "Proteina": "Pollo",
+                  "Ingredientes": "Pechuga de pollo en tiras, garbanzos cocidos, tomate cherry, pepino, cebolla roja, vinagre balsámico, aceite de oliva, perejil, sal, pimienta",
+                  "Preparación": "Marinar las tiras de pollo con aceite de oliva, ajo picado, jugo de limón, sal y pimienta\nAsar a la parrilla y servir con una ensalada de garbanzos y vegetales frescos"
+                }
+              }
+            },
+            "Aguacate": {
+              "Recetas": {
+                "Ensalada de Lentejas con Aguacate y Tomate": {
+                  "Proteina": "Lentejas",
+                  "Ingredientes": "Lentejas cocidas, aguacate, tomate, cebolla roja, cilantro fresco, aceite de oliva, jugo de limón, sal, pimienta",
+                  "Preparación": "Mezcla las lentejas cocidas con aguacate, tomate, cebolla roja y cilantro fresco\nAliña con aceite de oliva, jugo de limón, sal y pimienta"
+                }
+              }
+            },
+            "Zanahoria": {
+              "Recetas": {
+                "Tofu Salteado con Vegetales y Arroz Integral": {
+                  "Proteina": "Tofu",
+                  "Ingredientes": "Tofu firme, brócoli, zanahorias, champiñones, cebolla, ajo, salsa de soja baja en sodio, aceite de sésamo, jengibre fresco, arroz integral cocido",
+                  "Preparación": "Saltea el tofu cortado en cubos con vegetales y aromáticos en una sartén con aceite de sésamo y salsa de soja\nSirve sobre arroz integral cocido"
+                }
+              }
+            },
+            "Tofu": {
+              "Recetas": {
+                "Tofu Salteado con Vegetales y Arroz Integral": {
+                  "Proteina": "Tofu",
+                  "Ingredientes": "Tofu firme, brócoli, zanahorias, champiñones, cebolla, ajo, salsa de soja baja en sodio, aceite de sésamo, jengibre fresco, arroz integral cocido",
+                  "Preparación": "Saltea el tofu cortado en cubos con vegetales y aromáticos en una sartén con aceite de sésamo y salsa de soja\nSirve sobre arroz integral cocido"
+                }
+              }
+            },
+            "Pavo": {
+              "Recetas": {
+                "Hamburguesas de Pavo con Ensalada de Espinacas y Fresas": {
+                  "Proteina": "Pavo",
+                  "Ingredientes": "Carne molida de pavo, espinacas frescas, fresas, cebolla roja, vinagre balsámico, aceite de oliva, sal, pimienta",
+                  "Preparación": "Prepara hamburguesas de pavo sazonadas con ajo picado, cebolla picada, sal y pimienta\nAsa a la parrilla y sirve sobre una cama de espinacas frescas y fresas, aliñadas con vinagreta balsámica"
+                }
+              }
+            }
+          }
+        }
       }
-    ]
-  },
-  {
-    "user_id" : 3,
-    "nombre" : "Maria Lopez",
-    "correo" : "marialopez@gmail.com",
-    "password"  : "maria12345",
-    "birthdate" : "1990/05/25",
-    "gender" : "Female",
-    "weight" : 65,
-    "height" : 165,
-    "medical_condition" : [
-      {
-        "id" : 1,
-        "type" : "Physic",
-        "affected_area" : "Leg",
-        "effort_level" : "Medium" 
+    },
+    {
+      "user_id": 5,
+      "nombre": "Ana Torres",
+      "correo": "anatorres@gmail.com",
+      "password": "ana12345",
+      "birthdate": "1992/04/30",
+      "gender": "Female",
+      "weight": 60,
+      "height": 160,
+      "medical_condition": "Obesidad",
+      "food_preferences": {
+        "Obesos": {
+          "food_like": {
+            "Pollo": {
+              "Recetas": {
+                "Pollo al Horno con Espárragos y Quinoa": {
+                  "Proteina": "Pollo",
+                  "Ingredientes": "Pechuga de pollo, espárragos, quinoa cocida, aceite de oliva, ajo, limón, sal, pimienta",
+                  "Preparación": "Sazona la pechuga de pollo con sal y pimienta\nCocina a la parrilla hasta que esté bien cocida\nEn una sartén, saltea los espárragos y los champiñones con un poco de aceite de oliva y ajo picado\nSirve el pollo acompañado de los espárragos y champiñones, agrega quinoa cocida como guarnición"
+                }
+              }
+            },
+            "Salmon": {
+              "Recetas": {
+                "Salmón al Horno con Espárragos y Quinoa": {
+                  "Proteina": "Salmon",
+                  "Ingredientes": "Filete de salmón, espárragos, quinoa cocida, aceite de oliva, ajo, limón, sal, pimienta",
+                  "Preparación": "Precalienta el horno a 180°C\nColoca el salmón en una bandeja para hornear, sazona con sal, eneldo y jugo de limón\nAñade los vegetales alrededor del salmón, rocía con un poco de aceite de oliva\nHornea durante 20-25 minutos hasta que el salmón esté cocido y los vegetales tiernos, agrega quinoa cocida como guarnición"
+                }
+              }
+            },
+            "Pavo": {
+              "Recetas": {
+                "Hamburguesas de Pavo con Ensalada de Espinacas y Fresas": {
+                  "Proteina": "Pavo",
+                  "Ingredientes": "Carne molida de pavo, espinacas frescas, fresas, cebolla roja, vinagre balsámico, aceite de oliva, sal, pimienta",
+                  "Preparación": "Prepara hamburguesas de pavo sazonadas con ajo picado, cebolla picada, sal y pimienta\nAsa a la parrilla y sirve sobre una cama de espinacas frescas y fresas, aliñadas con vinagreta balsámica"
+                }
+              }
+            },
+            "Tofu": {
+              "Recetas": {
+                "Tofu Salteado con Vegetales y Arroz Integral": {
+                  "Proteina": "Tofu",
+                  "Ingredientes": "Tofu firme, brócoli, zanahorias, champiñones, cebolla, ajo, salsa de soja baja en sodio, aceite de sésamo, jengibre fresco, arroz integral cocido",
+                  "Preparación": "Saltea el tofu cortado en cubos con vegetales y aromáticos en una sartén con aceite de sésamo y salsa de soja\nSirve sobre arroz integral cocido"
+                }
+              }
+            },
+            "Garbanzos": {
+              "Recetas": {
+                "Ensalada de Garbanzos con Aguacate y Tomate": {
+                  "Proteina": "Garbanzos",
+                  "Ingredientes": "Garbanzos cocidos, aguacate, tomate, cebolla roja, cilantro fresco, aceite de oliva, jugo de limón, sal, pimienta",
+                  "Preparación": "Mezcla los garbanzos cocidos con aguacate en cubos, tomate picado y cebolla roja en rodajas\nAliña con aceite de oliva, vinagre balsámico y sal\nEspolvorea perejil picado antes de servir"
+                }
+              }
+            },
+            "Aguacate": {
+              "Recetas": {
+                "Ensalada de Garbanzos con Aguacate y Tomate": {
+                  "Proteina": "Garbanzos",
+                  "Ingredientes": "Garbanzos cocidos, aguacate, tomate, cebolla roja, cilantro fresco, aceite de oliva, jugo de limón, sal, pimienta",
+                  "Preparación": "Mezcla los garbanzos cocidos con aguacate en cubos, tomate picado y cebolla roja en rodajas\nAliña con aceite de oliva, vinagre balsámico y sal\nEspolvorea perejil picado antes de servir"
+                }
+              }
+            },
+            "Champiñones": {
+              "Recetas": {
+                "Tofu Salteado con Vegetales y Arroz Integral": {
+                  "Proteina": "Tofu",
+                  "Ingredientes": "Tofu firme, brócoli, zanahorias, champiñones, cebolla, ajo, salsa de soja baja en sodio, aceite de sésamo, jengibre fresco, arroz integral cocido",
+                  "Preparación": "Saltea el tofu cortado en cubos con vegetales y aromáticos en una sartén con aceite de sésamo y salsa de soja\nSirve sobre arroz integral cocido"
+                }
+              }
+            },
+            "Zanahoria": {
+              "Recetas": {
+                "Tofu Salteado con Vegetales y Arroz Integral": {
+                  "Proteina": "Tofu",
+                  "Ingredientes": "Tofu firme, brócoli, zanahorias, champiñones, cebolla, ajo, salsa de soja baja en sodio, aceite de sésamo, jengibre fresco, arroz integral cocido",
+                  "Preparación": "Saltea el tofu cortado en cubos con vegetales y aromáticos en una sartén con aceite de sésamo y salsa de soja\nSirve sobre arroz integral cocido"
+                }
+              }
+            },
+            "Lentejas": {
+              "Recetas": {
+                "Ensalada de Garbanzos con Aguacate y Tomate": {
+                  "Proteina": "Garbanzos",
+                  "Ingredientes": "Garbanzos cocidos, Aguacate, Tomate, Cebolla roja, Cilantro fresco,Aceite de oliva, Jugo de limón, Sal, Pimienta",
+                  "Preparación": "Sigue las instrucciones para la ensalada de lentejas con aguacate y tomate, utilizando garbanzos cocidos en lugar de lentejas."
+                }
+              }
+            }
+          }
+        }
       }
-    ],
-    "food_preferences" : [
-      {
-        "id" : 1,
-        "food_like" : [
-          "Tacos",
-          "Paella",
-          "Salmon"
-        ],
-        "food_dislike" : [
-          "Brocoli",
-          "Espinacas",
-          "Higado"
-        ],
-        "recipe_like" : [
-          "Tacos al Pastor",
-          "Paella Valenciana",
-          "Salmon a la Plancha"
-        ],
-        "recipe_dislike" : [
-          "Haggis",
-          "Surströmming",
-          "Balut"
-        ]
-      }
-    ]
-  },
-  {
-    "user_id" : 4,
-    "nombre" : "Juan Perez",
-    "correo" : "juanperez@gmail.com",
-    "password"  : "juan12345",
-    "birthdate" : "1985/11/12",
-    "gender" : "Male",
-    "weight" : 75,
-    "height" : 175,
-    "medical_condition" : [
-      {
-        "id" : 1,
-        "type" : "Mental",
-        "affected_area" : "Head",
-        "effort_level" : "High" 
-      }
-    ],
-    "food_preferences" : [
-      {
-        "id" : 1,
-        "food_like" : [
-          "Hamburguesa",
-          "Papas Fritas",
-          "Helado"
-        ],
-        "food_dislike" : [
-          "Zanahoria",
-          "Apio",
-          "Remolacha"
-        ],
-        "recipe_like" : [
-          "Hamburguesa con Queso",
-          "Papas Fritas Caseras",
-          "Helado de Vainilla"
-        ],
-        "recipe_dislike" : [
-          "Haggis",
-          "Surströmming",
-          "Balut"
-        ]
-      }
-    ]
-  },
-  {
-    "user_id" : 5,
-    "nombre" : "Ana Torres",
-    "correo" : "anatorres@gmail.com",
-    "password"  : "ana12345",
-    "birthdate" : "1992/04/30",
-    "gender" : "Female",
-    "weight" : 60,
-    "height" : 160,
-    "medical_condition" : [
-      {
-        "id" : 1,
-        "type" : "Physic",
-        "affected_area" : "Back",
-        "effort_level" : "Low" 
-      }
-    ],
-    "food_preferences" : [
-      {
-        "id" : 1,
-        "food_like" : [
-          "Ensalada",
-          "Frutas",
-          "Yogurt"
-        ],
-        "food_dislike" : [
-          "Carne Roja",
-          "Pollo",
-          "Pescado"
-        ],
-        "recipe_like" : [
-          "Ensalada Cesar",
-          "Frutas Frescas",
-          "Yogurt Natural"
-        ],
-        "recipe_dislike" : [
-          "Haggis",
-          "Surströmming",
-          "Balut"
-        ]
-      }
-    ]
-  }
-]
+    }
+  ]
 }
