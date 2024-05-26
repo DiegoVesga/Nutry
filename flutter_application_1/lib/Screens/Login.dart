@@ -45,6 +45,7 @@ class _LoginState extends State<Login> {
           return Home(
             title: 'Home',
             id: usersList[i]['user_id'],
+            condicion: usersList[i]['medical_condition'],
           );
         }), (Route<dynamic> route) => false);
 
@@ -69,6 +70,7 @@ class _LoginState extends State<Login> {
           return Home(
             title: 'Home',
             id: usersList[i]['user_id'],
+            condicion: usersList[i]['medical_condition'],
           );
         }), (Route<dynamic> route) => false);
 

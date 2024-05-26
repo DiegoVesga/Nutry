@@ -23,6 +23,8 @@ class _RegisterState extends State<Register> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController repeatpasswordController = TextEditingController();
+  int newuserid = 0;
+  String newusercondition = '';
 
   Future<void> register() async {
     if (usernameController.text != '' &&
@@ -38,15 +40,20 @@ class _RegisterState extends State<Register> {
         "gender": "gender",
         "weight": 0,
         "height": 0,
-        "medical_condition": [],
-        "food_preferences": []
+        "medical_condition": '',
+        "food_preferences": {"food_like": {}}
       };
       usersList.addAll([newUser]);
       print(usersList.reversed);
+      newuserid = newUser['user_id'];
+      newusercondition = newUser['medical_condition'];
       Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => Home(id: 1, title: 'title')),
+            builder: (context) => Userdata(
+                  title: 'a',
+                  id: newuserid,
+                )),
       );
     }
   }
@@ -214,13 +221,11 @@ class _RegisterState extends State<Register> {
                                 fontFamily: 'fredoka',
                                 color: Color.fromRGBO(205, 188, 174, 1)),
                             contentPadding: EdgeInsets.all(20),
-   
                             enabledBorder: OutlineInputBorder(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(50)),
                                 borderSide: BorderSide(
                                     color: Color.fromRGBO(73, 45, 37, 1))),
-
                             focusedBorder: OutlineInputBorder(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(50)),
@@ -235,11 +240,7 @@ class _RegisterState extends State<Register> {
                           35), // Añade un espacio entre el TextField y el botón
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Userdata(title: 'a',)),
-                            );
+                      register();
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xFF492D25),

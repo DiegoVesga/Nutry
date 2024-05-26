@@ -6,6 +6,9 @@ import 'package:google_fonts/google_fonts.dart';
 String dropdownValue = 'Yes';
 
 class Selection extends StatefulWidget {
+  String codicion;
+  int id = 0;
+  Selection({required this.id, required this.codicion});
   @override
   _UserinfoState createState() => _UserinfoState();
 }
@@ -324,6 +327,13 @@ class _UserinfoState extends State<Selection> {
     }
   }
 
+  Future<void> knowExercise() async {
+    if (dropdownValue == 'Yes') {
+    } else {
+      print('ok sin ejercicios');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     // Obtener el tamaño de la pantalla
@@ -456,7 +466,8 @@ class _UserinfoState extends State<Selection> {
                                   Wrap(
                                     spacing: size.width * 0.001,
                                     runSpacing: size.height * 0.0001,
-                                    children: List.generate(_foodOptions.length, (index) {
+                                    children: List.generate(_foodOptions.length,
+                                        (index) {
                                       return Container(
                                         width: (size.width * 0.9 - 75) /
                                             2, // Ancho para que se ajusten 2 columnas
@@ -553,7 +564,8 @@ class _UserinfoState extends State<Selection> {
                                 MaterialPageRoute(
                                     builder: (context) => Home(
                                           title: 'Home',
-                                          id: 1,
+                                          id: widget.id,
+                                          condicion: widget.codicion,
                                         )),
                               );
                             },

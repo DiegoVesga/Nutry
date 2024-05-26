@@ -3,6 +3,9 @@ import 'package:flutter_application_1/Screens/Home.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Terminos extends StatelessWidget {
+  int id;
+  String condicion;
+  Terminos({required this.condicion, required this.id});
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -48,7 +51,8 @@ Convallis posuere morbi leo urna molestie at elementum. Viverra vitae congue eu 
                   MaterialPageRoute(
                       builder: (context) => Home(
                             title: 'Home',
-                            id: 1,
+                            id: id,
+                            condicion: condicion,
                           )),
                 );
               },

@@ -12,7 +12,8 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 class Settings extends StatefulWidget {
   final String title;
   int id;
-  Settings({required this.id, Key? key, required this.title}) : super(key: key);
+  String condicion;
+  Settings({required this.id, Key? key, required this.title, required this.condicion}) : super(key: key);
 
   @override
   _HomeState createState() => _HomeState();
@@ -116,7 +117,10 @@ class _HomeState extends State<Settings> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Selection(),
+                                  builder: (context) => Selection(
+                                    id: widget.id,
+                                    codicion: '',
+                                  ),
                                 ),
                               );
                             },
@@ -193,7 +197,11 @@ class _HomeState extends State<Settings> {
                           // Aquí puedes agregar la navegación a la pantalla de login
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => Terminos()),
+                            MaterialPageRoute(
+                                builder: (context) => Terminos(
+                                      condicion: widget.condicion,
+                                      id: widget.id,
+                                    )),
                           );
                         },
                         child: Text('T&C',
@@ -279,7 +287,7 @@ class _HomeState extends State<Settings> {
             ),
 
             Padding(
-              padding:  EdgeInsets.symmetric(horizontal: size.width * 0.1),
+              padding: EdgeInsets.symmetric(horizontal: size.width * 0.1),
               child: Text(
                 'Por seguridad, introduce tu contraseña para continuar.',
                 style: GoogleFonts.fredoka(

@@ -9,8 +9,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 class Userdata extends StatefulWidget {
   final String title;
-
-  const Userdata({super.key, required this.title});
+  int id;
+  Userdata({super.key, required this.title, required this.id});
 
   @override
   State<Userdata> createState() => _UserdataState();
@@ -18,7 +18,7 @@ class Userdata extends StatefulWidget {
 
 class _UserdataState extends State<Userdata> {
   int selectedDay = 1;
-  String dropdownValue = 'January';
+  String dropdownMonth = 'January';
   String selectedYear = '2004';
   String dropdownGender = 'Male';
   String dropdownWeight = 'Kg';
@@ -157,7 +157,7 @@ class _UserdataState extends State<Userdata> {
                         ),
                       ),
                       child: DropdownButton<String>(
-                        value: dropdownValue,
+                        value: dropdownMonth,
                         icon: Icon(Icons.arrow_drop_down),
                         iconSize: 24,
                         elevation: 16,
@@ -165,7 +165,7 @@ class _UserdataState extends State<Userdata> {
                             color: Color.fromRGBO(73, 45, 37, 1)),
                         onChanged: (String? newValue1) {
                           setState(() {
-                            dropdownValue = newValue1!;
+                            dropdownMonth = newValue1!;
                           });
                         },
                         items: <String>[
@@ -464,41 +464,39 @@ class _UserdataState extends State<Userdata> {
                 Row(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(right: 40,left: 30),
+                      padding: const EdgeInsets.only(right: 40, left: 30),
                       child: Image.asset(
                         'assets/Nutryologa.png',
                         height: 220,
                       ),
                     ),
                     ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Userinfo(),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Userinfo(id: widget.id,),
+                          ),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(0xFF492D25),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 50,
+                            vertical: 5), // Ajusta el ancho del botón
                       ),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF492D25),
-                    padding: EdgeInsets.symmetric(
-                        horizontal: 50,
-                        vertical: 5), // Ajusta el ancho del botón
-                  ),
-                  child: Text(
-                    'Next',
-                    style: GoogleFonts.fredoka(
-                        textStyle: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromRGBO(255, 255, 255, 1.0),
-                    )),
-                  ),
-                )
+                      child: Text(
+                        'Next',
+                        style: GoogleFonts.fredoka(
+                            textStyle: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromRGBO(255, 255, 255, 1.0),
+                        )),
+                      ),
+                    )
                   ],
                 ),
-
-                
               ],
             ),
           ),

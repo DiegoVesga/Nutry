@@ -6,13 +6,15 @@ import 'package:google_fonts/google_fonts.dart';
 String dropdownValue = 'Diabetes';
 
 class Userinfo extends StatefulWidget {
+  int id;
+  Userinfo({required this.id});
   @override
   _UserinfoState createState() => _UserinfoState();
 }
 
 class _UserinfoState extends State<Userinfo> {
   //metodo para annadir la condicion medica al usuario logueado
-
+  String condicionmedica = '';
   Future<void> addCondition() async {
     if (_yesChecked) {
       for (int i = 0; i < usersList.length; i++) {
@@ -20,9 +22,11 @@ class _UserinfoState extends State<Userinfo> {
           if (dropdownValue == 'Diabetes') {
             usersList[i]['medical_condition'] = "Diabetes";
             print(usersList[i]['medical_condition']);
+            condicionmedica = usersList[i]['medical_condition'];
           } else {
             usersList[i]['medical_condition'] = "Obesidad";
             print(usersList[i]['medical_condition']);
+            condicionmedica = usersList[i]['medical_condition'];
           }
         }
       }
@@ -275,7 +279,10 @@ class _UserinfoState extends State<Userinfo> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Selection(),
+                                  builder: (context) => Selection(
+                                    id: widget.id,
+                                    codicion: condicionmedica,
+                                  ),
                                 ),
                               );
                             },

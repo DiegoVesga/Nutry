@@ -6,11 +6,51 @@ import 'package:flutter_application_1/Screens/Settings.dart';
 import 'package:flutter_application_1/Screens/T&C.dart';
 import 'package:flutter_application_1/Services/shared_prefs.dart';
 import 'package:flutter_application_1/main.dart';
-
+import 'package:flutter_application_1/Screens/Home.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
-class Food extends StatelessWidget {
+class Food extends StatefulWidget {
+  String nombrereceta = '';
+  String condicion;
+  int id;
+  Food({required this.nombrereceta, required this.id, required this.condicion});
+
+  @override
+  State<Food> createState() => _FoodState();
+}
+
+class _FoodState extends State<Food> {
+  final prefs = UserPrefs();
+
+  String proteina = '';
+
+  String ingredientes = '';
+
+  String preparacion = '';
+
+  @override
+  void initState() {
+    super.initState();
+    foodDetails();
+  }
+
+  Future<void> foodDetails() async {
+    food_like.forEach((categoria, comida) {
+      comida['Recetas'].forEach((namereceta, detallesReceta) {
+        if (namereceta == widget.nombrereceta) {
+          proteina = detallesReceta['Proteina'];
+          ingredientes = detallesReceta['Ingredientes'];
+          preparacion = detallesReceta['Preparación'];
+
+          print('Proteina: $detallesReceta');
+          print('Ingredientes: $ingredientes');
+          print('Preparación: $preparacion');
+        }
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -32,8 +72,9 @@ class Food extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                           builder: (context) => Home(
-                                id: 1,
+                                id: widget.id,
                                 title: '',
+                                condicion: widget.condicion,
                               )),
                     );
                   },
@@ -46,7 +87,8 @@ class Food extends StatelessWidget {
                       ),
                       SizedBox(width: 10.0),
                       Text(
-                        'Nombre de usuario', // Aquí puedes poner el nombre del usuario dinámicamente
+                        prefs
+                            .username, // Aquí puedes poner el nombre del usuario dinámicamente
                         style: TextStyle(
                           color: Color(0xff8A6B57),
                           fontSize: size.width * 0.05,
@@ -106,7 +148,7 @@ class Food extends StatelessWidget {
                       ),
                       Text(
                         //prefs.username,
-                        'Nombre de la persona',
+                        prefs.username,
                         style: GoogleFonts.fredoka(
                           textStyle: TextStyle(
                             fontSize: size.width * 0.05,
@@ -130,7 +172,10 @@ class Food extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Selection(),
+                                  builder: (context) => Selection(
+                                    id: widget.id,
+                                    codicion: widget.condicion,
+                                  ),
                                 ),
                               );
                             },
@@ -164,7 +209,8 @@ class Food extends StatelessWidget {
                                 MaterialPageRoute(
                                   builder: (context) => Settings(
                                     title: "Aqui va settings",
-                                    id: 1,
+                                    id: widget.id,
+                                    condicion: widget.condicion,
                                   ),
                                 ),
                               );
@@ -242,7 +288,7 @@ class Food extends StatelessWidget {
                           // Aquí puedes agregar la navegación a la pantalla de login
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => Terminos()),
+                            MaterialPageRoute(builder: (context) => Terminos(id: widget.id, condicion: widget.condicion,)),
                           );
                         },
                         child: Text('T&C',
@@ -300,7 +346,7 @@ class Food extends StatelessWidget {
                 ),
                 SizedBox(width: size.width * 0.02),
                 Text(
-                  'Pollo a la parrilla \n con espárragos y \n champiñones',
+                  widget.nombrereceta,
                   style: GoogleFonts.fredoka(
                     fontSize: size.width * 0.05,
                     fontWeight: FontWeight.w400,
@@ -332,7 +378,7 @@ class Food extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        'Pollo',
+                        proteina == '' ? 'xd' : proteina,
                         style: GoogleFonts.fredoka(
                           fontSize: size.width * 0.04,
                           fontWeight: FontWeight.bold,
@@ -354,7 +400,7 @@ class Food extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        'Pechuga de pollo, espárragos,champiñones, aceite de oliva, ajo, sal, pimienta',
+                        ingredientes,
                         style: GoogleFonts.fredoka(
                           fontSize: size.width * 0.04,
                           fontWeight: FontWeight.bold,
@@ -376,7 +422,7 @@ class Food extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        '1. Sazona la pechuga de pollo con sal y pimienta. \n 2.Cocina a la parrilla hasta que esté bien cocida. \n 3.En una sartén, saltea los espárragos y los champiñones con un poco de aceite de oliva y ajo picado. \n 4.Sirve el pollo acompañado de los espárragos y champiñones. ',
+                        preparacion,
                         style: GoogleFonts.fredoka(
                           fontSize: size.width * 0.04,
                           fontWeight: FontWeight.bold,

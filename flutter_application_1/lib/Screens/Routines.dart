@@ -4,15 +4,20 @@ import 'package:flutter_application_1/Screens/Login.dart';
 import 'package:flutter_application_1/Screens/Selection.dart';
 import 'package:flutter_application_1/Screens/Settings.dart';
 import 'package:flutter_application_1/Screens/T&C.dart';
+import 'package:flutter_application_1/Services/shared_prefs.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
 class Routines extends StatelessWidget {
+  int id = 0;
+  String condicion;
+  Routines({required this.id, required this.condicion});
+  final prefs = UserPrefs();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-            appBar: PreferredSize(
+      appBar: PreferredSize(
         preferredSize: Size.fromHeight(
             kToolbarHeight + 20.0), // Ajusta la altura del AppBar
         child: Column(
@@ -29,8 +34,9 @@ class Routines extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                           builder: (context) => Home(
-                                id: 1,
+                                id: id,
                                 title: '',
+                                condicion: condicion,
                               )),
                     );
                   },
@@ -43,7 +49,8 @@ class Routines extends StatelessWidget {
                       ),
                       SizedBox(width: 10.0),
                       Text(
-                        'Nombre de usuario', // Aquí puedes poner el nombre del usuario dinámicamente
+                        prefs
+                            .username, // Aquí puedes poner el nombre del usuario dinámicamente
                         style: TextStyle(
                           color: Color(0xff8A6B57),
                           fontSize: size.width * 0.05,
@@ -103,7 +110,7 @@ class Routines extends StatelessWidget {
                       ),
                       Text(
                         //prefs.username,
-                        'Nombre de la persona',
+                        prefs.username,
                         style: GoogleFonts.fredoka(
                           textStyle: TextStyle(
                             fontSize: size.width * 0.05,
@@ -127,7 +134,10 @@ class Routines extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Selection(),
+                                  builder: (context) => Selection(
+                                    id: id,
+                                    codicion: condicion,
+                                  ),
                                 ),
                               );
                             },
@@ -161,7 +171,8 @@ class Routines extends StatelessWidget {
                                 MaterialPageRoute(
                                   builder: (context) => Settings(
                                     title: "Aqui va settings",
-                                    id: 1,
+                                    id: id,
+                                    condicion: condicion,
                                   ),
                                 ),
                               );
@@ -239,7 +250,7 @@ class Routines extends StatelessWidget {
                           // Aquí puedes agregar la navegación a la pantalla de login
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => Terminos()),
+                            MaterialPageRoute(builder: (context) => Terminos(id: id, condicion: condicion,)),
                           );
                         },
                         child: Text('T&C',
