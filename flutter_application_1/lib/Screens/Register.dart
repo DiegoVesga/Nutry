@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Screens/Birthday.dart';
+import 'package:flutter_application_1/Screens/Home.dart';
 import 'package:flutter_application_1/Screens/Login.dart';
+import 'package:flutter_application_1/Screens/UserInfo.dart';
 import 'package:flutter_application_1/Services/shared_prefs.dart';
 import 'package:flutter_application_1/main.dart';
 
@@ -44,7 +45,7 @@ class _RegisterState extends State<Register> {
       Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => Birthday(id: 1, title: 'title')),
+            builder: (context) => Home(id: 1, title: 'title')),
       );
     }
   }
@@ -233,7 +234,11 @@ class _RegisterState extends State<Register> {
                           35), // Añade un espacio entre el TextField y el botón
                   ElevatedButton(
                     onPressed: () {
-                      register();
+                      Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Userinfo()),
+                            );
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xFF492D25),
