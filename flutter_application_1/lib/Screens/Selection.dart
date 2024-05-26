@@ -93,11 +93,7 @@ class _UserinfoState extends State<Selection> {
                         ),
                       ),
                     ),
-
-                    SizedBox(
-                      height: 30,
-                    ),
-
+                    SizedBox(height: size.height * 0.03),
                     Container(
                       child: Column(
                         children: [
@@ -113,7 +109,7 @@ class _UserinfoState extends State<Selection> {
                             textAlign: TextAlign.center,
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 20),
+                            padding: EdgeInsets.symmetric(horizontal: size.width * 0.05),
                             child: Text(
                               'Here you can choose the ingredients that you like the most.',
                               style: GoogleFonts.fredoka(
@@ -128,22 +124,18 @@ class _UserinfoState extends State<Selection> {
                         ],
                       ),
                     ),
-                    SizedBox(
-                      height: 30,
-                    ),
-
+                    SizedBox(height: size.height * 0.03),
                     Container(
                       child: Column(
                         children: [
                           Container(
-                            height: 300,
-                            width: 400,
+                            width: size.width * 0.9,
                             decoration: BoxDecoration(
                               color: Color(0xffCDBCAE),
                               borderRadius: BorderRadius.circular(20),
                             ),
                             child: Padding(
-                              padding: const EdgeInsets.all(25),
+                              padding: EdgeInsets.all(size.width * 0.05),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -151,18 +143,18 @@ class _UserinfoState extends State<Selection> {
                                     'Like:',
                                     style: GoogleFonts.fredoka(
                                       textStyle: TextStyle(
-                                        fontSize: size.width * 0.03,
+                                        fontSize: size.width * 0.04,
                                         color: Color(0xFF492D25), // Color personalizado
                                       ),
                                     ),
                                   ),
-                                  SizedBox(height: 10),
+                                  SizedBox(height: size.height * 0.02),
                                   Wrap(
-                                    spacing: 10,
-                                    runSpacing: 10,
+                                    spacing: size.width * 0.05,
+                                    runSpacing: size.height * 0.02,
                                     children: List.generate(_foodOptions.length, (index) {
                                       return Container(
-                                        width: (400 - 75) / 2, // Ancho para que se ajusten 2 columnas
+                                        width: (size.width * 0.9 - 75) / 2, // Ancho para que se ajusten 2 columnas
                                         child: Row(
                                           children: [
                                             Checkbox(
@@ -174,12 +166,14 @@ class _UserinfoState extends State<Selection> {
                                                 });
                                               },
                                             ),
-                                            Text(
-                                              _foodOptions[index],
-                                              style: GoogleFonts.fredoka(
-                                                textStyle: TextStyle(
-                                                  fontSize: size.width * 0.03,
-                                                  color: Color(0xFF492D25),
+                                            Expanded(
+                                              child: Text(
+                                                _foodOptions[index],
+                                                style: GoogleFonts.fredoka(
+                                                  textStyle: TextStyle(
+                                                    fontSize: size.width * 0.03,
+                                                    color: Color(0xFF492D25),
+                                                  ),
                                                 ),
                                               ),
                                             ),
@@ -193,23 +187,24 @@ class _UserinfoState extends State<Selection> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(
-                                top: 10, right: 110, left: 110),
+                            padding: EdgeInsets.symmetric(
+                                vertical: size.height * 0.02,
+                                horizontal: size.width * 0.2),
                             child: Text(
                               'DO YOU WANT TO KNOW\nWHAT EXERCISE ROUTINE\nYOU COULD DO?',
                               style: GoogleFonts.fredoka(
-                                fontSize: 25,
+                                fontSize: size.width * 0.05,
                                 fontWeight: FontWeight.bold,
                                 color: Color.fromRGBO(73, 45, 37, 1),
                               ),
                               textAlign: TextAlign.center,
                             ),
                           ),
-                          SizedBox(height: 20),
+                          SizedBox(height: size.height * 0.02),
                           Container(
                             padding: EdgeInsets.all(size.height * 0.01),
-                            height: 50,
-                            width: 75,
+                            height: size.height * 0.07,
+                            width: size.width * 0.2,
                             decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(20),
@@ -239,7 +234,7 @@ class _UserinfoState extends State<Selection> {
                               }).toList(),
                             ),
                           ),
-                          SizedBox(height: 40),
+                          SizedBox(height: size.height * 0.05),
                           ElevatedButton(
                             onPressed: () {
                               Navigator.push(
@@ -251,14 +246,14 @@ class _UserinfoState extends State<Selection> {
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Color(0xFF492D25),
                               padding: EdgeInsets.symmetric(
-                                  horizontal: 50,
-                                  vertical: 5), // Ajusta el ancho del botón
+                                  horizontal: size.width * 0.1,
+                                  vertical: size.height * 0.01), // Ajusta el ancho del botón
                             ),
                             child: Text(
                               'Next',
                               style: GoogleFonts.fredoka(
                                   textStyle: TextStyle(
-                                fontSize: 18,
+                                fontSize: size.width * 0.045,
                                 fontWeight: FontWeight.bold,
                                 color: Color.fromRGBO(255, 255, 255, 1.0),
                               )),
