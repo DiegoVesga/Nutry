@@ -203,7 +203,7 @@ class _UserinfoState extends State<Selection> {
                           SizedBox(height: size.height * 0.02),
                           Container(
                             padding: EdgeInsets.all(size.height * 0.01),
-                            height: size.height * 0.07,
+                            height: size.height * 0.05,
                             width: size.width * 0.2,
                             decoration: BoxDecoration(
                               color: Colors.white,
@@ -234,7 +234,7 @@ class _UserinfoState extends State<Selection> {
                               }).toList(),
                             ),
                           ),
-                          SizedBox(height: size.height * 0.05),
+                          SizedBox(height: size.height * 0.04),
                           ElevatedButton(
                             onPressed: () {
                               Navigator.push(

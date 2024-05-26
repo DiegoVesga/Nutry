@@ -3,29 +3,31 @@ import 'package:flutter_application_1/Screens/Login.dart';
 import 'package:flutter_application_1/Screens/Food.dart';
 import 'package:flutter_application_1/Screens/Routines.dart';
 import 'package:flutter_application_1/Screens/Selection.dart';
-import 'package:flutter_application_1/Screens/Settings.dart';
 import 'package:flutter_application_1/Screens/T&C.dart';
 import 'package:flutter_application_1/Services/shared_prefs.dart';
 import 'package:flutter_application_1/main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
-class Home extends StatefulWidget {
+class Settings extends StatefulWidget {
   final String title;
   int id;
-  Home({required this.id, Key? key, required this.title}) : super(key: key);
+  Settings({required this.id, Key? key, required this.title}) : super(key: key);
 
   @override
   _HomeState createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeState extends State<Settings> {
   final prefs = UserPrefs();
   String selectedButton = ''; // Estado para rastrear el botón seleccionado
   int _currentIndex = 0; // Índice de la página actual en el CarouselSlider
   final PanelController _panelController = PanelController();
 
   List food_preferences = [];
+
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController repeatpasswordController = TextEditingController();
 
   @override
   void initState() {
@@ -132,39 +134,6 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(top: size.height * 0.040),
-                        child: Container(
-                          height: size.height * 0.05,
-                          width: size.width * 0.30,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            color:
-                                Color(0xFF492D25), // Color de fondo del botón
-                          ),
-                          child: TextButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      Settings(title: "Aqui va settings", id: 1,),
-                                ),
-                              );
-                            },
-                            child: Text(
-                              'Settings',
-                              style: GoogleFonts.fredoka(
-                                textStyle: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Padding(
                         padding: EdgeInsets.only(top: size.height * 0.025),
                         child: Container(
                           height: 0.5, // Grosor de la línea
@@ -224,8 +193,7 @@ class _HomeState extends State<Home> {
                           // Aquí puedes agregar la navegación a la pantalla de login
                           Navigator.push(
                             context,
-                            MaterialPageRoute(
-                                builder: (context) => Terminos()),
+                            MaterialPageRoute(builder: (context) => Terminos()),
                           );
                         },
                         child: Text('T&C',
@@ -257,7 +225,6 @@ class _HomeState extends State<Home> {
       backgroundColor: Color(0xFFFAF6F5),
       body: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
               child: Padding(
@@ -311,158 +278,151 @@ class _HomeState extends State<Home> {
               color: Colors.black,
             ),
 
-            SizedBox(height: size.height * 0.04),
-
-            Container(
-              margin: EdgeInsets.symmetric(
-                  vertical: size.height * 0.002, horizontal: size.width * 0.15),
-              child: SizedBox(
-                width: size.width * 0.7,
-                child: Container(
-                  height: size.height * 0.1,
-                  decoration: BoxDecoration(
-                    color: Color(0xffCDBCAE),
-                    borderRadius: BorderRadius.circular(size.width * 0.05),
-                  ),
-                  child: InkWell(
-                    borderRadius: BorderRadius.circular(size.width * 0.05),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Routines()),
-                      );
-                    },
-                    child: Padding(
-                      padding: EdgeInsets.all(size.width * 0.03),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.fitness_center,
-                            size: size.width * 0.09,
-                            color: Color(0xFF3B0000),
-                          ),
-                          SizedBox(width: size.width * 0.03),
-                          Text(
-                            'SEE ROUTINES',
-                            style: GoogleFonts.fredoka(
-                              fontSize: size.width * 0.04,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xFF3B0000),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-
-            SizedBox(height: size.height * 0.03),
-
-            Container(
-              margin: EdgeInsets.symmetric(
-                  vertical: size.height * 0.010, horizontal: size.width * 0.22),
+            Padding(
+              padding:  EdgeInsets.symmetric(horizontal: size.width * 0.1),
               child: Text(
-                'RECIPES PREFERENCES',
+                'Por seguridad, introduce tu contraseña para continuar.',
                 style: GoogleFonts.fredoka(
-                  fontSize: size.width * 0.05,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF3B0000),
+                  fontSize: size.width * 0.04,
+                  fontWeight: FontWeight.w400,
+                  color: Color(0xFF8A6B57),
+                ),
+              ),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.only(top: 15),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  color: Colors.white,
+                ),
+                width: MediaQuery.of(context).size.width * 0.8,
+                height: MediaQuery.of(context).size.height * 0.06,
+                child: TextField(
+                  controller: passwordController,
+                  textAlign: TextAlign.start,
+                  style: TextStyle(color: Color.fromRGBO(73, 45, 37, 1.0)),
+                  obscureText: true,
+                  decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.lock_outline_rounded,
+                          color: Color.fromRGBO(73, 45, 37, 1)),
+                      hintText: 'Last Password',
+                      hintStyle: TextStyle(
+                          fontFamily: 'fredoka',
+                          color: Color.fromRGBO(205, 188, 174, 1)),
+                      contentPadding: EdgeInsets.all(20),
+                      //para darle forma a simple vista
+                      enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(50)),
+                          borderSide:
+                              BorderSide(color: Color.fromRGBO(73, 45, 37, 1))),
+                      //es para darle forma cuando le das click
+                      focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(50)),
+                          borderSide: BorderSide(
+                              color: Color.fromRGBO(73, 45, 37, 1)))),
+                ),
+              ),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.only(top: 15),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  color: Colors.white,
+                ),
+                width: MediaQuery.of(context).size.width * 0.8,
+                height: MediaQuery.of(context).size.height * 0.06,
+                child: TextField(
+                  controller: passwordController,
+                  textAlign: TextAlign.start,
+                  style: TextStyle(color: Color.fromRGBO(73, 45, 37, 1.0)),
+                  obscureText: true,
+                  decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.lock_outline_rounded,
+                          color: Color.fromRGBO(73, 45, 37, 1)),
+                      hintText: 'New Password',
+                      hintStyle: TextStyle(
+                          fontFamily: 'fredoka',
+                          color: Color.fromRGBO(205, 188, 174, 1)),
+                      contentPadding: EdgeInsets.all(20),
+                      //para darle forma a simple vista
+                      enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(50)),
+                          borderSide:
+                              BorderSide(color: Color.fromRGBO(73, 45, 37, 1))),
+                      //es para darle forma cuando le das click
+                      focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(50)),
+                          borderSide: BorderSide(
+                              color: Color.fromRGBO(73, 45, 37, 1)))),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 15),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  color: Colors.white,
+                ),
+                width: MediaQuery.of(context).size.width * 0.8,
+                height: MediaQuery.of(context).size.height * 0.06,
+                child: TextField(
+                  controller: repeatpasswordController,
+                  textAlign: TextAlign.start,
+                  style: TextStyle(color: Color.fromRGBO(73, 45, 37, 1.0)),
+                  obscureText: true,
+                  decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.lock_outline_rounded,
+                          color: Color.fromRGBO(73, 45, 37, 1)),
+                      hintText: 'Repeat Password',
+                      hintStyle: TextStyle(
+                          fontFamily: 'fredoka',
+                          color: Color.fromRGBO(205, 188, 174, 1)),
+                      contentPadding: EdgeInsets.all(20),
+                      enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(50)),
+                          borderSide:
+                              BorderSide(color: Color.fromRGBO(73, 45, 37, 1))),
+                      focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(50)),
+                          borderSide: BorderSide(
+                              color: Color.fromRGBO(73, 45, 37, 1)))),
                 ),
               ),
             ),
 
             SizedBox(height: size.height * 0.04),
 
-            GestureDetector(
-              onTap: () {
+            ElevatedButton(
+              onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Food()),
+                  MaterialPageRoute(
+                      builder: (context) => Login(
+                            title: 'Home',
+                          )),
                 );
               },
-              child: Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(left: size.width * 0.04),
-                      child: Container(
-                        width: MediaQuery.of(context).size.width * 0.4,
-                        height: MediaQuery.of(context).size.height * 0.2,
-                        child: AspectRatio(
-                          aspectRatio: 16 / 9,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
-                            child: Image.asset(
-                              "assets/PolloEsparragos.jpg",
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(width: size.width * 0.02),
-                    Text(
-                      'Pollo a la parrilla \n con espárragos y \n champiñones',
-                      style: GoogleFonts.fredoka(
-                        fontSize: size.width * 0.05,
-                        fontWeight: FontWeight.w400,
-                        color: Color(0xFF8A6B57),
-                      ),
-                    ),
-                  ],
-                ),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xFF492D25),
+                padding: EdgeInsets.symmetric(
+                    horizontal: size.width * 0.1,
+                    vertical: size.height * 0.01), // Ajusta el ancho del botón
+              ),
+              child: Text(
+                'Confirm',
+                style: GoogleFonts.fredoka(
+                    textStyle: TextStyle(
+                  fontSize: size.width * 0.04,
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromRGBO(255, 255, 255, 1.0),
+                )),
               ),
             ),
-
-            SizedBox(height: size.height * 0.02),
-
-
-             GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Food()),
-                );
-              },
-              child: Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(left: size.width * 0.04),
-                      child: Container(
-                        width: MediaQuery.of(context).size.width * 0.4,
-                        height: MediaQuery.of(context).size.height * 0.2,
-                        child: AspectRatio(
-                          aspectRatio: 16 / 9,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
-                            child: Image.asset(
-                              "assets/SalmonQuinoa.jpg",
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(width: size.width * 0.02),
-                    Text(
-                      'Salmón al Horno \n con Espárragos y \n Quinoa',
-                      style: GoogleFonts.fredoka(
-                        fontSize: size.width * 0.05,
-                        fontWeight: FontWeight.w400,
-                        color: Color(0xFF8A6B57),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            
           ],
         ),
       ),

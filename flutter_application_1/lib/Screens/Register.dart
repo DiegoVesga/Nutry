@@ -213,13 +213,13 @@ class _RegisterState extends State<Register> {
                                 fontFamily: 'fredoka',
                                 color: Color.fromRGBO(205, 188, 174, 1)),
                             contentPadding: EdgeInsets.all(20),
-                            //para darle forma a simple vista
+   
                             enabledBorder: OutlineInputBorder(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(50)),
                                 borderSide: BorderSide(
                                     color: Color.fromRGBO(73, 45, 37, 1))),
-                            //es para darle forma cuando le das click
+
                             focusedBorder: OutlineInputBorder(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(50)),
