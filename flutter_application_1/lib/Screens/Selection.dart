@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Screens/Home.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 String dropdownValue = 'Yes';
@@ -9,7 +10,21 @@ class Selection extends StatefulWidget {
 }
 
 class _UserinfoState extends State<Selection> {
-  // Variables para mantener el estado de los checkboxes
+  // Lista de nombres de los alimentos
+  final List<String> _foodOptions = [
+    'Pollo',
+    'Champiñones',
+    'Salmón',
+    'Zanahoria',
+    'Pavo',
+    'Aguacate',
+    'Lenteja',
+    'Garbanzo',
+    'Tofu'
+  ];
+
+  // Estado de los checkboxes
+  List<bool> _checked = List.generate(9, (index) => false);
 
   @override
   Widget build(BuildContext context) {
@@ -32,10 +47,8 @@ class _UserinfoState extends State<Selection> {
               ),
               // Contenedor para el texto y línea divisoria
               Positioned(
-                top: size.height *
-                    0.02, // Ajusta la posición vertical del contenido
-                left: size.width *
-                    0.05, // Ajusta la posición horizontal del contenido
+                top: size.height * 0.02, // Ajusta la posición vertical del contenido
+                left: size.width * 0.05, // Ajusta la posición horizontal del contenido
                 right: size.width * 0.05,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -60,8 +73,7 @@ class _UserinfoState extends State<Selection> {
                     Container(
                       margin: EdgeInsets.only(
                           top: size.height * 0.01,
-                          left: size.width *
-                              0.05), // Espacio entre el texto y la línea
+                          left: size.width * 0.05), // Espacio entre el texto y la línea
                       height: 1, // Grosor de la línea
                       width: size.width * 0.9, // Longitud de la línea
                       color: Colors.black, // Color de la línea
@@ -116,7 +128,7 @@ class _UserinfoState extends State<Selection> {
                         ],
                       ),
                     ),
-                     SizedBox(
+                    SizedBox(
                       height: 30,
                     ),
 
@@ -124,30 +136,76 @@ class _UserinfoState extends State<Selection> {
                       child: Column(
                         children: [
                           Container(
-                            height: 250,
+                            height: 300,
                             width: 400,
                             decoration: BoxDecoration(
                               color: Color(0xffCDBCAE),
                               borderRadius: BorderRadius.circular(20),
-                              
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(25),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Like:',
+                                    style: GoogleFonts.fredoka(
+                                      textStyle: TextStyle(
+                                        fontSize: size.width * 0.03,
+                                        color: Color(0xFF492D25), // Color personalizado
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Wrap(
+                                    spacing: 10,
+                                    runSpacing: 10,
+                                    children: List.generate(_foodOptions.length, (index) {
+                                      return Container(
+                                        width: (400 - 75) / 2, // Ancho para que se ajusten 2 columnas
+                                        child: Row(
+                                          children: [
+                                            Checkbox(
+                                              value: _checked[index],
+                                              activeColor: Color(0xFF3B0000), // Color cuando se selecciona
+                                              onChanged: (bool? value) {
+                                                setState(() {
+                                                  _checked[index] = value!;
+                                                });
+                                              },
+                                            ),
+                                            Text(
+                                              _foodOptions[index],
+                                              style: GoogleFonts.fredoka(
+                                                textStyle: TextStyle(
+                                                  fontSize: size.width * 0.03,
+                                                  color: Color(0xFF492D25),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    }),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(top: 10, right: 110, left: 110),
+                            padding: const EdgeInsets.only(
+                                top: 10, right: 110, left: 110),
                             child: Text(
-                              'DO YOU WANT TO KNOW WHAT EXERCISE ROUTINE YOU COULD DO?',
+                              'DO YOU WANT TO KNOW\nWHAT EXERCISE ROUTINE\nYOU COULD DO?',
                               style: GoogleFonts.fredoka(
                                 fontSize: 25,
                                 fontWeight: FontWeight.bold,
                                 color: Color.fromRGBO(73, 45, 37, 1),
                               ),
                               textAlign: TextAlign.center,
-                              
                             ),
                           ),
-
                           SizedBox(height: 20),
-                          
                           Container(
                             padding: EdgeInsets.all(size.height * 0.01),
                             height: 50,
@@ -172,10 +230,8 @@ class _UserinfoState extends State<Selection> {
                                   dropdownValue = newValue!;
                                 });
                               },
-                              items: <String>[
-                                'Yes',
-                                'No'
-                              ].map<DropdownMenuItem<String>>((String value) {
+                              items: <String>['Yes', 'No']
+                                  .map<DropdownMenuItem<String>>((String value) {
                                 return DropdownMenuItem<String>(
                                   value: value,
                                   child: Text(value),
@@ -183,14 +239,13 @@ class _UserinfoState extends State<Selection> {
                               }).toList(),
                             ),
                           ),
-
                           SizedBox(height: 40),
                           ElevatedButton(
                             onPressed: () {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Selection()),
+                                    builder: (context) => Home(title: 'Home', id: 1,)),
                               );
                             },
                             style: ElevatedButton.styleFrom(
