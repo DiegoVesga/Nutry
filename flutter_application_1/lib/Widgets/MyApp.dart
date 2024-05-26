@@ -4,6 +4,7 @@ import 'package:flutter_application_1/Screens/Home.dart';
 import 'package:flutter_application_1/Screens/Login.dart';
 import 'package:flutter_application_1/Screens/Selection.dart';
 import 'package:flutter_application_1/Screens/UserInfo.dart';
+import 'package:flutter_application_1/Screens/Userdata.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       // A widget which will be started on application startup
-      home: Home(id: 1, title: '',),
+      home: Userdata(title: '',),
     );
   }
 }
