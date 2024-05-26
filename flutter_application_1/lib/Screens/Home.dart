@@ -376,15 +376,18 @@ class _HomeState extends State<Home> {
 
             SizedBox(height: size.height * 0.04),
 
-            /*ListView.builder(
-              itemCount: food_like.length,
-              itemBuilder: (context, index) {
+            ListView.builder(
+              itemCount: 1,
+              itemBuilder: (BuildContext context, int index) {
                 return GestureDetector(
                   onTap: () {
-                    print('xd q mrda de codigo');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Food()),
+                    );
                   },
                   child: Container(
-                    height: 30,
+                    margin: EdgeInsets.symmetric(vertical: 10.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -398,7 +401,7 @@ class _HomeState extends State<Home> {
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(20),
                                 child: Image.asset(
-                                  "assets/PolloEsparragos.jpg",
+                                  "assets/PolloEsparragos.jpg", // Puedes cambiar la imagen según el índice si tienes una lista de imágenes
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -407,7 +410,7 @@ class _HomeState extends State<Home> {
                         ),
                         SizedBox(width: size.width * 0.02),
                         Text(
-                          food_like[index]['Recetas'][0],
+                          'Pollo a la parrilla \n con espárragos y \n champiñones',
                           style: GoogleFonts.fredoka(
                             fontSize: size.width * 0.05,
                             fontWeight: FontWeight.w400,
@@ -419,7 +422,7 @@ class _HomeState extends State<Home> {
                   ),
                 );
               },
-            )*/
+            )
           ],
         ),
       ),

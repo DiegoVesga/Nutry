@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Screens/Home.dart';
 import 'package:flutter_application_1/Screens/Login.dart';
 import 'package:flutter_application_1/Screens/UserInfo.dart';
+import 'package:flutter_application_1/Screens/Userdata.dart';
 import 'package:flutter_application_1/Services/shared_prefs.dart';
 import 'package:flutter_application_1/main.dart';
 
@@ -237,7 +238,7 @@ class _RegisterState extends State<Register> {
                       Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Userinfo()),
+                                  builder: (context) => Userdata(title: 'a',)),
                             );
                     },
                     style: ElevatedButton.styleFrom(
