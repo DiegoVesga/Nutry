@@ -59,6 +59,7 @@ class _UserdataState extends State<Userdata> {
 
     return SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         body: Stack(fit: StackFit.expand, children: [
           Image.asset(
             'assets/Inicio.jpeg',

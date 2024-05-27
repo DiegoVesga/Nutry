@@ -603,7 +603,6 @@ class _UserinfoState extends State<Selection> {
                                       ),
                                     ),
                                   ),
-                                  SizedBox(height: size.height * 0.01),
                                   Wrap(
                                     spacing: size.width * 0.001,
                                     runSpacing: size.height * 0.0001,
@@ -661,7 +660,6 @@ class _UserinfoState extends State<Selection> {
                               textAlign: TextAlign.center,
                             ),
                           ),
-                          SizedBox(height: size.height * 0.02),
                           Container(
                             padding: EdgeInsets.all(size.height * 0.01),
                             height: size.height * 0.05,
@@ -697,7 +695,7 @@ class _UserinfoState extends State<Selection> {
                               }).toList(),
                             ),
                           ),
-                          SizedBox(height: size.height * 0.04),
+                          SizedBox(height: size.height * 0.02),
                           ElevatedButton(
                             onPressed: () {
                               Navigator.push(

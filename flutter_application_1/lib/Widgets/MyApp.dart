@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Screens/Home.dart';
 import 'package:flutter_application_1/Screens/Login.dart';
@@ -22,7 +21,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       // A widget which will be started on application startup
-      home: Login(id: 1, title: '',),
+      home: Login(
+        id: 1,
+        title: '',
+      ),
     );
   }
 }
