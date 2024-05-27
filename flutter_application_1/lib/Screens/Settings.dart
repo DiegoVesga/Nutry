@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/Screens/Login.dart';
 import 'package:flutter_application_1/Screens/Food.dart';
 import 'package:flutter_application_1/Screens/Routines.dart';
@@ -13,7 +14,12 @@ class Settings extends StatefulWidget {
   final String title;
   int id;
   String condicion;
-  Settings({required this.id, Key? key, required this.title, required this.condicion}) : super(key: key);
+  Settings(
+      {required this.id,
+      Key? key,
+      required this.title,
+      required this.condicion})
+      : super(key: key);
 
   @override
   _HomeState createState() => _HomeState();
@@ -26,20 +32,27 @@ class _HomeState extends State<Settings> {
   final PanelController _panelController = PanelController();
 
   List food_preferences = [];
-
+  TextEditingController lastpasswordController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController repeatpasswordController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    getData();
   }
 
-  Future<void> getData() async {
+  Future<void> changePassword() async {
     for (int i = 0; i < usersList.length; i++) {
       if (widget.id == usersList[i]['user_id']) {
-        food_preferences = usersList[i]['food_preferences'];
+        if (prefs.password == lastpasswordController.text &&
+            passwordController.text != '' &&
+            repeatpasswordController.text == passwordController.text) {
+          usersList[i]['password'] = passwordController.text;
+          prefs.password = usersList[i]['password'];
+          print('contrasenna cambiada con exito');
+        } else {
+          print('falta llenar correctamente algun campo');
+        }
       }
     }
   }
@@ -308,7 +321,7 @@ class _HomeState extends State<Settings> {
                 width: MediaQuery.of(context).size.width * 0.8,
                 height: MediaQuery.of(context).size.height * 0.06,
                 child: TextField(
-                  controller: passwordController,
+                  controller: lastpasswordController,
                   textAlign: TextAlign.start,
                   style: TextStyle(color: Color.fromRGBO(73, 45, 37, 1.0)),
                   obscureText: true,
@@ -407,13 +420,7 @@ class _HomeState extends State<Settings> {
 
             ElevatedButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => Login(
-                            title: 'Home',
-                          )),
-                );
+                changePassword();
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color(0xFF492D25),

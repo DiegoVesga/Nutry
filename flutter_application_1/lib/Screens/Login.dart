@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter_application_1/Screens/Selection.dart';
 import 'package:flutter_application_1/Services/shared_prefs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -46,6 +47,7 @@ class _LoginState extends State<Login> {
             title: 'Home',
             id: usersList[i]['user_id'],
             condicion: usersList[i]['medical_condition'],
+            routines: dropdownExercise,
           );
         }), (Route<dynamic> route) => false);
 
@@ -71,6 +73,7 @@ class _LoginState extends State<Login> {
             title: 'Home',
             id: usersList[i]['user_id'],
             condicion: usersList[i]['medical_condition'],
+            routines: dropdownExercise,
           );
         }), (Route<dynamic> route) => false);
 

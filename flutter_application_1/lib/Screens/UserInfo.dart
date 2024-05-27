@@ -16,9 +16,9 @@ class _UserinfoState extends State<Userinfo> {
   //metodo para annadir la condicion medica al usuario logueado
   String condicionmedica = '';
   Future<void> addCondition() async {
-    if (_yesChecked) {
+    if (_yesChecked == true) {
       for (int i = 0; i < usersList.length; i++) {
-        if (usersList[i]['user_id'] == 1) {
+        if (usersList[i]['user_id'] == widget.id) {
           if (dropdownValue == 'Diabetes') {
             usersList[i]['medical_condition'] = "Diabetes";
             print(usersList[i]['medical_condition']);
@@ -138,6 +138,8 @@ class _UserinfoState extends State<Userinfo> {
                                     setState(() {
                                       _yesChecked = value!;
                                       if (_yesChecked) _noChecked = false;
+                                      print(
+                                          'id pasada por parametro: ${widget.id}');
                                     });
                                   },
                                   fillColor:
@@ -276,6 +278,7 @@ class _UserinfoState extends State<Userinfo> {
                           SizedBox(height: 40),
                           ElevatedButton(
                             onPressed: () {
+                              addCondition();
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(

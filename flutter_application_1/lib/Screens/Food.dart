@@ -75,6 +75,7 @@ class _FoodState extends State<Food> {
                                 id: widget.id,
                                 title: '',
                                 condicion: widget.condicion,
+                                routines: dropdownExercise,
                               )),
                     );
                   },

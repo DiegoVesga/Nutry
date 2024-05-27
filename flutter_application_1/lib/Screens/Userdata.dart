@@ -23,6 +23,32 @@ class _UserdataState extends State<Userdata> {
   String dropdownGender = 'Male';
   String dropdownWeight = 'Kg';
   String dropdownHeight = 'cm';
+  TextEditingController weightController = TextEditingController();
+  TextEditingController heightController = TextEditingController();
+
+  Future<void> completeRegister() async {
+    if (weightController.text != '' && heightController.text != '') {
+      for (int i = 0; i < usersList.length; i++) {
+        if (usersList[i]['user_id'] == widget.id) {
+          usersList[i]['birthdate'] =
+              '$selectedYear/$dropdownMonth/$selectedDay';
+          usersList[i]['gender'] = '$dropdownGender';
+          usersList[i]['weight'] = int.parse(weightController.text);
+          usersList[i]['height'] = int.parse(heightController.text);
+          print(usersList[i]);
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Userinfo(
+                id: widget.id,
+              ),
+            ),
+          );
+          break;
+        }
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -328,6 +354,7 @@ class _UserdataState extends State<Userdata> {
                         ),
                       ),
                       child: TextField(
+                        controller: weightController,
                         decoration: InputDecoration(
                             focusedBorder: UnderlineInputBorder(
                           borderSide:
@@ -411,6 +438,7 @@ class _UserdataState extends State<Userdata> {
                         ),
                       ),
                       child: TextField(
+                        controller: heightController,
                         decoration: InputDecoration(
                             focusedBorder: UnderlineInputBorder(
                           borderSide:
@@ -472,12 +500,7 @@ class _UserdataState extends State<Userdata> {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Userinfo(id: widget.id,),
-                          ),
-                        );
+                        completeRegister();
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color(0xFF492D25),

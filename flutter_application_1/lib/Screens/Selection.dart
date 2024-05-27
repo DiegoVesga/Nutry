@@ -3,7 +3,7 @@ import 'package:flutter_application_1/Screens/Home.dart';
 import 'package:flutter_application_1/main.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-String dropdownValue = 'Yes';
+String dropdownExercise = 'Yes';
 
 class Selection extends StatefulWidget {
   String codicion;
@@ -34,7 +34,7 @@ class _UserinfoState extends State<Selection> {
 
   Future<void> setFoodPreferences() async {
     for (int i = 0; i < usersList.length; i++) {
-      if (usersList[i]['user_id'] == 1 &&
+      if (usersList[i]['user_id'] == widget.id &&
           usersList[i]['medical_condition'] == 'Diabetes') {
         if (_checked[0]) {
           selectedPreferences['Pollo'] = {
@@ -183,8 +183,149 @@ class _UserinfoState extends State<Selection> {
         print(usersList[i]['food_preferences']['food_like']);
       }
       //obesos
-      if (usersList[i]['user_id'] == 1 &&
+      if (usersList[i]['user_id'] == widget.id &&
           usersList[i]['medical_condition'] == 'Obesidad') {
+        if (_checked[0]) {
+          selectedPreferences['Pollo'] = {
+            "Recetas": {
+              "Pollo al Horno con Espárragos y Quinoa": {
+                "Proteina": "Pollo",
+                "Ingredientes":
+                    "Pechuga de pollo, espárragos, quinoa cocida, aceite de oliva, ajo, limón, sal, pimienta",
+                "Preparación":
+                    "Sazona la pechuga de pollo con sal y pimienta\nCocina a la parrilla hasta que esté bien cocida\nEn una sartén, saltea los espárragos y los champiñones con un poco de aceite de oliva y ajo picado\nSirve el pollo acompañado de los espárragos y champiñones, agrega quinoa cocida como guarnición"
+              }
+            }
+          };
+        } else {
+          selectedPreferences.remove('Pollo');
+        }
+        if (_checked[1]) {
+          selectedPreferences['Champinnones'] = {
+            "Recetas": {
+              "Tofu Salteado con Vegetales y Arroz Integral": {
+                "Proteina": "Tofu",
+                "Ingredientes":
+                    "Tofu firme, brócoli, zanahorias, champiñones, cebolla, ajo, salsa de soja baja en sodio, aceite de sésamo, jengibre fresco, arroz integral cocido",
+                "Preparación":
+                    "Saltea el tofu cortado en cubos con vegetales y aromáticos en una sartén con aceite de sésamo y salsa de soja\nSirve sobre arroz integral cocido"
+              }
+            }
+          };
+        } else {
+          selectedPreferences.remove('Champinnones');
+        }
+        if (_checked[2]) {
+          selectedPreferences['Salmon'] = {
+            "Recetas": {
+              "Salmón al Horno con Espárragos y Quinoa": {
+                "Proteina": "Salmon",
+                "Ingredientes":
+                    "Filete de salmón, espárragos, quinoa cocida, aceite de oliva, ajo, limón, sal, pimienta",
+                "Preparación":
+                    "Precalienta el horno a 180°C\nColoca el salmón en una bandeja para hornear, sazona con sal, eneldo y jugo de limón\nAñade los vegetales alrededor del salmón, rocía con un poco de aceite de oliva\nHornea durante 20-25 minutos hasta que el salmón esté cocido y los vegetales tiernos, agrega quinoa cocida como guarnición"
+              }
+            }
+          };
+        } else {
+          selectedPreferences.remove('Salmon');
+        }
+        if (_checked[3]) {
+          selectedPreferences['Zanahoria'] = {
+            "Recetas": {
+              "Tofu Salteado con Vegetales y Arroz Integral": {
+                "Proteina": "Tofu",
+                "Ingredientes":
+                    "Tofu firme, brócoli, zanahorias, champiñones, cebolla, ajo, salsa de soja baja en sodio, aceite de sésamo, jengibre fresco, arroz integral cocido",
+                "Preparación":
+                    "Saltea el tofu cortado en cubos con vegetales y aromáticos en una sartén con aceite de sésamo y salsa de soja\nSirve sobre arroz integral cocido"
+              }
+            }
+          };
+        } else {
+          selectedPreferences.remove('Zanahoria');
+        }
+        if (_checked[4]) {
+          selectedPreferences['Pavo'] = {
+            "Recetas": {
+              "Hamburguesas de Pavo con Ensalada de Espinacas y Fresas": {
+                "Proteina": "Pavo",
+                "Ingredientes":
+                    "Carne molida de pavo, espinacas frescas, fresas, cebolla roja, vinagre balsámico, aceite de oliva, sal, pimienta",
+                "Preparación":
+                    "Prepara hamburguesas de pavo sazonadas con ajo picado, cebolla picada, sal y pimienta\nAsa a la parrilla y sirve sobre una cama de espinacas frescas y fresas, aliñadas con vinagreta balsámica"
+              }
+            }
+          };
+        } else {
+          selectedPreferences.remove('Pavo');
+        }
+        if (_checked[5]) {
+          selectedPreferences['Aguacate'] = {
+            "Recetas": {
+              "Ensalada de Garbanzos con Aguacate y Tomate": {
+                "Proteina": "Garbanzos",
+                "Ingredientes":
+                    "Garbanzos cocidos, aguacate, tomate, cebolla roja, cilantro fresco, aceite de oliva, jugo de limón, sal, pimienta",
+                "Preparación":
+                    "Mezcla los garbanzos cocidos con aguacate en cubos, tomate picado y cebolla roja en rodajas\nAliña con aceite de oliva, vinagre balsámico y sal\nEspolvorea perejil picado antes de servir"
+              }
+            }
+          };
+        } else {
+          selectedPreferences.remove('Aguacate');
+        }
+        if (_checked[6]) {
+          selectedPreferences['Lentejas'] = {
+            "Recetas": {
+              "Ensalada de Garbanzos con Aguacate y Tomate": {
+                "Proteina": "Garbanzos",
+                "Ingredientes":
+                    "Garbanzos cocidos, Aguacate, Tomate, Cebolla roja, Cilantro fresco,Aceite de oliva, Jugo de limón, Sal, Pimienta",
+                "Preparación":
+                    "Sigue las instrucciones para la ensalada de lentejas con aguacate y tomate, utilizando garbanzos cocidos en lugar de lentejas."
+              }
+            }
+          };
+        } else {
+          selectedPreferences.remove('Lentejas');
+        }
+        if (_checked[7]) {
+          selectedPreferences['Garbanzos'] = {
+            "Recetas": {
+              "Ensalada de Garbanzos con Aguacate y Tomate": {
+                "Proteina": "Garbanzos",
+                "Ingredientes":
+                    "Garbanzos cocidos, aguacate, tomate, cebolla roja, cilantro fresco, aceite de oliva, jugo de limón, sal, pimienta",
+                "Preparación":
+                    "Mezcla los garbanzos cocidos con aguacate en cubos, tomate picado y cebolla roja en rodajas\nAliña con aceite de oliva, vinagre balsámico y sal\nEspolvorea perejil picado antes de servir"
+              }
+            }
+          };
+        } else {
+          selectedPreferences.remove('Garbanzos');
+        }
+        if (_checked[8]) {
+          selectedPreferences['Tofu'] = {
+            "Recetas": {
+              "Tofu Salteado con Vegetales y Arroz Integral": {
+                "Proteina": "Tofu",
+                "Ingredientes":
+                    "Tofu firme, brócoli, zanahorias, champiñones, cebolla, ajo, salsa de soja baja en sodio, aceite de sésamo, jengibre fresco, arroz integral cocido",
+                "Preparación":
+                    "Saltea el tofu cortado en cubos con vegetales y aromáticos en una sartén con aceite de sésamo y salsa de soja\nSirve sobre arroz integral cocido"
+              }
+            }
+          };
+        } else {
+          selectedPreferences.remove('Tofu');
+        }
+        usersList[i]['food_preferences']['food_like'] = selectedPreferences;
+        //'_Map<String, Map<String, Map<String, Map<String, String>>>>' is not a subtype of type 'Map<String, Map<String, Map<String, Map<String, Map<String, String>>>>>' of 'value'
+        print(usersList[i]['food_preferences']['food_like']);
+      }
+      if (usersList[i]['user_id'] == widget.id &&
+          usersList[i]['medical_condition'] == '') {
         if (_checked[0]) {
           selectedPreferences['Pollo'] = {
             "Recetas": {
@@ -328,7 +469,7 @@ class _UserinfoState extends State<Selection> {
   }
 
   Future<void> knowExercise() async {
-    if (dropdownValue == 'Yes') {
+    if (dropdownExercise == 'Yes') {
     } else {
       print('ok sin ejercicios');
     }
@@ -534,7 +675,7 @@ class _UserinfoState extends State<Selection> {
                               ),
                             ),
                             child: DropdownButton<String>(
-                              value: dropdownValue,
+                              value: dropdownExercise,
                               icon: Icon(Icons.arrow_drop_down),
                               iconSize: 24,
                               elevation: 16,
@@ -542,7 +683,7 @@ class _UserinfoState extends State<Selection> {
                                   color: Color.fromRGBO(73, 45, 37, 1)),
                               onChanged: (String? newValue) {
                                 setState(() {
-                                  dropdownValue = newValue!;
+                                  dropdownExercise = newValue!;
                                 });
                               },
                               items: <String>[
@@ -566,6 +707,7 @@ class _UserinfoState extends State<Selection> {
                                           title: 'Home',
                                           id: widget.id,
                                           condicion: widget.codicion,
+                                          routines: dropdownExercise,
                                         )),
                               );
                             },

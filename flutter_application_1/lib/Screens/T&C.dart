@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Screens/Home.dart';
+import 'package:flutter_application_1/Screens/Selection.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Terminos extends StatelessWidget {
@@ -53,6 +54,7 @@ Convallis posuere morbi leo urna molestie at elementum. Viverra vitae congue eu 
                             title: 'Home',
                             id: id,
                             condicion: condicion,
+                            routines: dropdownExercise,
                           )),
                 );
               },

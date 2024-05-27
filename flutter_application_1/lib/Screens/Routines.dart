@@ -10,6 +10,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 class Routines extends StatelessWidget {
 
+
+
 final List<Map<String, String>> exercises = [
     {
       'title': 'Caminar:',
@@ -31,9 +33,13 @@ final List<Map<String, String>> exercises = [
     },
   ];
   
+  Future<void> loadRoutines () async {
+
+  }
+
   int id = 0;
   String condicion;
-  Routines({required this.id, required this.condicion});
+  Routines({required this.id, required this.condicion,});
   final prefs = UserPrefs();
   @override
   Widget build(BuildContext context) {
@@ -59,6 +65,7 @@ final List<Map<String, String>> exercises = [
                                 id: id,
                                 title: '',
                                 condicion: condicion,
+                                routines: dropdownExercise,
                               )),
                     );
                   },
@@ -331,7 +338,7 @@ final List<Map<String, String>> exercises = [
           ),
           SizedBox(width: size.width * 0.02),
           Text(
-            'Examples',
+            'Exercises',
             style: GoogleFonts.fredoka(
               fontSize: size.width * 0.05,
               fontWeight: FontWeight.w400,

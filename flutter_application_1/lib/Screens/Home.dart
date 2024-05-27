@@ -14,9 +14,15 @@ Map<String, dynamic> food_like = {};
 
 class Home extends StatefulWidget {
   final String title;
+  String routines;
   int id;
   String condicion;
-  Home({required this.id, Key? key, required this.title, required this.condicion}) : super(key: key);
+  Home(
+      {required this.id,
+      Key? key,
+      required this.title,
+      required this.condicion, required this.routines})
+      : super(key: key);
 
   @override
   _HomeState createState() => _HomeState();
@@ -41,6 +47,7 @@ class _HomeState extends State<Home> {
         food_like.forEach((key, value) {
           recetas.addAll(value['Recetas'].keys.toList());
         });
+        print(usersList[i]);
       }
     }
     print(recetas);
@@ -235,7 +242,11 @@ class _HomeState extends State<Home> {
                           // Aquí puedes agregar la navegación a la pantalla de login
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => Terminos(condicion: widget.condicion,id: widget.id,)),
+                            MaterialPageRoute(
+                                builder: (context) => Terminos(
+                                      condicion: widget.condicion,
+                                      id: widget.id,
+                                    )),
                           );
                         },
                         child: Text('T&C',
@@ -328,7 +339,7 @@ class _HomeState extends State<Home> {
                   vertical: size.height * 0.002, horizontal: size.width * 0.15),
               child: SizedBox(
                 width: size.width * 0.7,
-                child: Container(
+                child: widget.routines == 'No' ? Container(): Container(
                   height: size.height * 0.1,
                   decoration: BoxDecoration(
                     color: Color(0xffCDBCAE),

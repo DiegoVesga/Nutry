@@ -40,10 +40,13 @@ class _RegisterState extends State<Register> {
         "gender": "gender",
         "weight": 0,
         "height": 0,
-        "medical_condition": '',
+        "medical_condition": "",
         "food_preferences": {"food_like": {}}
       };
       usersList.addAll([newUser]);
+      prefs.email = newUser['correo'];
+      prefs.username = newUser['nombre'];
+      prefs.password = newUser['password'];
       print(usersList.reversed);
       newuserid = newUser['user_id'];
       newusercondition = newUser['medical_condition'];
