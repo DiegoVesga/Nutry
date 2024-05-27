@@ -14,8 +14,9 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 class Food extends StatefulWidget {
   String nombrereceta = '';
   String condicion;
+  String rutafoto;
   int id;
-  Food({required this.nombrereceta, required this.id, required this.condicion});
+  Food({required this.nombrereceta, required this.id, required this.condicion, required this.rutafoto});
 
   @override
   State<Food> createState() => _FoodState();
@@ -257,7 +258,8 @@ class _FoodState extends State<Food> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => const Login(
-                                          title: 'Login', id: 1,
+                                          title: 'Login',
+                                          id: 1,
                                         )),
                                 (Route<dynamic> route) => false,
                               );
@@ -290,7 +292,11 @@ class _FoodState extends State<Food> {
                           // Aquí puedes agregar la navegación a la pantalla de login
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => Terminos(id: widget.id, condicion: widget.condicion,)),
+                            MaterialPageRoute(
+                                builder: (context) => Terminos(
+                                      id: widget.id,
+                                      condicion: widget.condicion,
+                                    )),
                           );
                         },
                         child: Text('T&C',
@@ -339,7 +345,7 @@ class _FoodState extends State<Food> {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(20),
                         child: Image.asset(
-                          "assets/PolloEsparragos.jpg",
+                          widget.rutafoto,
                           fit: BoxFit.cover,
                         ),
                       ),

@@ -21,7 +21,8 @@ class Home extends StatefulWidget {
       {required this.id,
       Key? key,
       required this.title,
-      required this.condicion, required this.routines})
+      required this.condicion,
+      required this.routines})
       : super(key: key);
 
   @override
@@ -39,7 +40,21 @@ class _HomeState extends State<Home> {
   }
 
   List<String> recetas = [];
-
+  Map<String, String> recetasImagenes = {
+    'Ensalada de Lentejas con Aguacate y Tomate': "assets/EnsaladaLenteja.jpg",
+    'Tiras de Pollo a la Parrilla con Ensalada de Garbanzos': "assets/GarbanzosAguacate.jpg",
+    'Hamburguesas de Pavo con Ensalada de Espinacas y Fresas': "assets/PavoEspinaca.jpg",
+    'Pollo a la parrilla con espárragos y champiñones':
+        "assets/PolloEsparragos.jpg",
+    'Salmon al horno con vegetales': "assets/SalmonQuinoa.jpg",
+    'Tofu Salteado con Vegetales y Arroz Integral': "assets/TofuVegetales.jpg",
+    'Sopa de vegetales y pollo' : "assets/SopaPolloVegetales.png",
+    'Ensalada de lentejas con aguacate y tomate' : "assets/EnsaladaLenteja.jpg",
+    'Pollo al Horno con Espárragos y Quinoa' : "assets/PolloEsparragos.jpg",
+    'Salmón al Horno con Espárragos y Quinoa' : "assets/SalmonQuinoa.jpg",
+    'Ensalada de Garbanzos con Aguacate y Tomate' : "assets/GarbanzosAguacate.jpg",
+    
+  };
   Future<void> getData() async {
     for (int i = 0; i < usersList.length; i++) {
       if (widget.id == usersList[i]['user_id']) {
@@ -340,49 +355,53 @@ class _HomeState extends State<Home> {
                   vertical: size.height * 0.002, horizontal: size.width * 0.15),
               child: SizedBox(
                 width: size.width * 0.7,
-                child: widget.routines == 'No' ? Container(): Container(
-                  height: size.height * 0.1,
-                  decoration: BoxDecoration(
-                    color: Color(0xffCDBCAE),
-                    borderRadius: BorderRadius.circular(size.width * 0.05),
-                  ),
-                  child: InkWell(
-                    borderRadius: BorderRadius.circular(size.width * 0.05),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Routines(
-                            id: widget.id,
-                            condicion: widget.condicion,
-                          ),
+                child: widget.routines == 'No'
+                    ? Container()
+                    : Container(
+                        height: size.height * 0.1,
+                        decoration: BoxDecoration(
+                          color: Color(0xffCDBCAE),
+                          borderRadius:
+                              BorderRadius.circular(size.width * 0.05),
                         ),
-                      );
-                    },
-                    child: Padding(
-                      padding: EdgeInsets.all(size.width * 0.03),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.fitness_center,
-                            size: size.width * 0.09,
-                            color: Color(0xFF3B0000),
-                          ),
-                          SizedBox(width: size.width * 0.03),
-                          Text(
-                            'SEE ROUTINES',
-                            style: GoogleFonts.fredoka(
-                              fontSize: size.width * 0.04,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xFF3B0000),
+                        child: InkWell(
+                          borderRadius:
+                              BorderRadius.circular(size.width * 0.05),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Routines(
+                                  id: widget.id,
+                                  condicion: widget.condicion,
+                                ),
+                              ),
+                            );
+                          },
+                          child: Padding(
+                            padding: EdgeInsets.all(size.width * 0.03),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.fitness_center,
+                                  size: size.width * 0.09,
+                                  color: Color(0xFF3B0000),
+                                ),
+                                SizedBox(width: size.width * 0.03),
+                                Text(
+                                  'SEE ROUTINES',
+                                  style: GoogleFonts.fredoka(
+                                    fontSize: size.width * 0.04,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color(0xFF3B0000),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                        ],
+                        ),
                       ),
-                    ),
-                  ),
-                ),
               ),
             ),
 
@@ -409,12 +428,15 @@ class _HomeState extends State<Home> {
               child: ListView.builder(
                 itemCount: recetas.length, // Cantidad de elementos en la lista
                 itemBuilder: (BuildContext context, int index) {
+                  String receta = recetas[index];
+                  String? imagen = recetasImagenes[receta];
                   return GestureDetector(
                     onTap: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => Food(
+                            rutafoto: imagen,
                             nombrereceta: recetas[index],
                             id: widget.id,
                             condicion: widget.condicion,
@@ -437,7 +459,7 @@ class _HomeState extends State<Home> {
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(20),
                                   child: Image.asset(
-                                    "assets/PolloEsparragos.jpg",
+                                    imagen!,
                                     fit: BoxFit.cover,
                                   ),
                                 ),
