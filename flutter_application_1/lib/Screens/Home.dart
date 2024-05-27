@@ -210,6 +210,7 @@ class _HomeState extends State<Home> {
                                 MaterialPageRoute(
                                     builder: (context) => const Login(
                                           title: 'Login',
+                                          id: 1,
                                         )),
                                 (Route<dynamic> route) => false,
                               );
@@ -406,19 +407,19 @@ class _HomeState extends State<Home> {
               height: MediaQuery.of(context).size.height *
                   0.6, // Tamaño específico para el ListView.builder
               child: ListView.builder(
-                itemCount: recetas
-                    .length, // Reemplaza 'itemCount' con la cantidad de elementos en tu lista
+                itemCount: recetas.length, // Cantidad de elementos en la lista
                 itemBuilder: (BuildContext context, int index) {
                   return GestureDetector(
                     onTap: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => Food(
-                                  nombrereceta: recetas[index],
-                                  id: widget.id,
-                                  condicion: widget.condicion,
-                                )),
+                          builder: (context) => Food(
+                            nombrereceta: recetas[index],
+                            id: widget.id,
+                            condicion: widget.condicion,
+                          ),
+                        ),
                       );
                     },
                     child: Container(
@@ -444,12 +445,15 @@ class _HomeState extends State<Home> {
                             ),
                           ),
                           SizedBox(width: size.width * 0.02),
-                          Text(
-                            recetas[index],
-                            style: GoogleFonts.fredoka(
-                              fontSize: size.width * 0.05,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xFF8A6B57),
+                          Flexible(
+                            child: Text(
+                              recetas[index],
+                              style: GoogleFonts.fredoka(
+                                fontSize: size.width * 0.05,
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xFF8A6B57),
+                              ),
+                              textAlign: TextAlign.center,
                             ),
                           ),
                         ],

@@ -13,7 +13,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Login extends StatefulWidget {
   final String title;
-  const Login({super.key, required this.title});
+  const Login({super.key, required this.title, required int id});
 
   @override
   State<Login> createState() => _LoginState();

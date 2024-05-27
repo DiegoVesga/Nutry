@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/Screens/Home.dart';
 import 'package:flutter_application_1/Screens/Login.dart';
 import 'package:flutter_application_1/Screens/Selection.dart';
@@ -256,7 +257,7 @@ class _FoodState extends State<Food> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => const Login(
-                                          title: 'Login',
+                                          title: 'Login', id: 1,
                                         )),
                                 (Route<dynamic> route) => false,
                               );
@@ -346,12 +347,14 @@ class _FoodState extends State<Food> {
                   ),
                 ),
                 SizedBox(width: size.width * 0.02),
-                Text(
-                  widget.nombrereceta,
-                  style: GoogleFonts.fredoka(
-                    fontSize: size.width * 0.05,
-                    fontWeight: FontWeight.w400,
-                    color: Color(0xFF8A6B57),
+                Expanded(
+                  child: Text(
+                    widget.nombrereceta,
+                    style: GoogleFonts.fredoka(
+                      fontSize: size.width * 0.05,
+                      fontWeight: FontWeight.w400,
+                      color: Color(0xFF8A6B57),
+                    ),
                   ),
                 ),
               ],

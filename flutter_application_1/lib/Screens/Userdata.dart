@@ -140,7 +140,7 @@ class _UserdataState extends State<Userdata> {
                     Container(
                       padding: EdgeInsets.all(size.height * 0.01),
                       height: 40,
-                      width: 60,
+                      width: 70,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(20),
@@ -219,7 +219,7 @@ class _UserdataState extends State<Userdata> {
                     Container(
                       padding: EdgeInsets.all(size.height * 0.01),
                       height: 40,
-                      width: 75,
+                      width: 90,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(20),
@@ -366,7 +366,7 @@ class _UserdataState extends State<Userdata> {
                     Container(
                       padding: EdgeInsets.all(size.height * 0.01),
                       height: 40,
-                      width: 60,
+                      width: 70,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(20),
@@ -450,7 +450,7 @@ class _UserdataState extends State<Userdata> {
                     Container(
                       padding: EdgeInsets.all(size.height * 0.01),
                       height: 40,
-                      width: 60,
+                      width: 70,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(20),
@@ -492,7 +492,7 @@ class _UserdataState extends State<Userdata> {
                 Row(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(right: 40, left: 30),
+                      padding: const EdgeInsets.only(right: 40, left: 10),
                       child: Image.asset(
                         'assets/Nutryologa.png',
                         height: 220,
@@ -505,7 +505,7 @@ class _UserdataState extends State<Userdata> {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color(0xFF492D25),
                         padding: EdgeInsets.symmetric(
-                            horizontal: 50,
+                            horizontal: 40,
                             vertical: 5), // Ajusta el ancho del botón
                       ),
                       child: Text(
