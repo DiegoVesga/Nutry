@@ -240,7 +240,7 @@ class _RegisterState extends State<Register> {
                           35), // Añade un espacio entre el TextField y el botón
                   ElevatedButton(
                     onPressed: () {
-                      Userinfo(id: 1,);
+                      register();
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xFF492D25),

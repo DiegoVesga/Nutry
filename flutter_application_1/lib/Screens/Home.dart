@@ -402,66 +402,65 @@ class _HomeState extends State<Home> {
             SizedBox(height: size.height * 0.04),
 
             Container(
-  height: MediaQuery.of(context).size.height *
-      0.6, // Tamaño específico para el ListView.builder
-  child: ListView.builder(
-    itemCount: recetas.length, // Cantidad de elementos en la lista
-    itemBuilder: (BuildContext context, int index) {
-      return GestureDetector(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => Food(
-                nombrereceta: recetas[index],
-                id: widget.id,
-                condicion: widget.condicion,
-              ),
-            ),
-          );
-        },
-        child: Container(
-          margin: EdgeInsets.symmetric(vertical: 10.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: EdgeInsets.only(left: size.width * 0.04),
-                child: Container(
-                  width: MediaQuery.of(context).size.width * 0.4,
-                  height: MediaQuery.of(context).size.height * 0.2,
-                  child: AspectRatio(
-                    aspectRatio: 16 / 9,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: Image.asset(
-                        "assets/PolloEsparragos.jpg",
-                        fit: BoxFit.cover,
+              height: MediaQuery.of(context).size.height *
+                  0.6, // Tamaño específico para el ListView.builder
+              child: ListView.builder(
+                itemCount: recetas.length, // Cantidad de elementos en la lista
+                itemBuilder: (BuildContext context, int index) {
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Food(
+                            nombrereceta: recetas[index],
+                            id: widget.id,
+                            condicion: widget.condicion,
+                          ),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      margin: EdgeInsets.symmetric(vertical: 10.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(left: size.width * 0.04),
+                            child: Container(
+                              width: MediaQuery.of(context).size.width * 0.4,
+                              height: MediaQuery.of(context).size.height * 0.2,
+                              child: AspectRatio(
+                                aspectRatio: 16 / 9,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: Image.asset(
+                                    "assets/PolloEsparragos.jpg",
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: size.width * 0.02),
+                          Flexible(
+                            child: Text(
+                              recetas[index],
+                              style: GoogleFonts.fredoka(
+                                fontSize: size.width * 0.05,
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xFF8A6B57),
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                  ),
-                ),
+                  );
+                },
               ),
-              SizedBox(width: size.width * 0.02),
-              // Usar Flexible o Expanded para el Text
-              Flexible(
-                child: Text(
-                  recetas[index],
-                  style: GoogleFonts.fredoka(
-                    fontSize: size.width * 0.05,
-                    fontWeight: FontWeight.w400,
-                    color: Color(0xFF8A6B57),
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-            ],
-          ),
-        ),
-      );
-    },
-  ),
-),
+            ),
 
             SizedBox(height: size.height * 0.02),
           ],
