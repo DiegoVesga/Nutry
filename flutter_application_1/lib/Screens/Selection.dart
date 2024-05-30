@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Screens/Home.dart';
+import 'package:flutter_application_1/Services/shared_prefs.dart';
 import 'package:flutter_application_1/main.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -27,16 +28,32 @@ class _UserinfoState extends State<Selection> {
     'Tofu'
   ];
 
+  void initState() {
+    super.initState();
+    _loadPreferences();
+  }
+
+  void _loadPreferences() async {
+    await UserPrefs().initPrefs();
+    setState(() {
+      _checked = UserPrefs().getFoodPreferences();
+    });
+  }
+
+  void _savePreferences() {
+    UserPrefs().setFoodPreferences(_checked);
+  }
+
   // Estado de los checkboxes
-  List<bool> _checked = List.generate(9, (index) => false);
+  List<bool> _checked = [];
 
   Map<String, dynamic> selectedPreferences = {};
 
-  Future<void> setFoodPreferences() async {
+  Future<void> setFoodPreferences(List<bool> checkboxStates) async {
     for (int i = 0; i < usersList.length; i++) {
       if (usersList[i]['user_id'] == widget.id &&
           usersList[i]['medical_condition'] == 'Diabetes') {
-        if (_checked[0]) {
+        if (checkboxStates[0]) {
           selectedPreferences['Pollo'] = {
             "Recetas": {
               "Pollo a la parrilla con espárragos y champiñones": {
@@ -58,7 +75,7 @@ class _UserinfoState extends State<Selection> {
         } else {
           selectedPreferences.remove('Pollo');
         }
-        if (_checked[1]) {
+        if (checkboxStates[1]) {
           selectedPreferences['Champinnones'] = {
             "Recetas": {
               "Tofu Salteado con Vegetales y Arroz Integral": {
@@ -73,7 +90,7 @@ class _UserinfoState extends State<Selection> {
         } else {
           selectedPreferences.remove('Champinnones');
         }
-        if (_checked[2]) {
+        if (checkboxStates[2]) {
           selectedPreferences['Salmon'] = {
             "Recetas": {
               "Salmon al horno con vegetales": {
@@ -88,7 +105,7 @@ class _UserinfoState extends State<Selection> {
         } else {
           selectedPreferences.remove('Salmon');
         }
-        if (_checked[3]) {
+        if (checkboxStates[3]) {
           selectedPreferences['Zanahoria'] = {
             "Recetas": {
               "Tofu Salteado con Vegetales y Arroz Integral": {
@@ -103,7 +120,7 @@ class _UserinfoState extends State<Selection> {
         } else {
           selectedPreferences.remove('Zanahoria');
         }
-        if (_checked[4]) {
+        if (checkboxStates[4]) {
           selectedPreferences['Pavo'] = {
             "Recetas": {
               "Hamburguesas de Pavo con Ensalada de Espinacas y Fresas": {
@@ -118,7 +135,7 @@ class _UserinfoState extends State<Selection> {
         } else {
           selectedPreferences.remove('Pavo');
         }
-        if (_checked[5]) {
+        if (checkboxStates[5]) {
           selectedPreferences['Aguacate'] = {
             "Recetas": {
               "Ensalada de Lentejas con Aguacate y Tomate": {
@@ -133,7 +150,7 @@ class _UserinfoState extends State<Selection> {
         } else {
           selectedPreferences.remove('Aguacate');
         }
-        if (_checked[6]) {
+        if (checkboxStates[6]) {
           selectedPreferences['Lentejas'] = {
             "Recetas": {
               "Ensalada de lentejas con aguacate y tomate": {
@@ -148,7 +165,7 @@ class _UserinfoState extends State<Selection> {
         } else {
           selectedPreferences.remove('Lentejas');
         }
-        if (_checked[7]) {
+        if (checkboxStates[7]) {
           selectedPreferences['Garbanzos'] = {
             "Recetas": {
               "Tiras de Pollo a la Parrilla con Ensalada de Garbanzos": {
@@ -163,7 +180,7 @@ class _UserinfoState extends State<Selection> {
         } else {
           selectedPreferences.remove('Garbanzos');
         }
-        if (_checked[8]) {
+        if (checkboxStates[8]) {
           selectedPreferences['Tofu'] = {
             "Recetas": {
               "Tofu Salteado con Vegetales y Arroz Integral": {
@@ -185,7 +202,7 @@ class _UserinfoState extends State<Selection> {
       //obesos
       if (usersList[i]['user_id'] == widget.id &&
           usersList[i]['medical_condition'] == 'Obesidad') {
-        if (_checked[0]) {
+        if (checkboxStates[0]) {
           selectedPreferences['Pollo'] = {
             "Recetas": {
               "Pollo al Horno con Espárragos y Quinoa": {
@@ -200,7 +217,7 @@ class _UserinfoState extends State<Selection> {
         } else {
           selectedPreferences.remove('Pollo');
         }
-        if (_checked[1]) {
+        if (checkboxStates[1]) {
           selectedPreferences['Champinnones'] = {
             "Recetas": {
               "Tofu Salteado con Vegetales y Arroz Integral": {
@@ -215,7 +232,7 @@ class _UserinfoState extends State<Selection> {
         } else {
           selectedPreferences.remove('Champinnones');
         }
-        if (_checked[2]) {
+        if (checkboxStates[2]) {
           selectedPreferences['Salmon'] = {
             "Recetas": {
               "Salmón al Horno con Espárragos y Quinoa": {
@@ -230,7 +247,7 @@ class _UserinfoState extends State<Selection> {
         } else {
           selectedPreferences.remove('Salmon');
         }
-        if (_checked[3]) {
+        if (checkboxStates[3]) {
           selectedPreferences['Zanahoria'] = {
             "Recetas": {
               "Tofu Salteado con Vegetales y Arroz Integral": {
@@ -245,7 +262,7 @@ class _UserinfoState extends State<Selection> {
         } else {
           selectedPreferences.remove('Zanahoria');
         }
-        if (_checked[4]) {
+        if (checkboxStates[4]) {
           selectedPreferences['Pavo'] = {
             "Recetas": {
               "Hamburguesas de Pavo con Ensalada de Espinacas y Fresas": {
@@ -260,7 +277,7 @@ class _UserinfoState extends State<Selection> {
         } else {
           selectedPreferences.remove('Pavo');
         }
-        if (_checked[5]) {
+        if (checkboxStates[5]) {
           selectedPreferences['Aguacate'] = {
             "Recetas": {
               "Ensalada de Garbanzos con Aguacate y Tomate": {
@@ -275,7 +292,7 @@ class _UserinfoState extends State<Selection> {
         } else {
           selectedPreferences.remove('Aguacate');
         }
-        if (_checked[6]) {
+        if (checkboxStates[6]) {
           selectedPreferences['Lentejas'] = {
             "Recetas": {
               "Ensalada de Garbanzos con Aguacate y Tomate": {
@@ -290,7 +307,7 @@ class _UserinfoState extends State<Selection> {
         } else {
           selectedPreferences.remove('Lentejas');
         }
-        if (_checked[7]) {
+        if (checkboxStates[7]) {
           selectedPreferences['Garbanzos'] = {
             "Recetas": {
               "Ensalada de Garbanzos con Aguacate y Tomate": {
@@ -305,7 +322,7 @@ class _UserinfoState extends State<Selection> {
         } else {
           selectedPreferences.remove('Garbanzos');
         }
-        if (_checked[8]) {
+        if (checkboxStates[8]) {
           selectedPreferences['Tofu'] = {
             "Recetas": {
               "Tofu Salteado con Vegetales y Arroz Integral": {
@@ -326,7 +343,7 @@ class _UserinfoState extends State<Selection> {
       }
       if (usersList[i]['user_id'] == widget.id &&
           usersList[i]['medical_condition'] == '') {
-        if (_checked[0]) {
+        if (checkboxStates[0]) {
           selectedPreferences['Pollo'] = {
             "Recetas": {
               "Pollo al Horno con Espárragos y Quinoa": {
@@ -341,7 +358,7 @@ class _UserinfoState extends State<Selection> {
         } else {
           selectedPreferences.remove('Pollo');
         }
-        if (_checked[1]) {
+        if (checkboxStates[1]) {
           selectedPreferences['Champinnones'] = {
             "Recetas": {
               "Tofu Salteado con Vegetales y Arroz Integral": {
@@ -356,7 +373,7 @@ class _UserinfoState extends State<Selection> {
         } else {
           selectedPreferences.remove('Champinnones');
         }
-        if (_checked[2]) {
+        if (checkboxStates[2]) {
           selectedPreferences['Salmon'] = {
             "Recetas": {
               "Salmón al Horno con Espárragos y Quinoa": {
@@ -371,7 +388,7 @@ class _UserinfoState extends State<Selection> {
         } else {
           selectedPreferences.remove('Salmon');
         }
-        if (_checked[3]) {
+        if (checkboxStates[3]) {
           selectedPreferences['Zanahoria'] = {
             "Recetas": {
               "Tofu Salteado con Vegetales y Arroz Integral": {
@@ -386,7 +403,7 @@ class _UserinfoState extends State<Selection> {
         } else {
           selectedPreferences.remove('Zanahoria');
         }
-        if (_checked[4]) {
+        if (checkboxStates[4]) {
           selectedPreferences['Pavo'] = {
             "Recetas": {
               "Hamburguesas de Pavo con Ensalada de Espinacas y Fresas": {
@@ -401,7 +418,7 @@ class _UserinfoState extends State<Selection> {
         } else {
           selectedPreferences.remove('Pavo');
         }
-        if (_checked[5]) {
+        if (checkboxStates[5]) {
           selectedPreferences['Aguacate'] = {
             "Recetas": {
               "Ensalada de Garbanzos con Aguacate y Tomate": {
@@ -416,7 +433,7 @@ class _UserinfoState extends State<Selection> {
         } else {
           selectedPreferences.remove('Aguacate');
         }
-        if (_checked[6]) {
+        if (checkboxStates[6]) {
           selectedPreferences['Lentejas'] = {
             "Recetas": {
               "Ensalada de Garbanzos con Aguacate y Tomate": {
@@ -431,7 +448,7 @@ class _UserinfoState extends State<Selection> {
         } else {
           selectedPreferences.remove('Lentejas');
         }
-        if (_checked[7]) {
+        if (checkboxStates[7]) {
           selectedPreferences['Garbanzos'] = {
             "Recetas": {
               "Ensalada de Garbanzos con Aguacate y Tomate": {
@@ -446,7 +463,7 @@ class _UserinfoState extends State<Selection> {
         } else {
           selectedPreferences.remove('Garbanzos');
         }
-        if (_checked[8]) {
+        if (checkboxStates[8]) {
           selectedPreferences['Tofu'] = {
             "Recetas": {
               "Tofu Salteado con Vegetales y Arroz Integral": {
@@ -622,9 +639,8 @@ class _UserinfoState extends State<Selection> {
                                                 setState(() {
                                                   _checked[index] = value!;
                                                 });
-                                                print(
-                                                    'checkbox position: ${_checked.indexed}');
-                                                setFoodPreferences();
+                                                setFoodPreferences(_checked);
+                                                _savePreferences();
                                               },
                                             ),
                                             Expanded(
@@ -642,7 +658,7 @@ class _UserinfoState extends State<Selection> {
                                         ),
                                       );
                                     }),
-                                  ),
+                                  )
                                 ],
                               ),
                             ),
