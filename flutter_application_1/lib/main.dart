@@ -19,6 +19,6 @@ void main() async {
   } catch (e) {
     print(e);
   }
-  
+
   runApp(MyApp());
 }

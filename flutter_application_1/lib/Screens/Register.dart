@@ -65,6 +65,7 @@ class _RegisterState extends State<Register> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         body: Stack(
           children: [
             Image.asset(
@@ -283,7 +284,10 @@ class _RegisterState extends State<Register> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Login(title: "Login", id: 1,)),
+                                  builder: (context) => Login(
+                                        title: "Login",
+                                        id: 1,
+                                      )),
                             );
                           },
                           child: Text('Log In',
