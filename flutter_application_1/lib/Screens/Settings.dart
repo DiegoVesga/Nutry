@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_application_1/Screens/Home.dart';
 import 'package:flutter_application_1/Screens/Login.dart';
 import 'package:flutter_application_1/Screens/Food.dart';
 import 'package:flutter_application_1/Screens/Routines.dart';
@@ -421,6 +422,13 @@ class _HomeState extends State<Settings> {
             ElevatedButton(
               onPressed: () {
                 changePassword();
+                 Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Home(id: 1, title: '', condicion: '', routines: '',
+                                      
+                                      )),
+                            );
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color(0xFF492D25),
