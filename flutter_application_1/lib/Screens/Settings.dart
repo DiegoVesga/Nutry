@@ -28,8 +28,8 @@ class Settings extends StatefulWidget {
 
 class _HomeState extends State<Settings> {
   final prefs = UserPrefs();
-  String selectedButton = ''; // Estado para rastrear el botón seleccionado
-  int _currentIndex = 0; // Índice de la página actual en el CarouselSlider
+  String selectedButton = ''; 
+  int _currentIndex = 0; 
   final PanelController _panelController = PanelController();
 
   List food_preferences = [];
@@ -178,7 +178,8 @@ class _HomeState extends State<Settings> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => const Login(
-                                          title: 'Login', id: 1,
+                                          title: 'Login',
+                                          id: 1,
                                         )),
                                 (Route<dynamic> route) => false,
                               );
@@ -291,6 +292,36 @@ class _HomeState extends State<Settings> {
                 ),
               ),
             ),
+            // Nueva Columna con información del usuario
+            Padding(
+              padding: EdgeInsets.symmetric(
+                  vertical: size.height * 0.02, horizontal: size.width * 0.05),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Email: ${prefs.email}',
+                    style: GoogleFonts.fredoka(
+                      textStyle: TextStyle(
+                        fontSize: size.width * 0.05,
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xFF492D25),
+                      ),
+                    ),
+                  ),
+                  Text(
+                    'User ID: ${widget.id}',
+                    style: GoogleFonts.fredoka(
+                      textStyle: TextStyle(
+                        fontSize: size.width * 0.05,
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xFF492D25),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
             // Segunda Columna (Divider)
             Container(
               margin: EdgeInsets.only(
@@ -299,7 +330,6 @@ class _HomeState extends State<Settings> {
               width: size.width * 0.9,
               color: Colors.black,
             ),
-
             Padding(
               padding: EdgeInsets.symmetric(horizontal: size.width * 0.1),
               child: Text(
@@ -311,7 +341,6 @@ class _HomeState extends State<Settings> {
                 ),
               ),
             ),
-
             Padding(
               padding: const EdgeInsets.only(top: 15),
               child: Container(
@@ -347,7 +376,6 @@ class _HomeState extends State<Settings> {
                 ),
               ),
             ),
-
             Padding(
               padding: const EdgeInsets.only(top: 15),
               child: Container(
@@ -416,19 +444,20 @@ class _HomeState extends State<Settings> {
                 ),
               ),
             ),
-
             SizedBox(height: size.height * 0.04),
-
             ElevatedButton(
               onPressed: () {
                 changePassword();
-                 Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Home(id: 1, title: '', condicion: '', routines: '',
-                                      
-                                      )),
-                            );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Home(
+                            id: 1,
+                            title: '',
+                            condicion: '',
+                            routines: '',
+                          )),
+                );
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color(0xFF492D25),

@@ -325,126 +325,128 @@ class _FoodState extends State<Food> {
           ),
         ),
       ),
-      body: Container(
-        color: Color(0xffFAF6F5),
-        child: Column(
-          children: [
-            SizedBox(
-              height: size.height * 0.05,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(left: size.width * 0.01),
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.4,
-                    height: MediaQuery.of(context).size.height * 0.2,
-                    child: AspectRatio(
-                      aspectRatio: 16 / 9,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
-                        child: Image.asset(
-                          widget.rutafoto,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(width: size.width * 0.02),
-                Expanded(
-                  child: Text(
-                    widget.nombrereceta,
-                    style: GoogleFonts.fredoka(
-                      fontSize: size.width * 0.05,
-                      fontWeight: FontWeight.w400,
-                      color: Color(0xFF8A6B57),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(height: size.height * 0.01),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: MediaQuery.of(context).size.width *
-                    0.1, // 10% del ancho de la pantalla
-                vertical: MediaQuery.of(context).size.height *
-                    0.03, // 3% de la altura de la pantalla
+      body: SingleChildScrollView(
+        child: Container(
+          color: Color(0xffFAF6F5),
+          child: Column(
+            children: [
+              SizedBox(
+                height: size.height * 0.05,
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Proteina: ',
-                        style: GoogleFonts.fredoka(
-                          fontSize: size.width * 0.05,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFf492D25),
+                  Padding(
+                    padding: EdgeInsets.only(left: size.width * 0.01),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.4,
+                      height: MediaQuery.of(context).size.height * 0.2,
+                      child: AspectRatio(
+                        aspectRatio: 16 / 9,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Image.asset(
+                            widget.rutafoto,
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
-                      Text(
-                        proteina == '' ? 'xd' : proteina,
-                        style: GoogleFonts.fredoka(
-                          fontSize: size.width * 0.04,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFf8A6B57),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
-                  SizedBox(height: size.height * 0.01),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Ingredientes: ',
-                        style: GoogleFonts.fredoka(
-                          fontSize: size.width * 0.05,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFf492D25),
-                        ),
+                  SizedBox(width: size.width * 0.02),
+                  Expanded(
+                    child: Text(
+                      widget.nombrereceta,
+                      style: GoogleFonts.fredoka(
+                        fontSize: size.width * 0.05,
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xFF8A6B57),
                       ),
-                      Text(
-                        ingredientes,
-                        style: GoogleFonts.fredoka(
-                          fontSize: size.width * 0.04,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFf8A6B57),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
-                  SizedBox(height: size.height * 0.01),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Preparacion: ',
-                        style: GoogleFonts.fredoka(
-                          fontSize: size.width * 0.05,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFf492D25),
-                        ),
-                      ),
-                      Text(
-                        preparacion,
-                        style: GoogleFonts.fredoka(
-                          fontSize: size.width * 0.04,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFf8A6B57),
-                        ),
-                      ),
-                    ],
-                  )
                 ],
               ),
-            )
-          ],
+              SizedBox(height: size.height * 0.01),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: MediaQuery.of(context).size.width *
+                      0.1, // 10% del ancho de la pantalla
+                  vertical: MediaQuery.of(context).size.height *
+                      0.03, // 3% de la altura de la pantalla
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Proteina: ',
+                          style: GoogleFonts.fredoka(
+                            fontSize: size.width * 0.05,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFf492D25),
+                          ),
+                        ),
+                        Text(
+                          proteina == '' ? 'xd' : proteina,
+                          style: GoogleFonts.fredoka(
+                            fontSize: size.width * 0.04,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFf8A6B57),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: size.height * 0.01),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Ingredientes: ',
+                          style: GoogleFonts.fredoka(
+                            fontSize: size.width * 0.05,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFf492D25),
+                          ),
+                        ),
+                        Text(
+                          ingredientes,
+                          style: GoogleFonts.fredoka(
+                            fontSize: size.width * 0.04,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFf8A6B57),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: size.height * 0.01),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Preparacion: ',
+                          style: GoogleFonts.fredoka(
+                            fontSize: size.width * 0.05,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFf492D25),
+                          ),
+                        ),
+                        Text(
+                          preparacion,
+                          style: GoogleFonts.fredoka(
+                            fontSize: size.width * 0.04,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFf8A6B57),
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

@@ -33,10 +33,6 @@ final List<Map<String, String>> exercises = [
     },
   ];
   
-  Future<void> loadRoutines () async {
-
-  }
-
   int id = 0;
   String condicion;
   Routines({required this.id, required this.condicion,});

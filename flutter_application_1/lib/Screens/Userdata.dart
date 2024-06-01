@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Screens/Home.dart';
-import 'package:flutter_application_1/Screens/Login.dart';
 import 'package:flutter_application_1/Screens/UserInfo.dart';
-import 'package:flutter_application_1/Services/shared_prefs.dart';
 import 'package:flutter_application_1/main.dart';
 
 import 'package:google_fonts/google_fonts.dart';

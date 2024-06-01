@@ -11,6 +11,8 @@ class UserPrefs {
 
   UserPrefs._internal();
 
+  get birthday => null;
+
   initPrefs() async {
     _prefs = await SharedPreferences.getInstance();
   }
